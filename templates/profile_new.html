@@ -1,0 +1,324 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Rooms {% endblock %}</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+  </head>
+
+
+  <!-- 
+    TODO: 
+    - menu, image (add arrows as well), profile-desc font-size, placement, icons, padding of profile/page.. 
+  -->
+
+  <body>
+
+    <div class="ui top attached menu">
+      <div class="ui dropdown icon item">
+        <i class="wrench icon"></i>
+        <div class="menu">
+          <div class="item">
+            <i class="dropdown icon"></i>
+            <span class="text">New</span>
+            <div class="menu">
+              <div class="item">Document</div>
+              <div class="item">Image</div>
+            </div>
+          </div>
+          <div class="item">
+            Open...
+          </div>
+          <div class="item">
+            Save...
+          </div>
+          <div class="item">Edit Permissions</div>
+          <div class="divider"></div>
+          <div class="header">
+            Export
+          </div>
+          <div class="item">
+            Share...
+          </div>
+        </div>
+      </div>
+      <div class="right menu">
+        <div class="ui right aligned category search item">
+          <div class="ui transparent icon input">
+            <input class="prompt" type="text" placeholder="Search animals...">
+            <i class="search link icon"></i>
+          </div>
+          <div class="results"></div>
+        </div>
+      </div>
+    </div>
+
+    
+    <!-- <div style="margin-top: 2em"></div> -->
+
+    <div class="ui grid" style="padding-left: 10em; margin-top: 1.5em;">
+
+      <div class="four wide column">
+        <img src="{% static 'sample_images/image_three.jpeg' %}" width="280px" style="border-radius: 5%;">
+      </div>
+
+      <div class="nine wide column" style="padding-left: 3em;">
+        
+        <div>
+
+          <h2 class="ui header" style="display: inline-block;">
+            Kevin Duport 
+            <div class="ui teal horizontal label">Current Student</div>
+          </h2>
+
+          <div class="ui blue vertical animated button" tabindex="0" style="float: right;">
+            <div class="hidden content">slide?</div>
+            <div class="visible content">
+              <i class="paper plane icon"></i>
+            </div>
+          </div>
+  
+        </div>
+  
+        <!-- <div>
+          <span>
+            <strong>Year:</strong> 1
+          </span>
+          /
+          <span>
+            <i class="book icon"></i>Computer Science
+          </span>
+        </div> -->
+       
+        <!-- <span>
+          <i class="calendar alternate outline icon"></i> First Year; Computer Science, Mathematics, Sociology
+        </span>
+        <br/> -->
+
+        <div>
+          <span>
+            <i class="instagram icon"></i>kduport24
+          </span>
+          &nbsp;&nbsp;&nbsp;
+          <span>
+            <i class="snapchat ghost icon"></i>kduport24
+          </span>
+        </div>
+
+        <div style="padding-top: 10px;">
+
+          <p>
+            <strong>
+              Year:
+            </strong> 1
+          </p>
+          <p>
+            <strong>
+              Studying:
+            </strong> Math, Computer Science
+          </p>
+          <p>
+            <strong>
+              College:
+            </strong>
+             Trinity College
+          </p>
+          <p>
+            <strong>
+              Currently residing in:
+            </strong>
+             Toronto
+          </p>
+          <p>
+            <strong>
+              High School:
+            </strong>
+             Weston CI
+          </p>
+          <p>
+            <strong>
+              Interests:
+            </strong>
+              basketball, gym, making things, science/technology/progress/change...you get it, aren't I interesting?
+          </p>
+          <p>
+            <strong>
+              Single looking to mingle?
+            </strong>
+            whatever happens, happens...
+            <!-- TODO: options below for this (**keep this open-ended, it would be funnier that way) -->
+            <!-- 
+            whatever happens, happens
+            hell yeah
+            sure
+            yeah, something like that...
+            hell nah
+            it's complicated
+            oh god
+            going with the flow
+            already with the love of my life
+            -->
+          </p>
+          <p>
+            <strong>
+              Quotes:
+            </strong>
+            "buy the ticket, take the ride", "it's all a circus, but not everyone's the clown", "zuck screwed the web"
+          </p>
+
+          <p>
+            <strong>
+              Description:
+            </strong> 
+            just here to see the vibes... reach out but don't feel offended if I don't respond. It's (probably) just me...
+          </p>
+
+          <!-- <span>
+            <i class="book icon"></i> First Year; Computer Science, Mathematics, Sociology
+          </span> -->
+          
+          <!-- <span>
+            <i class="calendar alternate outline icon"></i> First Year
+          </span>
+          &nbsp;&nbsp;&nbsp;
+          <span>
+            <i class="book icon"></i> Computer Science, Mathematics, Sociology
+          </span> -->
+
+        </div>
+
+    
+        
+        <div >
+          <p>
+            <!-- Hi my names Jasmine!! I've committed to ubcv for the bachelor of science program and I hope to major in neuroscience. Some things about me: - I love music festivals/concerts (I love all kinds of music) - I love travelling - I am addicted to poke, so I’ll always be down to go out and get poke with someone - I’ve ridden horses all of my life - I love dogs and cats (I basically love any and all animals) - I love going for walks/hikes, so if anyone wants to show me some new trails I’m so down!! I’m super excited to start at ubc, and make some new friends! Feel free to dm me @jazzyhands400 or add my snap: jasminegirl_1 -->
+            <!-- What's up... thought I would try this out; Yeah, i'm single so hit me up if your about it -->
+          </p>
+        </div>
+ 
+
+      </div>
+
+    </div>
+
+
+    <!-- <div class="ui grid" style="padding-left: 10em;">
+
+      <div class="four wide column" >
+
+        <div class="ui horizontal divider">
+          More Info
+        </div>
+        <div>
+          <p>Where I'm from: Arizona</p>
+          <p>Currently residing in: Toronto</p>
+          <p>Living on Res: No</p>  
+          <p>
+            <strong>
+              Courses:
+            </strong>
+          </p>
+          <ul>
+            <li>CSC207</li>
+            <li>MAT135</li>
+            <li>MAT2930</li>
+            <li>CBHA32</li>
+          </ul>
+        </div>
+
+      </div>
+
+
+      <div class="nine wide column">
+
+        <div class="ui tabular menu">
+          <a class="item">
+            Posts
+          </a>
+          <a class="item active">
+            Activity
+          </a>
+        </div>
+
+        <div>
+
+          <a class="ui card" href="" style="width: 45em;">
+            <div class="content">
+              <div class="header">Cute Dog</div>
+              <div class="meta">
+                <span class="category">Animals</span>
+              </div>
+              <div class="description">
+                <p></p>
+              </div>
+            </div>
+            <div class="extra content">
+              <div class="right floated author">
+                <img class="ui avatar image" src="/images/avatar/small/matt.jpg"> Matt
+              </div>
+            </div>
+          </a>
+
+          <a class="ui card" href="" style="width: 45em;">
+            <div class="content">
+              <div class="header">Cute Dog</div>
+              <div class="meta">
+                <span class="category">Animals</span>
+              </div>
+              <div class="description">
+                <p></p>
+              </div>
+            </div>
+            <div class="extra content">
+              <div class="right floated author">
+                <img class="ui avatar image" src="/images/avatar/small/matt.jpg"> Matt
+              </div>
+            </div>
+          </a>
+
+          <a class="ui card" href="" style="width: 45em;">
+            <div class="content">
+              <div class="header">Cute Dog</div>
+              <div class="meta">
+                <span class="category">Animals</span>
+              </div>
+              <div class="description">
+                <p></p>
+              </div>
+            </div>
+            <div class="extra content">
+              <div class="right floated author">
+                <img class="ui avatar image" src="/images/avatar/small/matt.jpg"> Matt
+              </div>
+            </div>
+          </a>
+
+        </div>
+
+
+      </div>
+
+    </div> -->
+
+
+
+  </body>
+
+
+</html>
+
+
+
+
+
+
+
+

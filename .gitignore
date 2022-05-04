@@ -1,0 +1,7 @@
+db.sqlite3
+static/uikit
+uoftroom/settings.py
+uoftroom/__pycache__
+rooms/migrations
+rooms/__pycache__
+
