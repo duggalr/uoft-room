@@ -6,7 +6,9 @@
   <head>
     <meta charset="UTF-8">
     <title>{% block title %} Rooms {% endblock %}</title>
-    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -20,24 +22,14 @@
 
     {% include 'navbar.html' %}
 
-    <div class="ui grid">
-
-      <div class="three wide column">
+    <div class="ui centered grid" >
+      
+      <div class="three wide column" >
         
-        <h3>Filter:</h3>
+        <!-- <h3>Filter:</h3> -->
 
-        <ul>
+        <!-- <ul>
 
-          <li>
-            <a href="">
-              Mail (14)
-            </a>
-          </li>
-          <li>
-            <a href="">
-              CSC207 (10)
-            </a>
-          </li>
           <li>
             <a href="">
               Mail (14)
@@ -69,44 +61,15 @@
             </a>
           </li>
           
-        </ul>
-
-       
-
-        
-        <!-- <div class="ui text menu">
-          <div class="header item">Sort By</div>
-          <a class="active item">
-            Closest
-          </a>
-          <a class="item">
-            Most Comments
-          </a>
-          <a class="item">
-            Most Popular
-          </a>
-        </div> -->
-        
-        <!-- <div class="ui secondary vertical pointing menu">
-          <a class="active item">
-            Home
-          </a>
-          <a class="item">
-            Messages
-          </a>
-          <a class="item">
-            Friends
-          </a>
-        </div> -->
+        </ul> -->
 
       </div>
 
-      <div class="nine wide column">
 
-        <!-- <h1>Main</h1> -->
+      <div class="eight wide column" style="padding-top: 4px; ">
 
-        <div class="ui text menu">
-          <!-- <div class="header item">Sort By</div> -->
+        <div class="ui text menu" style="width:100%; display: flex; justify-content: left; padding-left: 10px;">
+
           <a class="active item">
             All
           </a>
@@ -117,23 +80,46 @@
             Uoft Subreddit Posts 
           </a>
           <a class="item">
-            Uoft Recent News
+            Recent News
           </a>
-
-          <!-- <div class="ui form">
-            <div class="field">
-              <label>Country</label>
-              <select class="ui search dropdown">
-                <option value="male">Male</option>
-                <option value="male">Male</option>
-                <option value="male">Male</option>
-              </select>
-            </div>
-          </div> -->
 
         </div>
 
-        <div class="ui card" style="width: 40em;">
+
+        <!-- <div class="ui raised link card" style="width: 40em; display: flex; justify-content: center;"> -->
+        <div class="ui raised link card" style="width: 42em;">
+
+          <div class="content" >
+            <form class="ui form">
+              <div class="disabled field" >
+                <input type="text" name="first-name" placeholder="create post...">
+              </div>
+            </form>
+            
+          </div>
+          
+        </div>
+
+
+        <div class="ui form" style="width: 94%; display: flex; justify-content: right;">
+        <!-- <div class="ui form"> -->
+
+          <div class="field">
+            <div class="ui selection dropdown" style="min-width: 20px;">
+              <i class="dropdown icon"></i>
+              <div class="default text">sort...</div>
+              <div class="menu">
+                <div class="item" data-value="1">newest</div>
+                <div class="item" data-value="0">popular</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="ui card" style="width: 42em;">
+
           <div class="content">
             <!-- <i class="right floated like icon"></i>
             <i class="right floated star icon"></i> -->
@@ -160,7 +146,7 @@
 
       <div class="four wide column">
 
-        <div class="ui card">
+        <!-- <div class="ui card">
           <div class="content">
             <div class="header">Network Activity</div>
             <div class="meta">Changed: Just Now</div>
@@ -199,15 +185,21 @@
             </div>
           </div>
 
-        </div>
+        </div> -->
 
-
- 
 
       </div>
 
 
     </div>
+
+
+
+    <script>
+
+    $('.ui.dropdown').dropdown();
+
+    </script>
 
 
   </body>
