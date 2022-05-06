@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 
 def profile(request):
-  return render(request, 'profile_new.html')
+  return render(request, 'profile_new_one.html')
 
 
 def main(request):
