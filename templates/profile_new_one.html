@@ -1,0 +1,375 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Rooms {% endblock %}</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+  </head>
+
+
+  <!-- 
+    TODO: 
+    - menu, image (add arrows as well), profile-desc font-size, placement, icons, padding of profile/page.. 
+  -->
+
+  <body>
+
+    {% include 'navbar.html' %}
+
+
+    <div class="ui grid" style="padding-left: 8.5em; margin-top: 1em;">
+
+      <div class="four wide column" style="margin-top: 1em;">
+        <img src="{% static 'sample_images/image_three.jpeg' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+        
+        <!-- <div style="text-align: center; font-size: 20px;">
+          <i class="angle left icon"></i>
+          <i class="angle right icon"></i>
+        </div> -->
+        
+      </div>
+
+      <div class="ten wide column" style="padding-left: 3em;">
+        
+        <div>
+
+          <h2 class="ui header" style="display: inline-block; font-size: 27px;">
+            Kevin Duport 
+            <div class="ui teal horizontal label">Current Student</div>
+          </h2>
+
+          <!-- <a href="" style="font-size: 18px;">&#128064;</a> -->
+          <div class="ui blue vertical animated button" tabindex="0" style="float: right;">            
+            <div class="hidden content">slide?</div>
+            <div class="visible content">
+              <i class="paper plane icon"></i>
+            </div>
+          </div>
+  
+        </div>
+  
+        <!-- <div>
+          <span>
+            <strong>Year:</strong> 1
+          </span>
+          /
+          <span>
+            <i class="book icon"></i>Computer Science
+          </span>
+        </div> -->
+       
+        <!-- <span>
+          <i class="calendar alternate outline icon"></i> First Year; Computer Science, Mathematics, Sociology
+        </span>
+        <br/> -->
+
+        <div>
+          <span >
+            <i class="instagram icon"></i>kduport24
+          </span>
+          &nbsp;&nbsp;&nbsp;
+          <span >
+            <i class="snapchat ghost icon"></i>kduport24
+            <!-- <a href="" style="font-size: 18px">&#128064;</a> -->
+          </span>
+        </div>
+
+        <!-- <div class="ui card">
+          <div class="content">
+            <div class="header">Cute Dog</div>
+            <div class="meta">2 days ago</div>
+            <div class="description">
+              <p>Cute dogs come in a variety of shapes and sizes. Some cute dogs are cute for their adorable faces, others for their tiny stature, and even others for their massive size.</p>
+              <p>Many people also have their own barometers for what makes a cute dog.</p>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="ui horizontal divider">
+          Info
+        </div>
+
+        <div style="padding-top: 0px;">
+
+          <p>
+            <strong style="font-size: 15px;">
+              Year:
+            </strong> 1
+          </p>
+          <p>
+            <strong style="font-size: 15px;">
+              Studying:
+            </strong> Math, Computer Science
+          </p>
+
+          <p>
+            <strong style="font-size: 15px;">
+              Single looking to mingle?
+            </strong>
+            whatever happens, happens...
+          </p>
+
+          <p>
+            <strong style="font-size: 15px;">
+              Currently residing in:
+            </strong>
+             Toronto
+          </p>
+
+          <p>
+            <strong>
+              Where I'm from:
+            </strong> 
+            Arizona
+          </p>
+            
+          <p>
+            <strong>
+              Living on Res:
+            </strong> 
+            No
+          </p>  
+
+          <p>
+            <strong>
+              Courses:
+            </strong>
+          </p>
+
+          <ul>
+            <li>CSC207</li>
+            <li>MAT135</li>
+            <li>MAT2930</li>
+            <li>CBHA32</li>
+          </ul>
+
+
+        </div>
+
+
+        <div class="ui horizontal divider">
+          More
+        </div>
+
+        <div>
+
+          <p>
+            <strong>
+              Interests:
+            </strong>
+              basketball, gym, making things, science/technology/progress/change...you get it, aren't I interesting?
+          </p>
+          
+          <p>
+            <strong>
+              Quotes:
+            </strong>
+            "buy the ticket, take the ride", "it's all a circus, be the clown, just not all the time..."
+          </p>
+
+          <p>
+            <strong>
+              Music:
+            </strong>
+              mbnel, burna bandz, upcoming hiphop artists mainly from toronto
+          </p>
+
+          <p>
+            <strong>
+              Books:
+            </strong>
+              thinking as a science, skim through a bunch of different books on a whole bunch of everything
+          </p>
+
+          <p>
+            <strong>
+              Movies/Shows:
+            </strong>
+          </p>
+
+          <p>
+            <strong>
+              Jobs & Companies worked at: 
+            </strong>
+          </p>
+
+          <p>
+            <strong>
+              Student Clubs: 
+            </strong>
+          </p>
+
+        </div>
+
+
+          <!-- <p>
+            <strong>
+              College:
+            </strong>
+             Trinity
+          </p>
+          <p>
+            <strong>
+              Living
+            </strong>
+          </p>
+          
+
+          <p>
+            <strong>
+              Interests:
+            </strong>
+              basketball, gym, making things, science/technology/progress/change...you get it, aren't I interesting?
+          </p>
+
+          <p>
+            <strong>
+              Single looking to mingle?
+            </strong>
+            whatever happens, happens...
+          </p>
+
+          <p>
+            <strong>
+              Books:
+            </strong>
+              thinking as a science, skim through a bunch of different books on a whole bunch of everything
+          </p>
+
+          <p>
+            <strong>
+              Jobs: 
+            </strong>
+          </p>
+
+          <p>
+            <strong>
+              Student Clubs: 
+            </strong>
+          </p>
+
+          <p>
+            <strong>
+              Quotes:
+            </strong>
+            "buy the ticket, take the ride", "it's all a circus, be the clown, just not all the time..."
+          </p>
+
+          <p>
+            <strong>
+              Description:
+            </strong> 
+            just here to see the vibes... reach out but don't feel offended if I don't respond. It's (probably) just me...
+          </p>
+
+          <p>
+            <strong>
+              Courses:
+            </strong>
+          </p>
+          <ul>
+            <li>CSC207</li>
+            <li>MAT135</li>
+            <li>MAT2930</li>
+            <li>CBHA32</li>
+          </ul> -->
+
+          <!-- <span>
+            <i class="book icon"></i> First Year; Computer Science, Mathematics, Sociology
+          </span> -->
+          
+          <!-- <span>
+            <i class="calendar alternate outline icon"></i> First Year
+          </span>
+          &nbsp;&nbsp;&nbsp;
+          <span>
+            <i class="book icon"></i> Computer Science, Mathematics, Sociology
+          </span> -->
+
+        </div>
+
+        <!-- <div class="ui horizontal divider">
+          Personal
+        </div> -->
+    
+        
+        <!-- <div>
+          <p>
+            Hi my names Jasmine!! I've committed to ubcv for the bachelor of science program and I hope to major in neuroscience. Some things about me: - I love music festivals/concerts (I love all kinds of music) - I love travelling - I am addicted to poke, so I’ll always be down to go out and get poke with someone - I’ve ridden horses all of my life - I love dogs and cats (I basically love any and all animals) - I love going for walks/hikes, so if anyone wants to show me some new trails I’m so down!! I’m super excited to start at ubc, and make some new friends! Feel free to dm me @jazzyhands400 or add my snap: jasminegirl_1
+            What's up... thought I would try this out; Yeah, i'm single so hit me up if your about it
+          </p>
+        </div> -->
+ 
+
+      </div>
+
+    </div>
+
+
+    <!-- <div class="ui grid" style="padding-left: 9em;">
+
+      <div class="four wide column" >
+
+        <div class="ui horizontal divider">
+          More Info
+        </div>
+        <div>
+          <p>
+            <strong>
+              Where I'm from:
+            </strong> 
+            Arizona
+          </p>
+          <p>
+            <strong>
+              Currently residing in:
+            </strong>
+             Toronto
+          </p>
+          <p>
+            <strong>
+              Living on Res:
+            </strong> 
+            No
+          </p>  
+          <p>
+            <strong>
+              Courses:
+            </strong>
+          </p>
+          <ul>
+            <li>CSC207</li>
+            <li>MAT135</li>
+            <li>MAT2930</li>
+            <li>CBHA32</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+
+    </div> -->
+
+
+
+  </body>
+
+
+</html>
+
+
+
+
+
+
+
+
