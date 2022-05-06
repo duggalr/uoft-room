@@ -6,8 +6,11 @@ def profile(request):
 
 
 def main(request):
-  return render(request, 'main.html')
+  return render(request, 'main_new.html')
 
+
+def browse(request):
+  return render(request, 'browse.html')
 
 
 
