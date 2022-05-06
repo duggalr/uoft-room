@@ -10,7 +10,7 @@ def main(request):
 
 
 def browse(request):
-  return render(request, 'browse.html')
+  return render(request, 'browse_one.html')
 
 
 
