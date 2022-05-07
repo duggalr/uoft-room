@@ -43,20 +43,23 @@
 
     <div class="right menu" style="padding-left: 10em;">
 
-      <a class="active item">
+      <a class="active item" href="{% url 'main' %}">
         home
       </a>
-      <a class="item">
+      <a class="disabled item">
+        groups (soon)
+      </a>
+      <a class="item" href="{% url 'browse' %}">
         browse
       </a>
       <a class="item">
-        groups (disable)
+        random profile
+      </a>
+      <a class="item" href="{% url 'profile' %}">
+        my profile
       </a>
       <a class="item">
         messages
-      </a>
-      <a class="item">
-        profile
       </a>
       <a class="item">
         faq
