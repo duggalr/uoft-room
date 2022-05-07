@@ -18,4 +18,12 @@ def faq(request):
 
 
 
+# TODO: 
+  # get started with functionality
+    # start with login (google + 'inhouse') and then, redirect to profile-edit
+      # should have confetti on profile complete 
+
+
+
+
 
