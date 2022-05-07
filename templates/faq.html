@@ -1,79 +1,59 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <title>{% block title %} Rooms {% endblock %}</title>
+{% block content %}
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <div class="ui two column centered grid">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <div class="column">
 
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+      <div class="ui basic segment">
+        
+        <h3 >
+          What's this site about?
+          <i class="angle down icon"></i>
+        </h3>
+        <p style="font-size: 14.5px; width: 63ch; line-height: 1.5em;">
+          Who's going to be in my CSC207 class this coming fall semester? Which students have done an internship at the 
+          WWF organization? Any other people on campus listen to the 'Highway Robbery' band? Who's trying to be on my 
+          basketball intramural team this semester?
+          <br/><br/>
+          When Facebook first started, these were the types of questions one could easily find answers too. 
+          However, <i>zuck (kinda) screwed it all up...</i>
+          <br/><br/>
+          This isn't necessarily a replica of the 2004 (the)facebook. And I'm not saying answers to the above questions 
+          can't be found leveraging existing social tools (i'm not from the stone age, even though the UI of this site might convince 
+          you otherwise). I feel in general though, there (shockingly) doesn't really seem to be a medium on the web that captures
+          the social dynamics of a college campus with real-identity...
+          <br/><br/>
+          I quickly created this website as an experiment to see if students would join the party...
+          the initial version is quite minimal and predicated more so on profiles and finding other students on campus.
+          <br/><br/>
+          who knows, I could be completely wrong and this is the most useless piece-of-shit 
+          website you have ever seen and you absolutely never want to see or meet me (given the campus size and current state of the web (ahem), 
+          that's very likely anyways) but hey, I'm willing to roll the dice. 
 
-  </head>
-
-  
-  <body>
-
-    {% include 'navbar.html' %}
-
-    <!-- <h3>FAQ</h3> -->
-
-    <div class="ui two column centered grid">
-
-      <div class="column">
-
-        <div class="ui basic segment">
+          <br/><br/>
+          <span style="font-family: 'Indie Flower', cursive; font-size: 22px; color: #002a5c; float: right; ">
+            #Boundless
+          </span>
           
-          <h3 >
-            What's this about?
-            <i class="angle down icon"></i>
-          </h3>
-          <p style="font-size: 14.5px; width: 63ch; line-height: 1.5em;">
-            Who's going to be in my CSC207 class this coming fall semester? Which students have done an internship at the 
-            WWF organization? Any other people on campus listen to the 'Highway Robbery' band? Who's trying to be on my 
-            basketball intramural team this semester?
-            <br/><br/>
-            When Facebook first started, these were the types of questions one could easily find answers too. 
-            However, <i>zuck (kinda) screwed it all up...</i>
-            <br/><br/>
-            This isn't necessarily a replica of the 2004 (the)facebook. And I'm not saying answers to the above questions 
-            can't be found leveraging existing social tools (i'm not from the stone age, even though the UI of this site might convince 
-            you otherwise). I feel in general though, there (shockingly) doesn't really seem to be a medium on the web that captures
-            the social dynamics of a college campus with real-identity...
-            <br/><br/>
-            I quickly created this website as an experiment to see if students would join the party... 
-            who knows, I could be completely wrong and this is the most useless piece-of-shit 
-            website you have ever seen and you absolutely never want to meet me (given the campus size and current state of the web (ahem), 
-            that's very likely anyways) but hey, I'm willing to roll the dice. 
+        </p>
 
-            <br/><br/><br/>
-            <span style="font-family: 'Indie Flower', cursive; font-size: 22px; color: #002a5c; float: right; ">
-              #Boundless
-            </span>
-            
-          </p>
-
-          
-
-
-        </div>
-    
       </div>
-
 
     </div>
 
+  </div>
 
-  </body>
+{% endblock %}
 
 
 
-</html>
+
+
+
 
 
 

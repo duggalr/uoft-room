@@ -1,393 +1,373 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <title>{% block title %} Rooms {% endblock %}</title>
+{% block content %}
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-
-  </head>
-
-  
-  <body>
-
-    {% include 'navbar.html' %}
+  <div class="ui grid" style="padding: 1em; margin-left: 3em;"> 
 
 
-    <div class="ui grid" style="padding: 1em; margin-left: 3em;"> 
+    <div class="three wide column" >
 
-
-      <div class="three wide column" >
-
-        <div style="border: 1px black;">
-          <h3 style="margin: 0; display: inline-block;">Filter:</h3>
-          &nbsp;&nbsp;
-          <!-- <button class="ui blue inverted small button" >Update</button> -->
-          <button>Update</button>
-        </div>
-        
-        <div style="padding-top: 2em;">
- 
-          <h4 style="padding-left: 4px;">College: 
-            <span class="plus_icon">
-              (+)
-            </span>
-          </h4> 
-
-          <ul style="display: none">
-            <div class="inline field">
-              <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden">
-                <label>Checkbox</label>
-              </div>
-            </div>
-            <div class="inline field">
-              <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden">
-                <label>Checkbox</label>
-              </div>
-            </div>
-            <div class="inline field">
-              <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden">
-                <label>Checkbox</label>
-              </div>
-            </div>
-          </ul>
-
-        </div>
-
-        <div style="padding-top: 5px;">
- 
-          <h4 style="padding-left: 4px;">Program: 
-            <span class="plus_icon">
-              (+)
-            </span>
-          </h4> 
-
-          <ul style="display: none">
-            <div class="inline field">
-              <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden">
-                <label>Checkbox</label>
-              </div>
-            </div>
-            <div class="inline field">
-              <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden">
-                <label>Checkbox</label>
-              </div>
-            </div>
-            <div class="inline field">
-              <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden"> 
-                <label>Checkbox</label>
-              </div>
-            </div>
-          </ul>
-
-        </div>
-
-        <div style="padding-top: 5px;">
- 
-          <h4 style="padding-left: 4px;">Year: 
-            <span class="plus_icon">
-              (+)
-            </span>
-          </h4> 
-
-          <ul style="display: none">
-            <div class="inline field">
-              <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden">
-                <label>Checkbox</label>
-              </div>
-            </div>
-            <div class="inline field">
-              <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden">
-                <label>Checkbox</label>
-              </div>
-            </div>
-            <div class="inline field">
-              <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden"> 
-                <label>Checkbox</label>
-              </div>
-            </div>
-          </ul>
-
-        </div>
-
-        <div style="padding-top: 5px;">
- 
-          <h4 style="padding-left: 4px;">Gender: 
-            <span class="plus_icon">
-              (+)
-            </span>
-          </h4> 
-
-          <ul style="display: none">
-            <div class="inline field">
-              <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden">
-                <label>Checkbox</label>
-              </div>
-            </div>
-            <div class="inline field">
-              <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden">
-                <label>Checkbox</label>
-              </div>
-            </div>
-            <div class="inline field">
-              <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden"> 
-                <label>Checkbox</label>
-              </div>
-            </div>
-          </ul>
-
-        </div>
-
-        <div style="padding-top: 5px;">
- 
-          <h4 style="padding-left: 4px;">Interests: 
-            <span class="plus_icon">
-              (+)
-            </span>
-          </h4> 
-
-          <ul style="display: none">
-            <div class="inline field">
-              <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden">
-                <label>Checkbox</label>
-              </div>
-            </div>
-            <div class="inline field">
-              <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden">
-                <label>Checkbox</label>
-              </div>
-            </div>
-            <div class="inline field">
-              <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden"> 
-                <label>Checkbox</label>
-              </div>
-            </div>
-          </ul>
-
-        </div>
-
-        
+      <div style="border: 1px black;">
+        <h3 style="margin: 0; display: inline-block;">Filter:</h3>        
+        &nbsp;&nbsp;
+        <!-- <button class="ui blue inverted small button" >Update</button> -->
+        <button>Update</button>
       </div>
-
-
-      <div class="twelve wide column" style="padding-left: 2em;">
-
-        <h3>Browse (114):</h3>
-
-        <!-- <div class="ui five cards">
-
-          <div class="ui raised link card" >
-            <div class="image">
-              <img src="{% static 'sample_images/image_three.jpeg' %}">
-            </div>
-            <div class="content">
-              <div class="header">John Doe</div>
-            </div>
-          </div>
-
-          <div class="ui raised link card" >
-            <div class="image">
-              <img src="{% static 'sample_images/image_one.jpeg' %}">
-            </div>
-            <div class="content">
-              <div class="header">John Doe</div>
-            </div>
-          </div>
-
-          <div class="ui raised link card" >
-            <div class="image">
-              <img src="{% static 'sample_images/image_1.jpeg' %}">
-            </div>
-            <div class="content">
-              <div class="header">John Doe</div>
-            </div>
-          </div>
-
-          <div class="ui raised link card" >
-            <div class="image">
-              <img src="{% static 'sample_images/image_2.jpeg' %}">
-            </div>
-            <div class="content">
-              <div class="header">John Doe</div>
-            </div>
-          </div>
-
-          <div class="ui raised link card" >
-            <div class="image">
-              <img src="{% static 'sample_images/image_8.jpeg' %}">
-            </div>
-            <div class="content">
-              <div class="header">John Doe</div>
-            </div>
-          </div>
-
-          <div class="ui raised link card" >
-            <div class="image">
-              <img src="{% static 'sample_images/image_9.jpeg' %}">
-            </div>
-            <div class="content">
-              <div class="header">John Doe</div>
-            </div>
-          </div>
+      
+      <div style="padding-top: 2em;">
         
-        </div> -->
+        <h4 style="padding-left: 4px;">College:
+          <span class="plus_icon">
+            (+)
+          </span>
+        </h4> 
 
-
-        <div class="ui five column grid">
-
-          <div class="column" >
-            <div class="ui fluid raised link card" style="width: 95%;">
-              <a class="image" href="{% url 'profile' %}">
-                <img src="{% static 'sample_images/image_5.jpeg' %}">
-              </a>
-              <!-- <div class="image">
-                <img src="{% static 'sample_images/image_9.jpeg' %}">
-              </div> -->
-              <div class="content">
-                <a class="header" >Daniel Louise</a>
-              </div>
+        <ul style="display: none">
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden">
+              <label>Checkbox (21)</label>
             </div>
           </div>
-          
-
-          <div class="column">
-            <div class="ui fluid raised link card" style="width: 95%;">
-              <a class="image" href="{% url 'profile' %}">
-                <img src="{% static 'sample_images/image_one.jpeg' %}">
-              </a>
-              <div class="content">
-                <a class="header">Daniel Louise</a>
-              </div>
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden">
+              <label>Checkbox (42)</label>
             </div>
           </div>
-
-          <div class="column">
-            <div class="ui fluid raised link card" style="width: 95%;">
-              <a class="image" href="{% url 'profile' %}">
-                <img src="{% static 'sample_images/image_two.jpeg' %}">
-              </a>
-              <div class="content">
-                <a class="header">Daniel Louise</a>
-              </div>
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden">
+              <label>Checkbox</label>
             </div>
           </div>
-
-          <div class="column">
-            <div class="ui fluid raised link card" style="width: 95%;">
-              <a class="image" href="{% url 'profile' %}">
-                <img src="{% static 'sample_images/image_three.jpeg' %}">
-              </a>
-              <div class="content">
-                <a class="header">Daniel Louise</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="column">
-            <div class="ui fluid raised link card" style="width: 95%;">
-              <a class="image" href="{% url 'profile' %}">
-                <img src="{% static 'sample_images/image_4.jpeg' %}">
-              </a>
-              <div class="content">
-                <a class="header">Daniel Louise</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="column">
-            <div class="ui fluid raised link card" style="width: 95%;">
-              <a class="image" href="{% url 'profile' %}">
-                <img src="{% static 'sample_images/image_8.jpeg' %}">
-              </a>
-              <div class="content">
-                <a class="header">Daniel Louise</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="column">
-            <div class="ui fluid raised link card" style="width: 95%;">
-              <a class="image" href="{% url 'profile' %}">
-                <img src="{% static 'sample_images/image_1.jpeg' %}">
-              </a>
-              <div class="content">
-                <a class="header">Daniel Louise</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="column">
-            <div class="ui fluid raised link card" style="width: 95%;">
-              <a class="image" href="{% url 'profile' %}">
-                <img src="{% static 'sample_images/image_6.jpeg' %}">
-              </a>
-              <div class="content">
-                <a class="header">Daniel Louise</a>
-              </div>
-            </div>
-          </div>
-          
-
-
-        </div>
-
-
+        </ul>
 
       </div>
 
+      <div style="padding-top: 5px;">
 
-      <!-- <div class="two wide column">
+        <h4 style="padding-left: 4px;">Program: 
+          <span class="plus_icon">
+            (+)
+          </span>
+        </h4> 
 
+        <ul style="display: none">
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden">
+              <label>Checkbox</label>
+            </div>
+          </div>
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden">
+              <label>Checkbox</label>
+            </div>
+          </div>
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden"> 
+              <label>Checkbox</label>
+            </div>
+          </div>
+        </ul>
+
+      </div>
+
+      <div style="padding-top: 5px;">
+
+        <h4 style="padding-left: 4px;">Year: 
+          <span class="plus_icon">
+            (+)
+          </span>
+        </h4> 
+
+        <ul style="display: none">
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden">
+              <label>Checkbox</label>
+            </div>
+          </div>
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden">
+              <label>Checkbox</label>
+            </div>
+          </div>
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden"> 
+              <label>Checkbox</label>
+            </div>
+          </div>
+        </ul>
+
+      </div>
+
+      <div style="padding-top: 5px;">
+
+        <h4 style="padding-left: 4px;">Gender: 
+          <span class="plus_icon">
+            (+)
+          </span>
+        </h4> 
+
+        <ul style="display: none">
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden">
+              <label>Checkbox</label>
+            </div>
+          </div>
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden">
+              <label>Checkbox</label>
+            </div>
+          </div>
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden"> 
+              <label>Checkbox</label>
+            </div>
+          </div>
+        </ul>
+
+      </div>
+
+      <div style="padding-top: 5px;">
+
+        <h4 style="padding-left: 4px;">Interests: 
+          <span class="plus_icon">
+            (+)
+          </span>
+        </h4> 
+
+        <ul style="display: none">
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden">
+              <label>Checkbox</label>
+            </div>
+          </div>
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden">
+              <label>Checkbox</label>
+            </div>
+          </div>
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden"> 
+              <label>Checkbox</label>
+            </div>
+          </div>
+        </ul>
+
+      </div>
+
+      
+    </div>
+
+
+    <div class="twelve wide column" style="padding-left: 2em;">
+
+      <h3>Browse (114):</h3>
+
+      <!-- <div class="ui five cards">
+
+        <div class="ui raised link card" >
+          <div class="image">
+            <img src="{% static 'sample_images/image_three.jpeg' %}">
+          </div>
+          <div class="content">
+            <div class="header">John Doe</div>
+          </div>
+        </div>
+
+        <div class="ui raised link card" >
+          <div class="image">
+            <img src="{% static 'sample_images/image_one.jpeg' %}">
+          </div>
+          <div class="content">
+            <div class="header">John Doe</div>
+          </div>
+        </div>
+
+        <div class="ui raised link card" >
+          <div class="image">
+            <img src="{% static 'sample_images/image_1.jpeg' %}">
+          </div>
+          <div class="content">
+            <div class="header">John Doe</div>
+          </div>
+        </div>
+
+        <div class="ui raised link card" >
+          <div class="image">
+            <img src="{% static 'sample_images/image_2.jpeg' %}">
+          </div>
+          <div class="content">
+            <div class="header">John Doe</div>
+          </div>
+        </div>
+
+        <div class="ui raised link card" >
+          <div class="image">
+            <img src="{% static 'sample_images/image_8.jpeg' %}">
+          </div>
+          <div class="content">
+            <div class="header">John Doe</div>
+          </div>
+        </div>
+
+        <div class="ui raised link card" >
+          <div class="image">
+            <img src="{% static 'sample_images/image_9.jpeg' %}">
+          </div>
+          <div class="content">
+            <div class="header">John Doe</div>
+          </div>
+        </div>
+      
       </div> -->
+
+
+      <div class="ui five column grid">
+
+        <div class="column" >
+          <div class="ui fluid raised link card" style="width: 95%;">
+            <a class="image" href="{% url 'profile' %}">
+              <img src="{% static 'sample_images/image_5.jpeg' %}">
+            </a>
+            <!-- <div class="image">
+              <img src="{% static 'sample_images/image_9.jpeg' %}">
+            </div> -->
+            <div class="content">
+              <a class="header" >Daniel Louise</a>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="column">
+          <div class="ui fluid raised link card" style="width: 95%;">
+            <a class="image" href="{% url 'profile' %}">
+              <img src="{% static 'sample_images/image_one.jpeg' %}">
+            </a>
+            <div class="content">
+              <a class="header">Daniel Louise</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="ui fluid raised link card" style="width: 95%;">
+            <a class="image" href="{% url 'profile' %}">
+              <img src="{% static 'sample_images/image_two.jpeg' %}">
+            </a>
+            <div class="content">
+              <a class="header">Daniel Louise</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="ui fluid raised link card" style="width: 95%;">
+            <a class="image" href="{% url 'profile' %}">
+              <img src="{% static 'sample_images/image_three.jpeg' %}">
+            </a>
+            <div class="content">
+              <a class="header">Daniel Louise</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="ui fluid raised link card" style="width: 95%;">
+            <a class="image" href="{% url 'profile' %}">
+              <img src="{% static 'sample_images/image_4.jpeg' %}">
+            </a>
+            <div class="content">
+              <a class="header">Daniel Louise</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="ui fluid raised link card" style="width: 95%;">
+            <a class="image" href="{% url 'profile' %}">
+              <img src="{% static 'sample_images/image_8.jpeg' %}">
+            </a>
+            <div class="content">
+              <a class="header">Daniel Louise</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="ui fluid raised link card" style="width: 95%;">
+            <a class="image" href="{% url 'profile' %}">
+              <img src="{% static 'sample_images/image_1.jpeg' %}">
+            </a>
+            <div class="content">
+              <a class="header">Daniel Louise</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="ui fluid raised link card" style="width: 95%;">
+            <a class="image" href="{% url 'profile' %}">
+              <img src="{% static 'sample_images/image_6.jpeg' %}">
+            </a>
+            <div class="content">
+              <a class="header">Daniel Louise</a>
+            </div>
+          </div>
+        </div>
+        
+
+
+      </div>
+
+
 
     </div>
 
 
+    <!-- <div class="two wide column">
 
-    <script>
-      
-      $('.ui.checkbox').checkbox();
+    </div> -->
 
-      $(".plus_icon").click(function(){
-        var parent_elem = $(this).parent().parent()
-        parent_elem.find('ul').toggle()
-        if (parent_elem.find('ul')[0].style.display == 'none'){
-          $(this).text("(+)")
-        } else {
-          $(this).text("(-)")
-        }
-
-      });
-
-    </script>
+  </div>
 
 
-  </body>
+
+  <script>
+    
+    $('.ui.checkbox').checkbox();
+
+    $(".plus_icon").click(function(){
+      var parent_elem = $(this).parent().parent()
+      parent_elem.find('ul').toggle()
+      if (parent_elem.find('ul')[0].style.display == 'none'){
+        $(this).text("(+)")
+      } else {
+        $(this).text("(-)")
+      }
+
+    });
+
+  </script>
 
 
-</html>
+
+{% endblock %}
 
 
