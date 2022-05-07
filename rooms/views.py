@@ -13,4 +13,9 @@ def browse(request):
   return render(request, 'browse_one.html')
 
 
+def faq(request):
+  return render(request, 'faq.html')
+
+
+
 

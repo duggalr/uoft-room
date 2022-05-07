@@ -52,7 +52,7 @@
       <a class="item" href="{% url 'browse' %}">
         browse
       </a>
-      <a class="item">
+      <a class="item" href="{% url 'profile' %}">
         random profile
       </a>
       <a class="item" href="{% url 'profile' %}">
@@ -61,7 +61,7 @@
       <a class="item">
         messages
       </a>
-      <a class="item">
+      <a class="item" href="{% url 'faq' %}">
         faq
       </a>
       <a class="item">
@@ -73,10 +73,11 @@
     <div class="right menu">
   
       <div class="item">
-        <div class="ui icon disabled input" style="width: 20em;">
+        <a href="" style="padding-right: 1em;">Send an invite to your friend(s)</a>
+        <!-- <div class="ui icon disabled input" style="width: 20em;">
           <input type="text" placeholder="search...">
           <i class="search icon"></i>
-        </div>
+        </div> -->
       </div>
   
     </div>
