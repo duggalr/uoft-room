@@ -11,130 +11,36 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
-
-    <style>
-      body {
-  font-family: Arial;
-  margin: 0;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-img {
-  vertical-align: middle;
-}
-
-/* Position the image container (needed to position the left and right arrows) */
-.container {
-  position: relative;
-}
-
-/* Hide the images by default */
-.mySlides {
-  display: none;
-}
-
-/* Add a pointer when hovering over the thumbnail images */
-.cursor {
-  cursor: pointer;
-}
-
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 40%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* Container for image text */
-.caption-container {
-  text-align: center;
-  background-color: #222;
-  padding: 2px 16px;
-  color: white;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Six columns side by side */
-.column {
-  float: left;
-  width: 16.66%;
-}
-
-/* Add a transparency effect for thumnbail images */
-.demo {
-  opacity: 0.6;
-}
-
-.active,
-.demo:hover {
-  opacity: 1;
-}
-    </style>
-
 
   </head>
 
 
 
-  <body>
+  <body >
 
     {% include 'navbar.html' %}
 
   <!-- TODO:  -->
     <div class="ui centered grid container" style="padding: 0em;">
 
-      <div class="sixteen wide column" style="padding-top: 1em; margin-left: -1em;">
-        
-        <h2 class="ui center aligned header">
-          Welcome to <img src="{% static 'uoft_logo/uoft_logo.png' %}" style="width:9%;">'s Room!
+      <div class="sixteen wide column" style="padding-top: 1.5em; margin-left: -1em;">
+         
+        <h2 class="ui center aligned header" style="
+          padding-right: 1em; font-family: 'Indie Flower', cursive; font-size: 34px; color: #002a5c;">
+          Welcome to <img src="{% static 'uoft_logo/uoft_logo.png' %}" style="width:8%;">'s Room!
           <!-- Welcome to Uoft's Room -->
         </h2>
 
       </div>
       
 
-      <div class="seven wide column" style="margin-left: 5em;">
+      <div class="seven wide column" style="margin-left: 5em; ">
         
         <h3>Community Feed</h3>
 
@@ -317,6 +223,131 @@ img {
             </div>
           </div>
 
+          <div class="event">
+            <div class="label">
+              <img src="https://semantic-ui.com/images/avatar/small/matt.jpg">
+            </div>
+            <div class="content">
+              <div class="summary">
+                <a class="user" href="{% url 'profile' %}">
+                  Kevin Duport
+                </a> just joined the room
+                <!-- <div class="date">
+                  1 Hour Ago
+                </div> -->
+              </div>
+              <div class="meta">
+                <!-- <a class="like">
+                  <i class="like icon"></i> 4 Likes
+                </a> -->
+                <div class="date">
+                  1 Hour Ago
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="label">
+              <img src="https://semantic-ui.com/images/avatar/small/matt.jpg">
+            </div>
+            <div class="content">
+              <div class="summary">
+                <a class="user" href="{% url 'profile' %}">
+                  Kevin Duport
+                </a> just joined the room
+                <!-- <div class="date">
+                  1 Hour Ago
+                </div> -->
+              </div>
+              <div class="meta">
+                <!-- <a class="like">
+                  <i class="like icon"></i> 4 Likes
+                </a> -->
+                <div class="date">
+                  1 Hour Ago
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="label">
+              <img src="https://semantic-ui.com/images/avatar/small/matt.jpg">
+            </div>
+            <div class="content">
+              <div class="summary">
+                <a class="user" href="{% url 'profile' %}">
+                  Kevin Duport
+                </a> just joined the room
+                <!-- <div class="date">
+                  1 Hour Ago
+                </div> -->
+              </div>
+              <div class="meta">
+                <!-- <a class="like">
+                  <i class="like icon"></i> 4 Likes
+                </a> -->
+                <div class="date">
+                  1 Hour Ago
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="label">
+              <img src="https://semantic-ui.com/images/avatar/small/matt.jpg">
+            </div>
+            <div class="content">
+              <div class="summary">
+                <a class="user" href="{% url 'profile' %}">
+                  Kevin Duport
+                </a> just joined the room
+                <!-- <div class="date">
+                  1 Hour Ago
+                </div> -->
+              </div>
+              <div class="meta">
+                <!-- <a class="like">
+                  <i class="like icon"></i> 4 Likes
+                </a> -->
+                <div class="date">
+                  1 Hour Ago
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="label">
+              <img src="https://semantic-ui.com/images/avatar/small/matt.jpg">
+            </div>
+            <div class="content">
+              <div class="summary">
+                <a class="user" href="{% url 'profile' %}">
+                  Kevin Duport
+                </a> just joined the room
+                <!-- <div class="date">
+                  1 Hour Ago
+                </div> -->
+              </div>
+              <div class="meta">
+                <!-- <a class="like">
+                  <i class="like icon"></i> 4 Likes
+                </a> -->
+                <div class="date">
+                  1 Hour Ago
+                </div>
+              </div>
+
+            </div>
+          </div>
+
      
 
         </div>
@@ -350,16 +381,15 @@ img {
           <li>Dropout (ideally this is 0?): 10%</li>
         </ul>
 
-        <h4>Single ready to mingle?:</h4>
+        <h4>Single ready to mingle? (top-3):</h4>
         <ul class="ui list">
           <li>hell yeah: 25%</li>
           <li>hell nah: 20%</li>
+          <li>hell yeah: 25%</li>
         </ul>
 
-        <h4>By Program:</h4>
+        <h4>By Program (top-3):</h4>
         <ul class="ui list">
-          <li>Computer Science: 10%</li>
-          <li>Mathematics: 10%</li>
           <li>Computer Science: 10%</li>
           <li>Mathematics: 10%</li>
           <li>Computer Science: 10%</li>

@@ -3,4 +3,17 @@
 
 } */
 
+#primary_logo{
+  color: #002a5c;
+}
+
+#main_menu .item:hover{
+  color: #002a5c;
+}
+
+#main_menu .active{
+  color: #002a5c;
+}
+
+
 
