@@ -23,53 +23,71 @@
 
     <!-- <h3>FAQ</h3> -->
 
-    <div class="ui one column centered grid">
+    <div class="ui two column centered grid" >
 
       <div class="column">
-        
+
         <div class="ui basic segment">
+          
           <h3>
-            what's this about? 
+            What's this about?
             <i class="angle down icon"></i>
           </h3>
-          <p>
+          <p style="font-size: 14.5px; ">
             Who's going to be in my CSC207 class this coming fall semester? Which students have done an internship at the 
             WWF organization? Any other people on campus listen to the 'Highway Robbery' band? Who's trying to be on my 
             basketball intramural team this semester?
+            <br/><br/>
             When Facebook first started, these were the types of questions one could easily find answers too. 
-            However, zuck (kinda) screwed it all up...
+            However, <i>zuck (kinda) screwed it all up...</i>
+            <br/><br/>
             This isn't necessarily a replica of the 2004 (the)facebook. And I'm not saying answers to the above questions 
-            can't be found leveraging existing social tools (i'm not from the stone age even though the UI of this site might convince 
+            can't be found leveraging existing social tools (i'm not from the stone age, even though the UI of this site might convince 
             you otherwise). I feel in general though, there (shockingly) doesn't really seem to me a medium on the web that captures
-            the social dynamics of a localized community online (with real-identity).
+            the social dynamics of a college campus with real-identity...
+            <br/><br/>
             I quickly created this website as an experiment to see if students would join the party... 
             who knows, I could be completely wrong and this is the most useless piece-of-shit 
             website you have ever seen and you absolutely never want to meet me (given the campus size and current state of the web (ahem), 
             that's very likely anyways) but hey, I'm willing to roll the dice. 
             
-            <!-- Every social platform (except Snapchat) 
-            feels 'super-general' now, broadcasting to everyone <-- TODO: expand here and improve this (super-impt)
-            Every social platform is 
-            feels 'super-general' now... that's why I quickly created this as an experiment to see
-            if people would join the party... who knows, I could be completely wrong and this is the most useless piece-of-shit 
-            website you have ever seen and you absolutely never want to meet me (given the campus size and current state of the web (ahem), 
-            that's very likely anyways) but hey, I'm willing to roll the dice.  -->
-            
           </p>
 
-          <h3>
+          <br/><br/><br/>
+          <span style="font-size: 20px; color: lightgray; text-align: center;">
+            #Boundless
+          </span>
+
+
+          <!-- <h3>
             what's the point of the 'eye' feature?
-            <i class="angle down icon"></i>
+            <i id="angle_down_icon" class="angle down icon"></i>
           </h3>
-          <p style="font-size: 25px;">
+          <p id="eye_answer" style="font-size: 25px; display: none;">
             &#128064;
-          </p>
+          </p> -->
+
         </div>
     
       </div>
 
 
     </div>
+
+
+    <script>
+      $("#angle_down_icon").click(function(){
+        var parent_elem = $(this).parent().parent()
+        parent_elem.find('#eye_answer').toggle()
+        // parent_elem.find('ul').toggle()
+        // if (parent_elem.find('ul')[0].style.display == 'none'){
+        //   $(this).text("(+)")
+        // } else {
+        //   $(this).text("(-)")
+        // }
+
+      });
+    </script>
 
 
   </body>
