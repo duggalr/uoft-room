@@ -21,5 +21,9 @@
 }
 
 
+#profile_image_placeholder:hover{
+  cursor: pointer;
+}
+/* .pointer {} */
 
 

@@ -9,8 +9,10 @@
     <!-- <form class="ui form"> -->
 
     <div class="four wide column" style="margin-top: 1em;">
-      <img src="{% static 'sample_images/profile_image_placeholder_one.png' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
-
+      <input id="imgupload" type="file" id="file" name="file" accept="image/*" style="display:none" multiple />
+      <label for='imgupload'>
+        <img id="profile_image_placeholder" src="{% static 'sample_images/image_placeholder.png' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+      </label>
 
       <div class="ui horizontal divider">
         <i class="pencil alternate icon"></i> Courses This Year
