@@ -11,6 +11,39 @@
     <div class="four wide column" style="margin-top: 1em;">
       <img src="{% static 'sample_images/profile_image_placeholder_one.png' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
 
+
+      <div class="ui horizontal divider">
+        <i class="pencil alternate icon"></i> Courses This Year
+      </div>
+
+      <div class="ui form">
+                
+        <label style="font-size: 14.5px;">Courses this year:</label>
+        <div class="ui fluid multiple search selection dropdown" style="width: 20em;">
+          <input type="hidden" name="country">                
+          <i class="dropdown icon"></i>
+          <div class="default text">so you can find some study buddies</div>
+          <!-- <div class="default text">so you can find some <s>cute g</s> study buddies... </div> -->
+          <div class="menu">
+            <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+            <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
+            <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+            <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
+            <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+            <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
+            <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+            <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
+            <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+            <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
+            <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+            <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
+          </div>
+        </div>
+        &nbsp;
+        <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; ">(visible to everyone)</span>
+
+      </div>
+
     </div>
 
     <div class="ten wide column" style="padding-left: 3em;">
@@ -22,13 +55,37 @@
           <!-- <div class="ui teal horizontal label">Current Student</div>           -->
         </h2>
 
-
         <div class="ui inverted blue vertical animated button" tabindex="0" style="float: right;">
           <div class="hidden content"><i class="hand point right outline icon"></i></div>
           <div class="visible content">
             Save Changes
           </div>
         </div>
+
+        
+        <div class="ui form">
+
+          <div class="inline fields">
+
+            <div class="field">
+              <label style="font-size: 14.5px;">Gender:</label>
+              <div class="ui selection dropdown" >
+                  <input type="hidden" name="gender">
+                  <i class="dropdown icon"></i>
+                  <div class="default text"></div>
+                  <div class="menu">
+                      <div class="item" data-value="undergrad_student">Male</div>
+                      <div class="item" data-value="grad_student">Female</div>
+                      <div class="item" data-value="alumni">Other</div>
+                  </div>
+              </div>
+            </div>
+  
+          </div>
+
+        </div>
+
+        
 
 
         <div class="ui horizontal divider" >
@@ -95,30 +152,6 @@
 
 
         <div class="ui form">
-       
-          <!-- <p> -->
-            <!-- <strong style="font-size: 14.5px;">
-              Status:
-            </strong>  -->
-
-
-            <!-- <div class="inline fields">
-
-              <div class="field">
-                <label style="font-size: 14.5px;">Gender:</label>
-                <div class="ui selection dropdown" style="width: 16em;">
-                    <input type="hidden" name="gender">
-                    <i class="dropdown icon"></i>
-                    <div class="default text"></div>
-                    <div class="menu">
-                        <div class="item" data-value="undergrad_student">Male</div>
-                        <div class="item" data-value="grad_student">Female</div>
-                        <div class="item" data-value="alumni">Other</div>
-                    </div>
-                </div>
-              </div>
-              
-            </div> -->
 
             <div class="inline fields">
 
@@ -235,7 +268,7 @@
                 <div class="ui selection dropdown" style="width: 16em;">
                     <input type="hidden" name="gender">
                     <i class="dropdown icon"></i>
-                    <div class="default text"></div>
+                    <div class="default text">?</div>
                     <div class="menu">
                         <div class="item" data-value="undergrad_student">yes</div>
                         <div class="item" data-value="grad_student">no</div>
@@ -273,14 +306,12 @@
             </div>
 
 
-            <div class="inline fields">
-
+            <!-- <div class="inline fields">
               <label style="font-size: 14.5px;">Courses this year:</label>
               <div class="ui fluid multiple search selection dropdown" style="width: 25em;">
                 <input type="hidden" name="country">                
                 <i class="dropdown icon"></i>
                 <div class="default text"><s>so you can find some cute g</s>...i mean study buddies</div>
-                <!-- <div class="default text">so you can find some <s>cute g</s> study buddies... </div> -->
                 <div class="menu">
                   <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
                   <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
@@ -298,34 +329,14 @@
               </div>
               &nbsp;
               <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible to everyone)</span>
+            </div> -->
 
-            </div>
-
-
-            <!-- <div class="inline fields">
-
-              <div class="field">
-                <label style="font-size: 14.5px;">Gender:</label>
-                <div class="ui selection dropdown" style="width: 16em;">
-                    <input type="hidden" name="gender">
-                    <i class="dropdown icon"></i>
-                    <div class="default text"></div>
-                    <div class="menu">
-                        <div class="item" data-value="undergrad_student">Male</div>
-                        <div class="item" data-value="grad_student">Female</div>
-                        <div class="item" data-value="alumni">Other</div>
-                    </div>
-                </div>
-              </div>
-              
-            </div>
-        -->
-            
-          <!-- </p> -->
-  
 
         </div>
 
+
+
+          
  
         <!-- <p>
           <strong style="font-size: 14.5px;">
@@ -387,12 +398,12 @@
           </strong>
         </p> -->
 
-        <p>
+        <!-- <p>
           <strong style="font-size: 14.5px;">
             Description:
           </strong> 
           just here to see the vibes... reach out but don't feel offended if I don't respond. It's (probably) just me...
-        </p>
+        </p> -->
 
       </div>
 
@@ -401,7 +412,44 @@
         <i class="user icon"></i> Personal
       </div>
 
-      <div>
+
+      <div class="ui form">
+
+        <div class="field">
+          <label>Description:</label>
+          <textarea rows="2" placeholder="get creative here"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Interests:</label>
+          <textarea rows="2" placeholder="i know you have atleast some.. (use comma's to separate the interests)"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Quotes:</label>
+          <textarea rows="2" placeholder="i know you have atleast some.. (use comma's to separate the interests)"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Music:</label>
+          <textarea rows="2" placeholder="i know you have atleast some.. (use comma's to separate the interests)"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Movies/Shows:</label>
+          <textarea rows="2" placeholder="i know you have atleast some.. (use comma's to separate the interests)"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Books:</label>
+          <textarea rows="2" placeholder="i know you have atleast some.. (use comma's to separate the interests)"></textarea>
+        </div>
+
+      </div>
+
+
+
+      <!-- <div>
 
         <p>
           <strong style="font-size: 14.5px;">
@@ -445,9 +493,10 @@
             thinking as a science, skim through a bunch of different books on a whole bunch of everything
         </p>
 
-      </div>
+      </div> -->
 
     </div>
+
 
   <!-- </form> -->
 
