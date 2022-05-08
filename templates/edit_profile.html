@@ -66,7 +66,7 @@
             <div class="field">
               <img src="{% static 'sample_images/vsco_new.png' %}" style="width: 17px;">
               &nbsp;
-              <input type="text" name="snapchat-id" placeholder="so, a vsco girl huh?">
+              <input type="text" name="snapchat-id" placeholder="you a vsco girl, huh?">
             </div>
             <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible to everyone)</span>
           </div>
@@ -88,7 +88,7 @@
       </div> -->
 
       <div class="ui horizontal divider" >
-        <i class="user icon"></i> Info
+        <i class="user icon"></i> General Info
       </div>
 
       <div style="padding-top: 0px;">
@@ -96,40 +96,246 @@
 
         <div class="ui form">
        
+          <!-- <p> -->
+            <!-- <strong style="font-size: 14.5px;">
+              Status:
+            </strong>  -->
 
 
-        </div>
+            <!-- <div class="inline fields">
 
-        <p>
-          <strong style="font-size: 14.5px;">
-            Status:
-          </strong> 
-
-          <div class="field">
-            <label>Gender</label>
-            <div class="ui selection dropdown">
-                <input type="hidden" name="gender">
-                <i class="dropdown icon"></i>
-                <div class="default text">Gender</div>
-                <div class="menu">
-                    <div class="item" data-value="1">Male</div>
-                    <div class="item" data-value="0">Female</div>
+              <div class="field">
+                <label style="font-size: 14.5px;">Gender:</label>
+                <div class="ui selection dropdown" style="width: 16em;">
+                    <input type="hidden" name="gender">
+                    <i class="dropdown icon"></i>
+                    <div class="default text"></div>
+                    <div class="menu">
+                        <div class="item" data-value="undergrad_student">Male</div>
+                        <div class="item" data-value="grad_student">Female</div>
+                        <div class="item" data-value="alumni">Other</div>
+                    </div>
                 </div>
+              </div>
+              
+            </div> -->
+
+            <div class="inline fields">
+
+              <div class="field">
+                <label style="font-size: 14.5px;">Current Status:</label>
+
+                <div class="ui selection dropdown" style="width: 16em;">
+                    <input type="hidden" name="current_status">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">no, not relationship status...</div>
+                    <div class="menu">
+                        <div class="item" data-value="undergrad_student">Undergrad Student (full/part-time)</div>
+                        <div class="item" data-value="grad_student">Grad Student (full/part-time)</div>
+                        <div class="item" data-value="alumni">Alumni</div>
+                        <div class="item" data-value="gap_year">Gap Year (ie. co-op)</div>
+                    </div>
+                </div>
+              </div>
+
             </div>
+
+
+            <div class="inline fields">
+
+              <div class="field">
+                <label style="font-size: 14.5px;">Campus:</label>
+
+                <div class="ui selection dropdown" style="width: 18em;">
+                    <input type="hidden" name="current_status">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">can't go wrong with either, right?</div>
+                    <div class="menu">
+                      <div class="item" data-value="grad_student">St. George</div>
+                      <div class="item" data-value="alumni">Mississauga</div>
+                      <div class="item" data-value="undergrad_student">Scarborough</div>
+                      <div class="disabled item" data-value="gap_year">Waterloo? (lol)</div>
+                    </div>
+                </div>
+              </div>
+
+            </div>
+
+
+            <!-- TODO: add ajax and disable/enable this field, depending on above answer -->
+            <div class="inline fields">
+
+              <div class="field">
+                <label style="font-size: 14.5px;">Year:</label>
+                <div class="ui selection dropdown" style="width: 16em;">
+                    <input type="hidden" name="gender">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">they go by fast</div>
+                    <div class="menu">
+                        <div class="item" data-value="undergrad_student">1</div>
+                        <div class="item" data-value="grad_student">2</div>
+                        <div class="item" data-value="alumni">3</div>
+                        <div class="item" data-value="alumni">4</div>
+                        <div class="item" data-value="alumni">5+</div>
+                    </div>
+                </div>
+              </div>
+              
+            </div>
+
+
+            <div class="inline fields">
+
+              <label style="font-size: 14.5px;">College:</label>
+              <div class="ui selection dropdown" style="width: 20em;">
+                <input type="hidden" name="country">                
+                <i class="dropdown icon"></i>
+                <div class="default text">get ready for the trinity elitists</div>
+                <div class="menu">
+                  <div class="item" data-value="af">
+                    <!-- <i class="af flag"></i> -->
+                    <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A7987.jpg" />
+                    Innis College
+                  </div>
+                  <div class="item" data-value="ax">
+                    <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8008.jpg" />
+                    New College
+                  </div>
+                  <div class="item" data-value="al">
+                    <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8103.jpg" />
+                    St. Michael's College
+                  </div>
+                  <div class="item" data-value="dz">
+                    <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8027.jpg" />
+                    University College
+                  </div>
+                  <div class="item" data-value="ax">
+                    <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8069.jpg" />
+                    Victoria College
+                  </div>
+                  <div class="item" data-value="al">
+                    <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A7967.jpg" />
+                    Woodsworth College
+                  </div>
+                  <div class="item" data-value="af">
+                    <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8064.jpg" />
+                    Trinity College
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+
+            <div class="inline fields">
+
+              <div class="field">
+                <label style="font-size: 14.5px;">Living on Res?</label>
+                <div class="ui selection dropdown" style="width: 16em;">
+                    <input type="hidden" name="gender">
+                    <i class="dropdown icon"></i>
+                    <div class="default text"></div>
+                    <div class="menu">
+                        <div class="item" data-value="undergrad_student">yes</div>
+                        <div class="item" data-value="grad_student">no</div>
+                    </div>
+                </div>
+              </div>
+              <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible to everyone)</span>
+              
+            </div>
+
+
+            <div class="inline fields">
+
+              <label style="font-size: 14.5px;">Studying:</label>
+              <div class="ui fluid multiple search selection dropdown" style="width: 30em;">
+                <input type="hidden" name="country">                
+                <i class="dropdown icon"></i>
+                <div class="default text">select major(s)</div>
+                <div class="menu">
+                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
+                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
+                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
+                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
+                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
+                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
+                </div>
+              </div>
+
+            </div>
+
+
+            <div class="inline fields">
+
+              <label style="font-size: 14.5px;">Courses this year:</label>
+              <div class="ui fluid multiple search selection dropdown" style="width: 25em;">
+                <input type="hidden" name="country">                
+                <i class="dropdown icon"></i>
+                <div class="default text"><s>so you can find some cute g</s>...i mean study buddies</div>
+                <!-- <div class="default text">so you can find some <s>cute g</s> study buddies... </div> -->
+                <div class="menu">
+                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
+                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
+                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
+                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
+                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
+                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
+                </div>
+              </div>
+              &nbsp;
+              <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible to everyone)</span>
+
+            </div>
+
+
+            <!-- <div class="inline fields">
+
+              <div class="field">
+                <label style="font-size: 14.5px;">Gender:</label>
+                <div class="ui selection dropdown" style="width: 16em;">
+                    <input type="hidden" name="gender">
+                    <i class="dropdown icon"></i>
+                    <div class="default text"></div>
+                    <div class="menu">
+                        <div class="item" data-value="undergrad_student">Male</div>
+                        <div class="item" data-value="grad_student">Female</div>
+                        <div class="item" data-value="alumni">Other</div>
+                    </div>
+                </div>
+              </div>
+              
+            </div>
+        -->
+            
+          <!-- </p> -->
+  
+
         </div>
 
-          <!-- <a href="">1</a> -->
-        </p>
-
-        <p>
+ 
+        <!-- <p>
           <strong style="font-size: 14.5px;">
             Gender:
           </strong> 
-          <!-- <a href="">1</a> -->
-        </p>
+          <a href="">1</a>
+        </p> -->
 
 
-        <p>
+        <!-- <p>
           <strong style="font-size: 14.5px;">
             Year:
           </strong> <a href="">1</a>
@@ -166,7 +372,7 @@
             Living on Res:
           </strong> 
           <a href="">No</a>
-        </p>  
+        </p>   -->
 
         <!-- <p>
           <strong style="font-size: 14.5px;">
@@ -175,11 +381,11 @@
           <a href="">CSC207, MAT135, MAT2930, CBHA32, CSC207, MAT135, MAT2930, CBHA32</a>
         </p> -->
 
-        <p>
+        <!-- <p>
           <strong style="font-size: 14.5px;">
             Student Clubs: 
           </strong>
-        </p>
+        </p> -->
 
         <p>
           <strong style="font-size: 14.5px;">
@@ -192,7 +398,7 @@
 
 
       <div class="ui horizontal divider">
-        <i class="user icon"></i> More
+        <i class="user icon"></i> Personal
       </div>
 
       <div>
@@ -246,6 +452,17 @@
   <!-- </form> -->
 
   </div>
+
+
+
+
+  <script>
+
+// ui selection dropdown
+    $('.ui.selection.dropdown').dropdown();
+    $('#studying_dropdown').dropdown();
+
+  </script>
 
 
 
