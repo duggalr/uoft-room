@@ -1,0 +1,258 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+  <div class="ui grid" style="padding-left: 8.5em; margin-top: 1.5em;">
+
+    <!-- <form class="ui form"> -->
+
+    <div class="four wide column" style="margin-top: 1em;">
+      <img src="{% static 'sample_images/profile_image_placeholder_one.png' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+
+    </div>
+
+    <div class="ten wide column" style="padding-left: 3em;">
+      
+      <div>
+
+        <h2 class="ui header" style="display: inline-block; font-size: 27px;">
+          Kevin Duport 
+          <!-- <div class="ui teal horizontal label">Current Student</div>           -->
+        </h2>
+
+
+        <div class="ui inverted blue vertical animated button" tabindex="0" style="float: right;">
+          <div class="hidden content"><i class="hand point right outline icon"></i></div>
+          <div class="visible content">
+            Save Changes
+          </div>
+        </div>
+
+
+        <div class="ui horizontal divider" >
+          <i class="user icon"></i> Socials
+        </div>
+
+        <div class="ui form">
+
+          <div class="inline fields">
+            <div class="field">
+              <i class="instagram icon" style="font-size: 16px;"></i>
+              <input type="text" name="instagram-id" placeholder="for the follower count">
+            </div>
+            <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible to everyone)</span>
+          </div>
+  
+          <div class="inline fields">
+            <div class="field">
+              <i class="snapchat ghost icon" style="font-size: 16px;"></i>
+              <input type="text" name="snapchat-id" placeholder="shh...">
+            </div>
+            <i class="eye slash icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible only upon your approval)</span>
+          </div>
+
+          <div class="inline fields">
+            <div class="field">
+              <img src="{% static 'sample_images/tik-tok.png' %}">
+              &nbsp;
+              <input type="text" name="snapchat-id" placeholder="grow up...">
+            </div>
+            <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible to everyone)</span>
+          </div>
+
+          <div class="inline fields">
+            <div class="field">
+              <img src="{% static 'sample_images/vsco_new.png' %}" style="width: 17px;">
+              &nbsp;
+              <input type="text" name="snapchat-id" placeholder="so, a vsco girl huh?">
+            </div>
+            <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible to everyone)</span>
+          </div>
+          
+        </div>
+
+      </div>
+
+      <!-- <div>
+        <span style="font-size: 14.5px;">
+          <i class="instagram icon" style="font-size: 16px;"></i>
+          <a href="">kduport24</a>
+        </span>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style="font-size: 14.5px;">
+          <i class="snapchat ghost icon" style="font-size: 16px;"></i>kduport24
+        </span>
+      </div> -->
+
+      <div class="ui horizontal divider" >
+        <i class="user icon"></i> Info
+      </div>
+
+      <div style="padding-top: 0px;">
+
+
+        <div class="ui form">
+       
+
+
+        </div>
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Status:
+          </strong> 
+
+          <div class="field">
+            <label>Gender</label>
+            <div class="ui selection dropdown">
+                <input type="hidden" name="gender">
+                <i class="dropdown icon"></i>
+                <div class="default text">Gender</div>
+                <div class="menu">
+                    <div class="item" data-value="1">Male</div>
+                    <div class="item" data-value="0">Female</div>
+                </div>
+            </div>
+        </div>
+
+          <!-- <a href="">1</a> -->
+        </p>
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Gender:
+          </strong> 
+          <!-- <a href="">1</a> -->
+        </p>
+
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Year:
+          </strong> <a href="">1</a>
+        </p>
+        <p>
+          <strong style="font-size: 14.5px;">
+            Studying:
+          </strong> <a href="">Math</a>, <a href="">Computer Science</a>
+        </p>
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Single looking to mingle?
+          </strong>
+          <a href="">whatever happens, happens...</a>
+        </p>
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Currently residing in:
+          </strong>
+          <a href="">Toronto</a>
+        </p>
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Where I'm from:
+          </strong> 
+          <a href="">Arizona</a>
+        </p>
+          
+        <p>
+          <strong style="font-size: 14.5px;">
+            Living on Res:
+          </strong> 
+          <a href="">No</a>
+        </p>  
+
+        <!-- <p>
+          <strong style="font-size: 14.5px;">
+            Courses this year:
+          </strong>
+          <a href="">CSC207, MAT135, MAT2930, CBHA32, CSC207, MAT135, MAT2930, CBHA32</a>
+        </p> -->
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Student Clubs: 
+          </strong>
+        </p>
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Description:
+          </strong> 
+          just here to see the vibes... reach out but don't feel offended if I don't respond. It's (probably) just me...
+        </p>
+
+      </div>
+
+
+      <div class="ui horizontal divider">
+        <i class="user icon"></i> More
+      </div>
+
+      <div>
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Jobs & Companies worked at: 
+          </strong>
+          software
+        </p>
+
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Interests:
+          </strong>
+            basketball, gym, making things, science/technology/progress/change...you get it, aren't I interesting?
+        </p>
+        
+        <p>
+          <strong style="font-size: 14.5px;">
+            Quotes:
+          </strong>
+          "buy the ticket, take the ride", "it's all a circus, but not everyone's the clown..."
+        </p>
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Music:
+          </strong>
+            mbnel, burna bandz, upcoming hiphop artists mainly from toronto
+        </p>
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Movies/Shows:
+          </strong>
+        </p>
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Books:
+          </strong>
+            thinking as a science, skim through a bunch of different books on a whole bunch of everything
+        </p>
+
+      </div>
+
+    </div>
+
+  <!-- </form> -->
+
+  </div>
+
+
+
+{% endblock %}
+
+
+
+
+
+

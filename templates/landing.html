@@ -6,9 +6,9 @@
 
 
 
-<div class="ui centered grid container" style="padding: 0em;">
+<div class="ui  grid container" style="padding: 0em;">
 
-  <div class="sixteen wide column" style="padding-top: 2em; margin-left: -1em;">
+  <div class="sixteen wide column" style="padding-top: 2em;">
     
     <h2 class="ui center aligned header" style="
       padding-right: 1em; font-family: 'Indie Flower', cursive; font-size: 34px; color: #002a5c;">
@@ -17,59 +17,95 @@
 
   </div>
 
-  <div class="nine wide column" style="margin-left: 5em; ">
+  <div class="nine wide column" style="margin-left: 5em; padding-top: 2em;">
     
-    <p>
-      The Uoft Room is an online directory for current UofT students and alumni. You can create your 
-      online profile, link your social media accounts, and find/connect with other students on campus.
-      It is only available if you have a valid uoft email 
+    <p style="width: 63ch; line-height: 1.5em; font-size: 14.5px;">
+      The UofT Room is an online directory for current UofT students and alumni. You can create your 
+      online profile, add your courses, share your interests, link your social media accounts, and 
+      find/connect with other students on campus. 
+      The website is only available to those who have a valid uoft email address.
       <br/><br/>
 
-      <strong>It can be used to: </strong>
-      <ul class="ui list">
+      <strong style="font-size: 14.5px">It can be used to: </strong>
+      <ul id="use_case_list" class="ui list" >
         <li>Find people who are taking the same classes as you this coming semester</li>
-        <li>Find people who share some common interests</li>
-        <li>Connect with a grad student who is in a program you want to be in</li>
+        <li>Find other interesting students on campus</li>
+        <li>Connect with a grad student who's in a program you want to be in</li>
         <li> <span style="font-size: 16px;">&#128064;</span> <i>(you'll get it if you join...)</i></li>
       </ul>
 
     </p>
 
 
-    <!-- <p style="font-size: 14.5px; width: 64ch; line-height: 1.5em;">
-      Who's going to be in my CSC207 class this coming fall semester? Which students have done an internship at the 
-      WWF organization? Any other people on campus listen to the 'Highway Robbery' band? Who's trying to be on my 
-      basketball intramural team this semester?
-      <br/><br/>
-      When Facebook first started, these were the types of questions one could easily find answers too. 
-      However, <i>zuck (kinda) screwed it all up...</i>
-      <br/><br/>
-      This isn't necessarily a replica of the 2004 (the)facebook. And I'm not saying answers to the above questions 
-      can't be found leveraging existing social tools (i'm not from the stone age, even though the UI of this site might convince 
-      you otherwise). I feel in general though, there (shockingly) doesn't really seem to be a medium on the web that captures
-      the social dynamics of a college campus with real-identity...
-      <br/><br/>
-      I quickly created this website as an experiment to see if students would join the party...
-      the initial version is quite minimal and predicated more so on profiles and finding other students on campus.
-      <br/><br/>
-      who knows, I could be completely wrong and this is the most useless piece-of-shit 
-      website you have ever seen and you absolutely never want to see or meet me (given the campus size and current state of the web (ahem), 
-      that's very likely anyways) but hey, I'm willing to roll the dice. 
-
-      <br/><br/> -->
-      <!-- <span style="font-family: 'Indie Flower', cursive; font-size: 22px; color: #002a5c; float: right; ">
-        #Boundless
-      </span> -->
-
   </div>
 
     
-  <div class="six wide column">
+  <div class="four wide column" style="padding-top: 2em;">
+    
+    <h3>Join the Room</h3>
 
-    <!-- <div>Join Now:</div> -->
+    <form class="ui form" method="post">
+
+      <div class="field" style="width: 20em;">
+        <label>email:</label>
+        <input id="school_email" type="text" name="school_email" placeholder="school email">
+        <span id="school_email_error" style="color: red; display: none;">is that really your uoft email?</span>
+      </div>
+
+      <div class="field" style="width: 20em;">
+        <label>first name:</label>
+        <input id="first_name" type="text" name="first_name" placeholder="you know the drill">
+      </div>
+
+      <div class="field" style="width: 20em;">
+        <label>last name:</label>
+        <input id="last_name" type="text" name="last_name" placeholder="hopefully you love (majority of) them">
+      </div>
+
+      <div class="field" style="width: 20em;">
+        <label>password:</label>
+        <input type="password" name="password" placeholder="reminder: stupid passwords do exist...">
+        <!-- there is such thing as a stupid password -->
+      </div>
+      
+      <button style="background-color: #002a5c; color: white;" class="ui button" type="submit">submit</button>
+
+    </form>
+
 
   </div>
 
+
+
+
+  <script>
+
+    $("#first_name").focus(function() {
+
+      var school_email = $('#school_email').val()
+
+      if($("#first_name").val() == "" && $("#last_name").val() == ""){
+
+        if (school_email.includes(".") && school_email.includes("mail.utoronto.ca")){
+          // console.log('email:', school_email.)
+          var li = school_email.split('@')[0].split('.')
+          var first_name = li[0][0].toUpperCase() + li[0].slice(1)
+          var last_name = li[1][0].toUpperCase() + li[1].slice(1)
+          $("#first_name").val(first_name)
+          $("#last_name").val(last_name)
+          // $('#school_email_error').css("display", "none")
+
+        }
+
+      }
+
+      // else if (school_email.includes("mail.utoronto.ca") === false) {
+      //   $('#school_email_error').css("display", "block")
+      // }
+
+    });
+
+  </script>
 
 
 {% endblock %}

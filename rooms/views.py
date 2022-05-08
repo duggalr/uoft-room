@@ -7,8 +7,16 @@ def landing(request):
   return render(request, 'landing.html')
 
 
+def user_auth(request):
+  return render(request, 'user_auth.html')
+
+
 def profile(request):
   return render(request, 'profile_new_one.html')
+
+
+def edit_profile(request):
+  return render(request, 'edit_profile.html')
 
 
 def main(request):
@@ -25,11 +33,13 @@ def faq(request):
 
 
 # TODO: 
+  # profile-edit-page
+
   # get started with functionality
-    # start with login (google + 'inhouse') and then, redirect to profile-edit
+    # login
       # should have confetti on profile complete 
-
-
+    # profile-creation
+      # multi-image upload 
 
 
 

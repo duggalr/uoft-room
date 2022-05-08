@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+
+<div class="ui centered grid container" style="padding: 0em;">
+
+  <div class="four wide column" style="padding-top: 8em;">
+    
+    <h3>Join the Room:</h3>
+
+    <form class="ui form" method="post">
+
+      <div class="field" style="width: 20em;">
+        <label>email:</label>
+        <input type="text" name="school-email" placeholder="school email">
+      </div>
+
+      <div class="field" style="width: 20em;">
+        <label>first name:</label>
+        <input type="text" name="school-email" placeholder="you know the drill">
+      </div>
+
+      <div class="field" style="width: 20em;">
+        <label>last name:</label>
+        <input type="text" name="school-email" placeholder="hopefully you love them">
+      </div>
+
+      <div class="field" style="width: 20em;">
+        <label>password:</label>
+        <input type="password" name="password" placeholder="remember, stupid passwords exist...">
+        <!-- there is such thing as a stupid password -->
+      </div>
+      
+      <button style="background-color: #002a5c; color: white;" class="ui button" type="submit">submit</button>
+
+    </form>
+
+  </div>
+
+
+  <script>
+    
+  </script>
+
+
+
+{% endblock %}
+
+
+
