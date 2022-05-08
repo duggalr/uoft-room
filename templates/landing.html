@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+
+<div class="ui centered grid container" style="padding: 0em;">
+
+  <div class="sixteen wide column" style="padding-top: 2em; margin-left: -1em;">
+    
+    <h2 class="ui center aligned header" style="
+      padding-right: 1em; font-family: 'Indie Flower', cursive; font-size: 34px; color: #002a5c;">
+      Welcome to <img src="{% static 'uoft_logo/uoft_logo.png' %}" style="width:8%;">'s Room!
+    </h2>
+
+  </div>
+
+  <div class="nine wide column" style="margin-left: 5em; ">
+    
+    <p>
+      The Uoft Room is an online directory for current UofT students and alumni. You can create your 
+      online profile, link your social media accounts, and find/connect with other students on campus.
+      It is only available if you have a valid uoft email 
+      <br/><br/>
+
+      <strong>It can be used to: </strong>
+      <ul class="ui list">
+        <li>Find people who are taking the same classes as you this coming semester</li>
+        <li>Find people who share some common interests</li>
+        <li>Connect with a grad student who is in a program you want to be in</li>
+        <li> <span style="font-size: 16px;">&#128064;</span> <i>(you'll get it if you join...)</i></li>
+      </ul>
+
+    </p>
+
+
+    <!-- <p style="font-size: 14.5px; width: 64ch; line-height: 1.5em;">
+      Who's going to be in my CSC207 class this coming fall semester? Which students have done an internship at the 
+      WWF organization? Any other people on campus listen to the 'Highway Robbery' band? Who's trying to be on my 
+      basketball intramural team this semester?
+      <br/><br/>
+      When Facebook first started, these were the types of questions one could easily find answers too. 
+      However, <i>zuck (kinda) screwed it all up...</i>
+      <br/><br/>
+      This isn't necessarily a replica of the 2004 (the)facebook. And I'm not saying answers to the above questions 
+      can't be found leveraging existing social tools (i'm not from the stone age, even though the UI of this site might convince 
+      you otherwise). I feel in general though, there (shockingly) doesn't really seem to be a medium on the web that captures
+      the social dynamics of a college campus with real-identity...
+      <br/><br/>
+      I quickly created this website as an experiment to see if students would join the party...
+      the initial version is quite minimal and predicated more so on profiles and finding other students on campus.
+      <br/><br/>
+      who knows, I could be completely wrong and this is the most useless piece-of-shit 
+      website you have ever seen and you absolutely never want to see or meet me (given the campus size and current state of the web (ahem), 
+      that's very likely anyways) but hey, I'm willing to roll the dice. 
+
+      <br/><br/> -->
+      <!-- <span style="font-family: 'Indie Flower', cursive; font-size: 22px; color: #002a5c; float: right; ">
+        #Boundless
+      </span> -->
+
+  </div>
+
+    
+  <div class="six wide column">
+
+    <!-- <div>Join Now:</div> -->
+
+  </div>
+
+
+
+{% endblock %}
+
+
+

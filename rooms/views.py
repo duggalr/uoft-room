@@ -1,6 +1,12 @@
 from django.shortcuts import render
 
 
+
+
+def landing(request):
+  return render(request, 'landing.html')
+
+
 def profile(request):
   return render(request, 'profile_new_one.html')
 
