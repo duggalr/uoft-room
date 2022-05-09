@@ -113,10 +113,10 @@
 }
 
 /* Six columns side by side */
-.column {
+/* .column {
   float: left;
   width: 16.66%;
-}
+} */
 
 /* Add a transparency effect for thumnbail images */
 .demo {

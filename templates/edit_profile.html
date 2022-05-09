@@ -25,7 +25,7 @@
           
       <input id="profile_image_upload" type="file" id="file" name="file" accept="image/*" style="display:none" multiple />
       <label for='profile_image_upload' id="main_profile_image_upload">
-        <img id="profile_image_placeholder" src="{% static 'sample_images/image_placeholder_two.png' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+        <img id="profile_image_placeholder" src="{% static 'sample_images/image_placeholder_three.png' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
         <!-- <img id="profile_image_placeholder" src="//joeschmoe.io/api/v1/male/random" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"> -->
         <!-- <img id="profile_image_placeholder" src="https://avatars.dicebear.com/api/initials/kd.svg" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"> -->
       </label>
@@ -99,11 +99,36 @@
 
 
       <div class="ui horizontal divider">
-        <i class="pencil alternate icon"></i> Courses This Year
+        <i class="pencil alternate icon"></i> School
       </div>
 
       <div class="ui form">
-                
+        
+        <label style="font-size: 14.5px;">
+          <strong>Studying:</strong>
+        </label>
+        <div class="ui fluid multiple search selection dropdown" style="width: 20em;">
+          <input type="hidden" name="country">                
+          <i class="dropdown icon"></i>
+          <div class="default text">select major(s)</div>
+          <div class="menu">
+            <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+            <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
+            <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+            <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
+            <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+            <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
+            <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+            <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
+            <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+            <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
+            <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+            <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
+          </div>
+        </div>
+
+        <br/>
+
         <label style="font-size: 14.5px;">
           <strong>
             Add your courses:
@@ -186,9 +211,10 @@
         <div class="ui form">
 
           <div class="inline fields">
-            <div class="field">
+            <div class="field" >
               <i class="instagram icon" style="font-size: 16px;"></i>
-              <input type="text" name="instagram-id" placeholder="for the follower count">
+              <input type="text" name="instagram-id" placeholder="for the follower count" style="width: 20em;">
+              <!-- <input type="text" name="instagram-id" placeholder="to showcase the life you don't live" style="width: 20em;"> -->
             </div>
             <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible to everyone)</span>
           </div>
@@ -199,6 +225,14 @@
               <input type="text" name="snapchat-id" placeholder="shh...">
             </div>
             <i class="eye slash icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible only upon your approval)</span>
+          </div>
+
+          <div class="inline fields">
+            <div class="field">
+              <i class="spotify icon" style="font-size: 16px;"></i>
+              <input type="text" name="snapchat-id" placeholder="it's 'lit' ">
+            </div>
+            <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible to everyone)</span>
           </div>
 
           <div class="inline fields">
@@ -236,7 +270,7 @@
       </div> -->
 
       <div class="ui horizontal divider" >
-        <i class="user icon"></i> General Info
+        <i class="user icon"></i> Info
       </div>
 
       <div style="padding-top: 0px;">
@@ -373,28 +407,13 @@
 
             <div class="inline fields">
 
-              <label style="font-size: 14.5px;">Studying:</label>
-              <div class="ui fluid multiple search selection dropdown" style="width: 30em;">
-                <input type="hidden" name="country">                
-                <i class="dropdown icon"></i>
-                <div class="default text">select major(s)</div>
-                <div class="menu">
-                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
-                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
-                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
-                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
-                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
-                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
-                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
-                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
-                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
-                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
-                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
-                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
-                </div>
+              <div class="field">
+                <label style="font-size: 14.5px;">Description:</label>
+                <textarea style="width: 35em;" rows="2" placeholder="something you want other students to know about you?"></textarea>
               </div>
-
+  
             </div>
+
 
         </div>
 
@@ -402,40 +421,37 @@
 
 
       <div class="ui horizontal divider">
-        <i class="user icon"></i> Personal
+        <i class="user icon"></i> More
       </div>
 
 
       <div class="ui form">
 
-        <div class="field">
-          <label>Description:</label>
-          <textarea rows="2" placeholder="get creative here"></textarea>
-        </div>
+        
 
         <div class="field">
           <label>Interests:</label>
-          <textarea rows="2" placeholder="i know you have atleast some.. (use comma's to separate the interests)"></textarea>
+          <textarea rows="2" placeholder="UFOlogy, conspiracies, unexplained phenomena, quidditch, okay I'll stop "></textarea>
         </div>
 
         <div class="field">
           <label>Quotes:</label>
-          <textarea rows="2" placeholder="i know you have atleast some.. (use comma's to separate the interests)"></textarea>
+          <textarea rows="2" placeholder=" 'smile, while you still have teeth...', 'a wise man once...' "></textarea>
         </div>
 
         <div class="field">
           <label>Music:</label>
-          <textarea rows="2" placeholder="i know you have atleast some.. (use comma's to separate the interests)"></textarea>
+          <textarea rows="2" placeholder="to find that one other student who actually has the same obscure taste of music as you do"></textarea>
         </div>
 
         <div class="field">
           <label>Movies/Shows:</label>
-          <textarea rows="2" placeholder="i know you have atleast some.. (use comma's to separate the interests)"></textarea>
+          <textarea rows="2" placeholder="if you have more than 5 here and your a full-time student, how?"></textarea>
         </div>
 
         <div class="field">
           <label>Books:</label>
-          <textarea rows="2" placeholder="i know you have atleast some.. (use comma's to separate the interests)"></textarea>
+          <textarea rows="2" placeholder="hopefully you at least got one"></textarea>
         </div>
 
       </div>
@@ -445,6 +461,10 @@
 
 
   </div>
+
+  <br/>
+  <br/>
+  <br/>
 
 
 
