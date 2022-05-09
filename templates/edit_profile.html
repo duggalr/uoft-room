@@ -6,13 +6,91 @@
 
   <div class="ui grid" style="padding-left: 8.5em; margin-top: 1.5em;">
 
-    <!-- <form class="ui form"> -->
-
     <div class="four wide column" style="margin-top: 1em;">
-      <input id="imgupload" type="file" id="file" name="file" accept="image/*" style="display:none" multiple />
-      <label for='imgupload'>
-        <img id="profile_image_placeholder" src="{% static 'sample_images/image_placeholder.png' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+
+      <input id="profile_image_upload" type="file" id="file" name="file" accept="image/*" style="display:none" multiple />
+      <label for='profile_image_upload' id="main_profile_image_upload">
+        <img id="profile_image_placeholder" src="{% static 'sample_images/image_placeholder_two.png' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
       </label>
+
+      <div class="container">
+
+        <!-- <div class="mySlides">
+          <div class="numbertext">1 / 5</div>
+          <a href="http://127.0.0.1:9000/static/sample_images/image_3.jpeg" target="_blank">
+            <img src="{% static 'sample_images/image_3.jpeg' %}" width="100%" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+          </a>
+        </div> -->
+
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+
+      </div>
+
+      <!-- <div class="container">
+
+        <div class="mySlides">
+          <div class="numbertext">1 / 5</div>
+          <a href="http://127.0.0.1:9000/static/sample_images/image_3.jpeg" target="_blank">
+            <img src="{% static 'sample_images/image_3.jpeg' %}" width="100%" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+          </a>
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">2 / 5</div>
+          <img src="{% static 'sample_images/image_4.jpeg' %}" width="100%" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">3 / 5</div>
+          <img src="{% static 'sample_images/image_6.jpeg' %}" width="100%" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">4 / 5</div>
+          <img src="{% static 'sample_images/image_7.jpeg' %}" width="100%" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext"> 5 / 5</div>
+          <img src="{% static 'sample_images/image_8.jpeg' %}" width="100%" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext"> 5 / 5</div>
+          <img src="{% static 'sample_images/image_1.jpeg' %}" width="100%" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext"> 5 / 5</div>
+          <img src="{% static 'sample_images/image_2.jpeg' %}" width="100%" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext"> 5 / 5</div>
+          <img src="{% static 'sample_images/image_5.jpeg' %}" width="100%" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext"> 5 / 5</div>
+          <img src="{% static 'sample_images/image_six.jpeg' %}" width="100%" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext"> 5 / 5</div>
+          <img src="{% static 'sample_images/image_three.jpeg' %}" width="100%" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext"> 5 / 5</div>
+          <img src="{% static 'sample_images/image_seven.webp' %}" width="100%" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+
+      </div> -->
+
 
       <div class="ui horizontal divider">
         <i class="pencil alternate icon"></i> Courses This Year
@@ -20,7 +98,11 @@
 
       <div class="ui form">
                 
-        <label style="font-size: 14.5px;">Courses this year:</label>
+        <label style="font-size: 14.5px;">
+          <strong>
+            Add your courses:
+          </strong>
+        </label>
         <div class="ui fluid multiple search selection dropdown" style="width: 20em;">
           <input type="hidden" name="country">                
           <i class="dropdown icon"></i>
@@ -69,6 +151,7 @@
 
           <div class="inline fields">
 
+            <!-- TODO: on gender, for other, have small-textinput appear for user to write their gender -->
             <div class="field">
               <label style="font-size: 14.5px;">Gender:</label>
               <div class="ui selection dropdown" >
@@ -78,16 +161,16 @@
                   <div class="menu">
                       <div class="item" data-value="undergrad_student">Male</div>
                       <div class="item" data-value="grad_student">Female</div>
-                      <div class="item" data-value="alumni">Other</div>
+                      <div class="item" data-value="grad_student">Prefer Not to Say</div>
+                      <div class="item" data-value="alumni">Other (with custom input)</div>
                   </div>
               </div>
             </div>
+
   
           </div>
 
         </div>
-
-        
 
 
         <div class="ui horizontal divider" >
@@ -125,7 +208,7 @@
             <div class="field">
               <img src="{% static 'sample_images/vsco_new.png' %}" style="width: 17px;">
               &nbsp;
-              <input type="text" name="snapchat-id" placeholder="you a vsco girl, huh?">
+              <input type="text" name="snapchat-id" placeholder="a vsco girl, huh?">
             </div>
             <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible to everyone)</span>
           </div>
@@ -307,105 +390,7 @@
 
             </div>
 
-
-            <!-- <div class="inline fields">
-              <label style="font-size: 14.5px;">Courses this year:</label>
-              <div class="ui fluid multiple search selection dropdown" style="width: 25em;">
-                <input type="hidden" name="country">                
-                <i class="dropdown icon"></i>
-                <div class="default text"><s>so you can find some cute g</s>...i mean study buddies</div>
-                <div class="menu">
-                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
-                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
-                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
-                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
-                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
-                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
-                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
-                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
-                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
-                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
-                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
-                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
-                </div>
-              </div>
-              &nbsp;
-              <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible to everyone)</span>
-            </div> -->
-
-
         </div>
-
-
-
-          
- 
-        <!-- <p>
-          <strong style="font-size: 14.5px;">
-            Gender:
-          </strong> 
-          <a href="">1</a>
-        </p> -->
-
-
-        <!-- <p>
-          <strong style="font-size: 14.5px;">
-            Year:
-          </strong> <a href="">1</a>
-        </p>
-        <p>
-          <strong style="font-size: 14.5px;">
-            Studying:
-          </strong> <a href="">Math</a>, <a href="">Computer Science</a>
-        </p>
-
-        <p>
-          <strong style="font-size: 14.5px;">
-            Single looking to mingle?
-          </strong>
-          <a href="">whatever happens, happens...</a>
-        </p>
-
-        <p>
-          <strong style="font-size: 14.5px;">
-            Currently residing in:
-          </strong>
-          <a href="">Toronto</a>
-        </p>
-
-        <p>
-          <strong style="font-size: 14.5px;">
-            Where I'm from:
-          </strong> 
-          <a href="">Arizona</a>
-        </p>
-          
-        <p>
-          <strong style="font-size: 14.5px;">
-            Living on Res:
-          </strong> 
-          <a href="">No</a>
-        </p>   -->
-
-        <!-- <p>
-          <strong style="font-size: 14.5px;">
-            Courses this year:
-          </strong>
-          <a href="">CSC207, MAT135, MAT2930, CBHA32, CSC207, MAT135, MAT2930, CBHA32</a>
-        </p> -->
-
-        <!-- <p>
-          <strong style="font-size: 14.5px;">
-            Student Clubs: 
-          </strong>
-        </p> -->
-
-        <!-- <p>
-          <strong style="font-size: 14.5px;">
-            Description:
-          </strong> 
-          just here to see the vibes... reach out but don't feel offended if I don't respond. It's (probably) just me...
-        </p> -->
 
       </div>
 
@@ -450,57 +435,8 @@
       </div>
 
 
-
-      <!-- <div>
-
-        <p>
-          <strong style="font-size: 14.5px;">
-            Jobs & Companies worked at: 
-          </strong>
-          software
-        </p>
-
-
-        <p>
-          <strong style="font-size: 14.5px;">
-            Interests:
-          </strong>
-            basketball, gym, making things, science/technology/progress/change...you get it, aren't I interesting?
-        </p>
-        
-        <p>
-          <strong style="font-size: 14.5px;">
-            Quotes:
-          </strong>
-          "buy the ticket, take the ride", "it's all a circus, but not everyone's the clown..."
-        </p>
-
-        <p>
-          <strong style="font-size: 14.5px;">
-            Music:
-          </strong>
-            mbnel, burna bandz, upcoming hiphop artists mainly from toronto
-        </p>
-
-        <p>
-          <strong style="font-size: 14.5px;">
-            Movies/Shows:
-          </strong>
-        </p>
-
-        <p>
-          <strong style="font-size: 14.5px;">
-            Books:
-          </strong>
-            thinking as a science, skim through a bunch of different books on a whole bunch of everything
-        </p>
-
-      </div> -->
-
     </div>
 
-
-  <!-- </form> -->
 
   </div>
 
@@ -509,9 +445,137 @@
 
   <script>
 
-// ui selection dropdown
     $('.ui.selection.dropdown').dropdown();
     $('#studying_dropdown').dropdown();
+
+    document.querySelector('#profile_image_upload').addEventListener('change', function() {
+      console.log('files:', this.files, this.files.length)
+      
+      if (this.files && this.files.length <= 5 ){
+        const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+        
+        var valid_image_list = []
+        for (i=0; i<this.files.length; i++){
+          var file = this.files[i]
+          var fileType = file["type"]
+          if (!validImageTypes.includes(fileType)) {  // invalid file type code goes here.
+            console.log('error...')
+          } else {
+            console.log('not-error...')
+            valid_image_list.push(file)
+            // var img = document.querySelector('#profile_image_placeholder');
+            // img.onload = () => {
+            //   URL.revokeObjectURL(img.src);  // no longer needed, free memory
+            // }
+            // img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+          }
+        }
+
+        console.log('valid-image-list:', valid_image_list)
+
+        for (i=0; i <= valid_image_list.length-1; i++) {
+
+          var parent_div = document.createElement('div')
+          parent_div.className = 'mySlides'
+          var child_div = document.createElement('div')
+          child_div.className = 'numbertext'
+          child_div.innerHTML = (i+1) + ' / 5'
+          
+          var image_elem = document.createElement('img')
+          image_elem.onload = () => {
+            URL.revokeObjectURL(image_elem.src);  // no longer needed, free memory
+          }
+          image_elem.src = URL.createObjectURL(valid_image_list[i]); // set src to blob url
+          image_elem.style = 'border-radius: 5%; box-shadow: 5px 5px #F5F5F5; width: 100%'
+          parent_div.appendChild(child_div)
+          parent_div.appendChild(image_elem)
+          var main_div = document.getElementsByClassName('container')[0]
+          main_div.appendChild(parent_div)
+
+        }
+
+        document.getElementById('main_profile_image_upload').style.display = 'none'
+        showSlides(1)
+
+
+        // // create divs and add to the container; show slides
+        // var parent_div = document.createElement('div')
+        // parent_div.className = 'mySlides'
+        // var child_div = document.createElement('div')
+        // child_div.className = 'numbertext'
+        // child_div.innerHTML = '1 / 5'
+        // // var href_elem = document.createElement('a')
+        // // href_elem.href = "http://127.0.0.1:9000/static/sample_images/image_3.jpeg"
+        // // href_elem.target = "_blank"
+        // var image_elem = document.createElement('img')
+        // image_elem.onload = () => {
+        //   URL.revokeObjectURL(image_elem.src);  // no longer needed, free memory
+        // }
+        // image_elem.src = URL.createObjectURL(valid_image_list[0]); // set src to blob url
+        // // image_elem.width = '100'
+        // image_elem.style = 'border-radius: 5%; box-shadow: 5px 5px #F5F5F5; width: 100%'
+        // // style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"
+
+        // // href_elem.appendChild(image_elem)
+        // parent_div.appendChild(child_div)
+        // // parent_div.appendChild(href_elem)
+        // parent_div.appendChild(image_elem)
+        // var main_div = document.getElementsByClassName('container')[0]
+        // main_div.appendChild(parent_div)
+        // document.getElementById('main_profile_image_upload').style.display = 'none'
+        // showSlides(1)
+
+        // let slideIndex = 1;
+        // showSlides(slideIndex);
+
+
+        // <div class="mySlides">
+        //   <div class="numbertext">1 / 5</div>
+        //   <a href="http://127.0.0.1:9000/static/sample_images/image_3.jpeg" target="_blank">
+        //     <img src="{% static 'sample_images/image_3.jpeg' %}" width="100%" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+        //   </a>
+        // </div>
+
+
+      } else {
+        // TODO: show the error-message that input was invalid
+
+      }
+
+      
+    });
+
+
+
+    let slideIndex = 1;
+    // showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      // let dots = document.getElementsByClassName("demo");
+      // let captionText = document.getElementById("caption");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      // for (i = 0; i < dots.length; i++) {
+      //   dots[i].className = dots[i].className.replace(" active", "");
+      // }
+      slides[slideIndex-1].style.display = "block";
+      // dots[slideIndex-1].className += " active";
+      // captionText.innerHTML = dots[slideIndex-1].alt;
+    }
+
 
   </script>
 
