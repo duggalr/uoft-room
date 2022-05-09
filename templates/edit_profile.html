@@ -8,10 +8,6 @@
 
     <div class="four wide column" style="margin-top: 1em;">
 
-      <input id="profile_image_upload" type="file" id="file" name="file" accept="image/*" style="display:none" multiple />
-      <label for='profile_image_upload' id="main_profile_image_upload">
-        <img id="profile_image_placeholder" src="{% static 'sample_images/image_placeholder_two.png' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
-      </label>
 
       <div class="container">
 
@@ -22,10 +18,18 @@
           </a>
         </div> -->
 
+        
         <a class="prev" onclick="plusSlides(-1)">❮</a>
         <a class="next" onclick="plusSlides(1)">❯</a>
 
       </div>
+      
+
+      <input id="profile_image_upload" type="file" id="file" name="file" accept="image/*" style="display:none" multiple />
+      <label for='profile_image_upload' id="main_profile_image_upload">
+        <img id="profile_image_placeholder" src="{% static 'sample_images/image_placeholder_two.png' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+      </label>
+
 
       <!-- <div class="container">
 
@@ -473,18 +477,28 @@
 
         console.log('valid-image-list:', valid_image_list)
 
+        // clear the slides before adding to container
+        var main_div = document.getElementsByClassName('container')[0]
+        // main_div.innerHTML = ''
+        var slides_div = main_div.getElementsByClassName('mySlides')
+        for (i=0; i <= slides_div.length-1; i++){
+          console.log('slides-div:', slides_div[i])
+          slides_div[i].remove()
+        }
+
+
         for (i=0; i <= valid_image_list.length-1; i++) {
 
           var parent_div = document.createElement('div')
           parent_div.className = 'mySlides'
           var child_div = document.createElement('div')
           child_div.className = 'numbertext'
-          child_div.innerHTML = (i+1) + ' / 5'
+          child_div.innerHTML = (i+1) + ' / ' + valid_image_list.length
           
           var image_elem = document.createElement('img')
-          image_elem.onload = () => {
-            URL.revokeObjectURL(image_elem.src);  // no longer needed, free memory
-          }
+          // image_elem.onload = () => {
+          //   URL.revokeObjectURL(image_elem.src);  // no longer needed, free memory
+          // }
           image_elem.src = URL.createObjectURL(valid_image_list[i]); // set src to blob url
           image_elem.style = 'border-radius: 5%; box-shadow: 5px 5px #F5F5F5; width: 100%'
           parent_div.appendChild(child_div)
@@ -495,6 +509,7 @@
         }
 
         document.getElementById('main_profile_image_upload').style.display = 'none'
+        document.getElementById('profile_image_upload').style.display = ''
         showSlides(1)
 
 
@@ -561,19 +576,28 @@
     function showSlides(n) {
       let i;
       let slides = document.getElementsByClassName("mySlides");
-      // let dots = document.getElementsByClassName("demo");
-      // let captionText = document.getElementById("caption");
       if (n > slides.length) {slideIndex = 1}
       if (n < 1) {slideIndex = slides.length}
       for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
       }
-      // for (i = 0; i < dots.length; i++) {
-      //   dots[i].className = dots[i].className.replace(" active", "");
-      // }
       slides[slideIndex-1].style.display = "block";
-      // dots[slideIndex-1].className += " active";
-      // captionText.innerHTML = dots[slideIndex-1].alt;
+
+      // var prev_elem = document.createElement('a')
+      // prev_elem.className = 'prev'
+      // prev_elem.onclick = 'plusSlides(-1)'
+
+      // var next_elem = document.createElement('a')
+      // next_elem.className = 'next'
+      // next_elem.onclick = 'plusSlides(1)'
+
+      // document.getElementsByClassName('container')[0].appendChild(prev_elem)
+      // document.getElementsByClassName('container')[0].appendChild(next_elem)
+
+      // <a class="prev" onclick="plusSlides(-1)">❮</a>
+      //   <a class="next" onclick="plusSlides(1)">❯</a>
+
+
     }
 
 
