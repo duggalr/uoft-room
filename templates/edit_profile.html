@@ -17,18 +17,20 @@
             <img src="{% static 'sample_images/image_3.jpeg' %}" width="100%" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
           </a>
         </div> -->
-
         
         <a class="prev" onclick="plusSlides(-1)">❮</a>
         <a class="next" onclick="plusSlides(1)">❯</a>
 
       </div>
-      
-
+          
       <input id="profile_image_upload" type="file" id="file" name="file" accept="image/*" style="display:none" multiple />
       <label for='profile_image_upload' id="main_profile_image_upload">
         <img id="profile_image_placeholder" src="{% static 'sample_images/image_placeholder_two.png' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+        <!-- <img id="profile_image_placeholder" src="//joeschmoe.io/api/v1/male/random" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"> -->
+        <!-- <img id="profile_image_placeholder" src="https://avatars.dicebear.com/api/initials/kd.svg" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"> -->
       </label>
+
+      <span id="proifle_image_error_message" style="color: red; display: none;">invalid data... remember, max 5 IMAGES only.</span>
 
 
       <!-- <div class="container">
@@ -166,7 +168,7 @@
                       <div class="item" data-value="undergrad_student">Male</div>
                       <div class="item" data-value="grad_student">Female</div>
                       <div class="item" data-value="grad_student">Prefer Not to Say</div>
-                      <div class="item" data-value="alumni">Other (with custom input)</div>
+                      <div class="item" data-value="alumni">Other</div>
                   </div>
               </div>
             </div>
@@ -452,10 +454,48 @@
     $('.ui.selection.dropdown').dropdown();
     $('#studying_dropdown').dropdown();
 
+
+    // function checkValidImages(files){
+
+    //   return new Promise(function(res){
+
+    //     if (this.files && this.files.length <= 5 ){
+    //       const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+          
+    //       var valid_image_list = []
+    //       for (i=0; i<this.files.length; i++){
+    //         var file = this.files[i]
+    //         var fileType = file["type"]
+    //         if (!validImageTypes.includes(fileType)) {  // invalid file type code goes here.
+    //           console.log('error...')
+    //         } else {
+    //           console.log('not-error...')
+    //           valid_image_list.push(file)
+    //         }
+    //       }
+    //       res(valid_image_list)
+
+    //     }
+
+    //   })
+      
+    // }
+
+
     document.querySelector('#profile_image_upload').addEventListener('change', function() {
       console.log('files:', this.files, this.files.length)
       
+      // checkValidImages().then(function(valid_image_list){
+
+
+      //   var main_div = document.getElementsByClassName('container')[0]
+      //   $('.mySlides').remove()
+
+      // })
+
       if (this.files && this.files.length <= 5 ){
+        document.getElementById('proifle_image_error_message').style.display = 'none'
+
         const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
         
         var valid_image_list = []
@@ -479,13 +519,14 @@
 
         // clear the slides before adding to container
         var main_div = document.getElementsByClassName('container')[0]
-        // main_div.innerHTML = ''
-        var slides_div = main_div.getElementsByClassName('mySlides')
-        for (i=0; i <= slides_div.length-1; i++){
-          console.log('slides-div:', slides_div[i])
-          slides_div[i].remove()
-        }
-
+        $('.mySlides').remove()
+        // // main_div.innerHTML = ''
+        // var slides_div = main_div.getElementsByClassName('mySlides')
+        // for (i=0; i <= slides_div.length-1; i++){
+        //   console.log('slides-div:', slides_div[i])
+        //   // slides_div[i].remove()
+        // }
+ 
 
         for (i=0; i <= valid_image_list.length-1; i++) {
 
@@ -510,7 +551,7 @@
 
         document.getElementById('main_profile_image_upload').style.display = 'none'
         document.getElementById('profile_image_upload').style.display = ''
-        showSlides(1)
+        showSlides(slideIndex)
 
 
         // // create divs and add to the container; show slides
@@ -554,6 +595,8 @@
 
       } else {
         // TODO: show the error-message that input was invalid
+        // console.log('image')
+        document.getElementById('proifle_image_error_message').style.display = ''
 
       }
 
