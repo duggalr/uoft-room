@@ -1,0 +1,311 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+
+<div class="ui centered grid" >
+      
+
+
+  <div class="three wide column" style="padding: 2em;">
+    
+    <!-- <h3>Filter:</h3> -->
+    <h3>Tags:</h3>
+
+    <ul>
+
+      <li>
+        <a href="">
+          Reddit (14)
+        </a>
+      </li>
+      <li>
+        <a href="">
+          CSC207 (10)
+        </a>
+      </li>
+      <li>
+        <a href="">
+          Uoft News (14)
+        </a>
+      </li>
+      
+    </ul>
+
+  </div>
+
+
+  <div class="eight wide column" style="padding-top: 1em;">
+
+    <div class="ui text menu" style="width:100%; display: flex; justify-content: left; padding-left: 10px;">
+
+      <a class="active item" >
+        All
+      </a>
+      <a class="item">
+        Network Posts
+      </a>
+      <!-- <a class="item">
+        Uoft Subreddit Posts 
+      </a>
+      <a class="item">
+        Recent News
+      </a> -->
+
+    </div>
+
+
+    <!-- <div class="ui raised link card" style="width: 40em; display: flex; justify-content: center;"> -->
+    <!-- <div class="ui raised link card" style="width: 42em;" onclick="showModal()"> -->
+
+      <a class="ui raised card" href="{% url 'profile' %}" style="width: 42em;">
+
+      <!-- <div class="ui raised link card" style="width: 42em;" > -->
+
+        <div class="content" >
+          <div class="ui form">
+            <div class="field disabled">
+              <input style="height: 3em" type="text" name="first-name" placeholder="share a new study spot, ask a question, make us laugh, or cry, be boundless...  #cringe">
+            </div>
+          </div>
+        </div>
+        
+      <!-- </div> -->
+
+    </a>
+      
+
+    <!-- <div class="ui form">
+
+      <div class="fifteen wide field">
+        <label style="font-size: 14.5px;">Post</label>
+        <textarea rows="2"></textarea>        
+      </div>
+      <button style="float: right;">Submit</button>
+
+    </div> -->
+    
+    
+
+    <!-- <div class="ui small modal">
+      <div class="header">Header</div>
+      <div class="content">
+        <p></p>
+        <p></p>
+        <p></p>
+      </div>
+    </div> -->
+
+
+    <div class="ui form" style="width: 94%; display: flex; justify-content: right;">
+    <!-- <div class="ui form"> -->
+
+      <div class="field">
+        <div class="ui selection dropdown" style="min-width: 20px;">
+          <i class="dropdown icon"></i>
+          <div class="default text">sort...</div>
+          <div class="menu">
+            <div class="item" data-value="1">newest</div>
+            <div class="item" data-value="0">popular</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ui link card" style="width: 42em;">
+
+      <div class="content">
+        <!-- <i class="right floated like icon"></i>
+        <i class="right floated star icon"></i> -->
+        <div class="header">Welcome to the Uoft Room</div>
+        <div class="description">
+          <p>
+            Who's going to be in my CSC207 class this coming fall semester? Which students have done an internship at the 
+            WWF organization? Any other people on campus listen to the 'Highway Robbery' band? When Facebook first started, 
+            these were the types of questions one could easily find answers too. However, zuck (sorta) screwed it all up...
+            This isn't necessarily a replica of the 2004 (the)facebook. And I'm not saying answers to the above questions 
+            can't be found leveraging existing social tools (i'm not from the stone age even though the UI of this site might convince 
+            you otherwise). I feel in general though, there (shockingly) doesn't really seem to me a medium on the web that allows
+            one to create their online identity and browse through others in a localized community. Every social platform is 
+            feels 'super-general' now... that's why I quickly created this as an experiment to see
+            if people would join the party... who knows, I could be completely wrong and this is the most useless piece-of-shit 
+            website you have ever seen and you absolutely never want to meet me (given the campus size and current state of the web (ahem), 
+            that's very likely anyways) but hey, I'm willing to roll the dice. 
+
+          </p>
+        </div>
+      </div>
+      <div class="extra content">
+        <!-- <span class="left floated like">
+          <i class="like icon"></i>
+          Like
+        </span> -->
+        <span class="right floated star">
+          <i class="comment outline icon"></i>
+          3 Comments
+        </span>
+      </div>
+
+    </div>
+
+
+    <div class="ui link card" style="width: 42em;">
+
+      <div class="content">
+        <!-- <i class="right floated like icon"></i>
+        <i class="right floated star icon"></i> -->
+        <div class="header">Acorn Status Update?</div>
+        <div class="description">
+          <p>
+            Hi everyone, Is anyone still waiting for their grades to be released acorn?
+          </p>
+        </div>
+      </div>
+      <div class="extra content">
+        <!-- <span class="left floated like">
+          <i class="like icon"></i>
+          Like
+        </span> -->
+        <span class="right floated star">
+          <i class="comment outline icon"></i>
+          3 Comments
+        </span>
+      </div>
+
+    </div>
+
+    <div class="ui link card" style="width: 42em;">
+
+      <div class="content">
+        <!-- <i class="right floated like icon"></i>
+        <i class="right floated star icon"></i> -->
+        <div class="header">Ohhh</div>
+
+        <!-- TODO: this text-align will only for images -->
+        <div class="description" >
+          <div style="text-align: center;">
+            <img src="{% static 'sample_images/image_three.jpeg' %}" width="60%" >
+          </div>
+          <p style="padding-top: 10px">
+            check out this image
+          </p>
+        </div>
+      </div>
+      <div class="extra content">
+        <!-- <span class="left floated like">
+          <i class="like icon"></i>
+          Like
+        </span> -->
+        <span class="right floated star">
+          <i class="comment outline icon"></i>
+          3 Comments
+        </span>
+      </div>
+
+    </div>
+
+    <div class="ui link card" style="width: 42em;">
+
+      <div class="content">
+        <!-- <i class="right floated like icon"></i>
+        <i class="right floated star icon"></i> -->
+        <div class="header">Acorn Status Update?</div>
+        <div class="description">
+          <p>
+            Hi everyone, Is anyone still waiting for their grades to be released acorn?
+          </p>
+        </div>
+      </div>
+      <div class="extra content">
+        <!-- <span class="left floated like">
+          <i class="like icon"></i>
+          Like
+        </span> -->
+        <span class="right floated star">
+          <i class="comment outline icon"></i>
+          3 Comments
+        </span>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+
+  <div class="four wide column">
+
+    <div class="ui card">
+      <div class="content">
+        <div class="header">Network Activity</div>
+        <div class="meta">Changed: Just Now</div>
+
+        <div class="description">
+          <div class="ui small feed">
+            <div class="event">
+              <div class="content">
+                <div class="summary">
+                   <a>Elliot Fu</a> added <a>Jenny Hess</a> as a friend
+                </div>
+              </div>
+            </div>
+            <div class="event">
+              <div class="content">
+                <div class="summary">
+                   <a>Stevie Feliciano</a> added <a>Elliot Fu</a> as a friend
+                </div>
+              </div>
+            </div>
+            <div class="event">
+              <div class="content">
+                <div class="summary">
+                   <a>Helen Troy</a> added <a>Christian Rocha</a> as a friend
+                </div>
+              </div>
+            </div>
+            <div class="event">
+              <div class="content">
+                <div class="summary">
+                   <a>Christian Rocha</a> signed up for the  site.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+<script>
+
+  $('.ui.dropdown').dropdown();
+
+  function showModal(){
+    $('.small.modal').modal('show');
+  }
+  
+
+
+</script>
+
+
+
+
+{% endblock %}
+
+
+
+

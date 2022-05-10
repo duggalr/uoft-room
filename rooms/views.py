@@ -31,15 +31,9 @@ def faq(request):
   return render(request, 'faq.html')
 
 
+def feed(request):
+  return render(request, 'feed.html')
 
-# TODO: 
-  # profile-edit-page
-
-  # get started with functionality
-    # login
-      # should have confetti on profile complete 
-    # profile-creation
-      # multi-image upload 
 
 
 

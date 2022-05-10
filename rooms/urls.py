@@ -12,6 +12,8 @@ urlpatterns = [
   path('profile', views.profile, name='profile'),
   path('browse', views.browse, name='browse'),
   path('faq', views.faq, name='faq'),
+
+  path('feed', views.feed, name='feed'),
 ]
 
 
