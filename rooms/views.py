@@ -35,5 +35,9 @@ def feed(request):
   return render(request, 'feed.html')
 
 
+def post_feed(request):
+  return render(request, 'post_feed.html')
+
+
 
 

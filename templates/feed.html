@@ -19,12 +19,12 @@
 
       <li>
         <a href="">
-          Reddit (14)
+          r/uoft (14)
         </a>
       </li>
       <li>
         <a href="">
-          CSC207 (10)
+          courses
         </a>
       </li>
       <li>
@@ -46,7 +46,7 @@
         All
       </a>
       <a class="item">
-        Network Posts
+        Only Room Posts
       </a>
       <!-- <a class="item">
         Uoft Subreddit Posts 
@@ -61,9 +61,9 @@
     <!-- <div class="ui raised link card" style="width: 40em; display: flex; justify-content: center;"> -->
     <!-- <div class="ui raised link card" style="width: 42em;" onclick="showModal()"> -->
 
-      <a class="ui raised card" href="{% url 'profile' %}" style="width: 42em;">
+    <!-- <a class="ui raised card" href="{% url 'post_feed' %}" style="width: 42em;"> -->
 
-      <!-- <div class="ui raised link card" style="width: 42em;" > -->
+      <div class="ui raised link card" style="width: 42em;" onclick="showModal()">
 
         <div class="content" >
           <div class="ui form">
@@ -73,9 +73,9 @@
           </div>
         </div>
         
-      <!-- </div> -->
+      </div>
 
-    </a>
+    <!-- </a> -->
       
 
     <!-- <div class="ui form">
@@ -90,14 +90,57 @@
     
     
 
-    <!-- <div class="ui small modal">
-      <div class="header">Header</div>
-      <div class="content">
-        <p></p>
-        <p></p>
-        <p></p>
+    <div class="ui small modal" style="width: 45%;">
+
+      <div class="header">
+        Post
       </div>
-    </div> -->
+      
+      <div class="content">
+        <form class="ui form">
+
+          <div class="field">
+            <label>Title</label>
+            <input type="text" name="post-title" placeholder="Title">
+          </div>
+        
+          <div class="field">
+            <!-- <label>Text</label> -->
+            <textarea rows="4"></textarea>
+          </div>
+<!-- 
+          <div class="ui selection dropdown">
+            <input type="hidden" name="gender">
+            <i class="dropdown icon"></i>
+            <div class="default text">Category (so we don't lose your precious post)</div>
+            <div class="menu">
+              <div class="item" data-value="1">courses</div>
+              <div class="item" data-value="0">advice</div>
+              <div class="item" data-value="0">announcements</div>
+            </div>
+          </div> -->
+
+          <!-- <div class="field">
+            <label>Tags</label>
+            <input type="text" name="post-tags" placeholder="career advice, omg, (ensure you separate each tag by comma...)">
+          </div> -->
+
+          <!-- TODO: it needs to dynamically create new tags -->
+          <!-- <select id="select_input" class="ui fluid search dropdown" multiple="">
+            <option value="AL">Alabama</option>
+            <option value="AK">Alaska</option>
+            <option value="AZ">Arizona</option>
+            <option value="AR">Arkansas</option>
+            <option value="CA">California</option>
+            <option value="CO">Colorado</option>
+            <option value="CT">Connecticut</option>
+          </select> -->
+          
+          <button class="ui button" type="submit">Submit</button>
+        </form>
+      </div>
+
+    </div>
 
 
     <div class="ui form" style="width: 94%; display: flex; justify-content: right;">
@@ -297,6 +340,8 @@
     $('.small.modal').modal('show');
   }
   
+
+  select_input
 
 
 </script>

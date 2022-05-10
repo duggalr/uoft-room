@@ -14,6 +14,8 @@ urlpatterns = [
   path('faq', views.faq, name='faq'),
 
   path('feed', views.feed, name='feed'),
+  path('post_feed', views.post_feed, name='post_feed'),
+  
 ]
 
 
