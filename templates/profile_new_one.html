@@ -8,32 +8,18 @@
 
     <div class="four wide column" style="margin-top: 1em;">
       <!-- <img src="{% static 'sample_images/image_three.jpeg' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"> -->
-      <img id="profile_image_placeholder" src="//joeschmoe.io/api/v1/male/random" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
-      
-      <div class="ui horizontal divider">
-        <i class="pencil alternate icon"></i> Courses This Year
-      </div>
+      <!-- <img id="profile_image_placeholder" src="//joeschmoe.io/api/v1/male/random" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"> -->
+      <img id="profile_image_placeholder" src="{% static 'sample_images/image_three.jpeg' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"> 
 
-      <div>
-                
-        <ul>
-          <li>
-            <a href="">
-              CSC207F1
-            </a>
-          </li>
-          <li>MAT135H1</li>
-          <li>MAT2930Y1</li>
-          <li>CBHA32</li>
-        </ul>
-
-      </div>
+      <!-- <br/><br/>
+      <span id="eye_emoji" style="float: left; font-size: 30px;">
+        &#128064;
+      </span> -->
 
 
       <div class="ui horizontal divider">
         <i class="edit icon"></i> Personal Settings
-      </div>        
-      
+      </div>            
       <div>
           <ul>
             <li>Total Profile Views: 54</li>
@@ -45,8 +31,27 @@
             </li>
 
           </ul>
-
       </div>
+
+
+      <div class="ui horizontal divider">
+        <i class="pencil alternate icon"></i> Courses This Year
+      </div>
+      <div>
+        <ul>
+          <li>
+            <a href="">
+              CSC207F1
+            </a>
+          </li>
+          <li>MAT135</li>
+          <li>MAT2930</li>
+          <li>CBHA32</li>
+          <li>MAT157</li>
+          <li>MAT257</li>
+        </ul>
+      </div>
+
 
     </div>
 
@@ -59,24 +64,77 @@
           <div class="ui teal horizontal label">Current Student</div>          
         </h2>
 
-        <div class="ui blue vertical animated button" tabindex="0" style="float: right;">
-          <div class="hidden content">slide?</div>
-          <div class="visible content">
-            <i class="paper plane icon"></i>
+        	
+        <!-- <div style="float: right; margin-top: 10px;"> -->
+        <div style="display: flex; justify-content: space-between; float: right; margin-top: 10px;">
+
+          <span style="padding-right: 2px; padding-bottom: 10px;">
+            <i id="eye_question_icon" class="question icon" style="font-size: 14.5px;" onclick="showModal()"></i>  
+          </span>
+          
+          <span id="eye_emoji" style="font-size: 25px; padding-right: 20px;" >
+            &#128064;
+          </span>
+          
+          <span id="eye_emoji_text" style="font-size: 25px; padding-right: 20px; display: none;" >
+            we have left Kevin know that you &#128064; them... (good luck)
+          </span>
+          
+
+          <div class="ui blue vertical animated button" tabindex="0" style="margin-top: -10px;">
+            <div class="hidden content">slide?</div>
+            <div class="visible content">
+              <i class="paper plane icon"></i>
+            </div>
           </div>
+
         </div>
+
+      </div>
+
+
+      <div class="ui mini modal">
+        <div class="header">
+          what's this eye for?
+          <strong>
+            <s>
+            use at your own risk
+            </s>
+          </strong>
+        </div>
+        <div class="content">
+          <p style="font-size: 14.5px">
+            all I know for now is when clicked, this will notify the person that you &#128064; them...             
+            <span style="font-size: 20px">&#129335;</span>
+            <!-- <br/><br/> -->
+          </p>
+        </div>
+        <!-- <div class="actions">
+          <div class="ui approve button">Approve</div>
+          <div class="ui button">Neutral</div>
+          <div class="ui cancel button">Cancel</div>
+        </div> -->
 
       </div>
 
       <div>
         <span style="font-size: 14.5px;">
           <i class="instagram icon" style="font-size: 16px;"></i>
-          <a href="">kduport24</a>
+          kduport24
         </span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <span style="font-size: 14.5px;">
-          <i class="snapchat ghost icon" style="font-size: 16px;"></i>kduport24
+          <!-- <i class="snapchat ghost icon" style="font-size: 16px;"></i>kduport24 -->
+          <!-- TODO: onclick of private, tell user to 'eye' the user and if they accept, user get's access -->
+          <i class="snapchat ghost icon" style="font-size: 16px;"></i>
+          <!-- <i class="question icon" style="font-size: 16px;"></i> -->
         </span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style="font-size: 14.5px;">
+          <i class="spotify icon" style="font-size: 16px;"></i>
+          <a href="https://open.spotify.com/user/2uwyubwsy18et495hxmvherd2">Spotify</a>
+        </span>
+
       </div>
 
       <div class="ui horizontal divider" >
@@ -85,6 +143,12 @@
 
       <div style="padding-top: 0px;">
 
+        <p>
+          <strong style="font-size: 14.5px;">
+            Gender:
+          </strong> <a href="">Male</a>
+        </p>
+        
         <p>
           <strong style="font-size: 14.5px;">
             Year:
@@ -103,12 +167,33 @@
           <a href="">whatever happens, happens...</a>
         </p>
 
-        <p>
+        <!-- <p>
           <strong style="font-size: 14.5px;">
             Currently residing in:
           </strong>
           <a href="">Toronto</a>
-        </p>
+        </p> -->
+        
+        <p>
+          <strong style="font-size: 14.5px;">
+            Campus:
+          </strong> 
+          <a href="">St. George</a>
+        </p>  
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            College:
+          </strong> 
+          <a href="">Trinity</a>
+        </p>  
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Living on Res:
+          </strong> 
+          <a href="">No</a>
+        </p>  
 
         <p>
           <strong style="font-size: 14.5px;">
@@ -116,13 +201,6 @@
           </strong> 
           <a href="">Arizona</a>
         </p>
-          
-        <p>
-          <strong style="font-size: 14.5px;">
-            Living on Res:
-          </strong> 
-          <a href="">No</a>
-        </p>  
 
         <!-- <p>
           <strong style="font-size: 14.5px;">
@@ -131,11 +209,11 @@
           <a href="">CSC207, MAT135, MAT2930, CBHA32, CSC207, MAT135, MAT2930, CBHA32</a>
         </p> -->
 
-        <p>
+        <!-- <p>
           <strong style="font-size: 14.5px;">
             Student Clubs: 
           </strong>
-        </p>
+        </p> -->
 
         <p>
           <strong style="font-size: 14.5px;">
@@ -167,8 +245,15 @@
           </strong>
             basketball, gym, making things, science/technology/progress/change...you get it, aren't I interesting?
         </p>
-        
+
         <p>
+          <strong style="font-size: 14.5px;">
+            Quotes:
+          </strong>
+          "buy the ticket, take the ride", "it's all a circus, but not everyone's the clown..."
+        </p>
+        
+        <!-- <p>
           <strong style="font-size: 14.5px;">
             Quotes:
           </strong>
@@ -193,7 +278,7 @@
             Books:
           </strong>
             thinking as a science, skim through a bunch of different books on a whole bunch of everything
-        </p>
+        </p> -->
 
       </div>
 
@@ -201,6 +286,24 @@
 
   </div>
 
+
+
+
+  <script>
+
+    function showModal(){
+      $('.mini.modal').modal('show');
+    }
+    
+
+    $('#eye_emoji').click(function(){
+      
+      // document.getElementById('eye_emoji_text').style.display = ''
+
+    })
+    
+
+  </script>
 
 
 {% endblock %}

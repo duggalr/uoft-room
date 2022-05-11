@@ -34,6 +34,11 @@
       <span id="proifle_image_error_message" style="color: red; display: none;">invalid data... remember, max 5 IMAGES only.</span>
 
 
+      <br/><br/>
+      <span style="font-size: 14.5px; font-weight: 500;">
+        (you can always save and come back later...)
+      </span>
+
       <!-- <div class="container">
 
         <div class="mySlides">
@@ -176,7 +181,7 @@
             Save Changes
           </div>
         </div>
-
+ 
         
         <div class="ui form">
 
@@ -223,7 +228,7 @@
               <i class="snapchat ghost icon" style="font-size: 16px;"></i>
               <input type="text" name="snapchat-id" placeholder="shh...">
             </div>
-            <i class="eye slash icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible only upon your approval)</span>
+            <!-- <i class="eye slash icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible only upon your approval)</span> -->
           </div>
 
           <div class="inline fields">
@@ -382,6 +387,8 @@
                 </div>
               </div>
 
+              <!-- <i class="eye slash icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible only upon your approval)</span> -->
+
             </div>
 
 
@@ -399,7 +406,7 @@
                     </div>
                 </div>
               </div>
-              <i class="eye slash icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible only upon your approval)</span>
+              <!-- <i class="eye slash icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible only upon your approval)</span> -->
 
             </div>
 
@@ -409,32 +416,20 @@
               <label style="font-size: 14.5px;">
                 <strong>Studying:</strong>
               </label>
-              <div class="ui fluid multiple search selection dropdown" style="width: 20em;">
+              <div class="ui fluid multiple search selection dropdown" style="width: 30em;">
                 <input type="hidden" name="country">                
                 <i class="dropdown icon"></i>
                 <div class="default text">select major(s)</div>
                 <div class="menu">
                   {% for l in programs %}
-                    <div class="item" data-value="af"><i class="af flag"></i>{{ l }}</div>
-                  {% endfor %}
-                  <!-- <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
-                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
-                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
-                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
-                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
-                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
-                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
-                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
-                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
-                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
-                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
-                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
-                </div> -->
-              </div>
+                    <div class="item" data-value="{{ l }}">{{ l }}</div>
+                  {% endfor %}                  
+                </div>
 
+              </div>
+              
             </div>
-            
-            
+
             <div class="inline fields">
 
               <label style="font-size: 14.5px;">
@@ -444,49 +439,17 @@
               </label>
               
               <div class="eight wide field" >
-                <!-- <input type="text" name="courses" placeholder="so you can find other people to cry too..."> -->
                 <input type="text" name="courses" placeholder="example: csc207, mat157, mat240">
               </div>              
-              
-              <!-- <div class="ui fluid multiple search selection dropdown" style="width: 25em;">
-                <input type="hidden" name="country">                
-                <i class="dropdown icon"></i>
-                <div class="default text">so you can find other people to cry too...</div>
-                <div class="menu">
-                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
-                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
-                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
-                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
-                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
-                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
-                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
-                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
-                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
-                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
-                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
-                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
-                </div>
-              </div> -->
               &nbsp;
-              <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; ">(visible to everyone)</span>
+              <!-- <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; ">(visible to everyone)</span> -->
 
             </div>
-            <!-- <span>example: csc207, mat157, mat240</span> -->
+
+
+      
+
             
-
-            
-
-            <div class="field">
-              <label style="font-size: 14.5px;">Interests:</label>
-              <textarea rows="2" placeholder="UFOlogy, conspiracies, unexplained phenomena, quidditch, okay I'll stop "></textarea>
-            </div>
-    
-
-            <div class="field">
-              <label style="font-size: 14.5px;">Description:</label>
-              <textarea rows="2" placeholder="something you want other students to know about you?"></textarea>
-            </div>
-  
 
 
         </div>
@@ -494,11 +457,84 @@
       </div>
 
 
-      <!-- <div class="ui horizontal divider">
-        <i class="user icon"></i> More
-      </div> -->
+      <div class="ui horizontal divider">
+        <i class="user icon"></i> Personal
+      </div>
 
-      <!-- <div class="ui form">
+      <div class="ui form">
+
+
+        <div class="inline fields">
+
+          <div class="field">
+            <label style="font-size: 14.5px;">Where I'm from:</label>
+
+            <div class="eight wide field" >
+              <input type="text" name="courses" placeholder="dallas? hong kong? philippines?">
+            </div>
+
+        </div>
+
+
+        <div class="inline fields">
+
+          <div class="field">
+            <label style="font-size: 14.5px;">Single ready to mingle?:</label>
+
+            <div class="ui selection dropdown" style="width: 20em;">
+                <input type="hidden" name="current_status">
+                <i class="dropdown icon"></i>
+                <div class="default text">oh la la...</div>
+                <div class="menu">
+                    <div class="item" data-value="undergrad_student">whatever happens, happens</div>
+                    <div class="item" data-value="grad_student">hell yeah</div>
+                    <div class="item" data-value="grad_student">hell nah</div>
+                    <div class="item" data-value="grad_student">yeah, something like that...</div>
+                    <div class="item" data-value="grad_student">oh god</div>
+                    <div class="item" data-value="grad_student">sure</div>
+                    <div class="item" data-value="grad_student">no.</div>
+                    <div class="item" data-value="grad_student">single but I don't mingle</div>
+                    <div class="item" data-value="grad_student">it's complicated</div>
+                    <div class="item" data-value="grad_student">going with the flow</div>
+                    <div class="item" data-value="grad_student">already with the love of my life</div>
+                    <div class="item" data-value="grad_student">i'm a child of god</div>
+                    <div class="item" data-value="grad_student">prefer not to say</div>
+                </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="inline fields">
+
+          <label style="font-size: 14.5px;">
+            <strong>
+              Favorite pizza topping?
+            </strong>
+          </label>
+          
+          <div class="eight wide field" >
+            <input type="text" name="courses" placeholder="because obviously everyone must know this">
+          </div>              
+
+        </div>
+
+        <div class="field">
+          <label style="font-size: 14.5px;">Description:</label>
+          <textarea rows="2" placeholder="something you want other students to know about you?"></textarea>
+        </div>
+
+        <div class="field">
+          <label style="font-size: 14.5px;">Interests:</label>
+          <textarea rows="2" placeholder="UFOlogy, conspiracies, unexplained phenomena, quidditch, photography, okay I'll stop "></textarea>
+        </div>
+
+        <!-- <div class="field">
+          <label style="font-size: 14.5px;">Quotes:</label>
+          <textarea rows="2" placeholder="UFOlogy, conspiracies, unexplained phenomena, quidditch, okay I'll stop "></textarea>
+        </div>
+
 
         <div class="field">
           <label>Interests:</label>
@@ -523,9 +559,9 @@
         <div class="field">
           <label>Books:</label>
           <textarea rows="2" placeholder="hopefully you at least got one"></textarea>
-        </div>
+        </div> -->
 
-      </div> -->
+      </div>
 
 
 

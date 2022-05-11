@@ -55,14 +55,14 @@ def profile(request):
     # TODO: need profile data
     return render(request, 'profile_new_one.html', {'user_info': user_info})
 
-  else:
+  else:  # TODO: redirect to landing
     print(request)
 
   return render(request, 'profile_new_one.html')
 
 
 def edit_profile(request):
-  uoft_programs_fp = '/Users/rahul/Documents/main/projects/personal_learning_projects/uoftroom/uoft_programs.txt'
+  uoft_programs_fp = '/Users/rahul/Documents/main/projects/personal_learning_projects/uoftroom/final_programs_list.txt'
   f = open(uoft_programs_fp, 'r')
   lines = f.readlines()
   lines = [line.replace('\n', '').strip() for line in lines]
