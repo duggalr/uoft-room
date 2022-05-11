@@ -48,17 +48,20 @@ class User(AbstractUser):
 
 
 
-class UserProfile(models.Model):
-  gender = models.CharField(max_length=200)
-  instagram = models.CharField(max_length=2000)
-  snapchat = models.CharField(max_length=2000)
-  spotify = models.CharField(max_length=2000)
-  current_school_status = models.CharField(max_length=1000)
-  current_school_campus = models.CharField(max_length=1000)
-  current_school_year = models.IntegerField()
-  current_college = models.CharField(max_length=1000)
-  living_on_res = models.BooleanField(default=False)
+class TestingImage(models.Model):
+  image_file = models.ImageField(upload_to='images/')  # TODO: give custom name to the image-uploaded as can have duplicates
 
+# class UserProfile(models.Model):
+#   gender = models.CharField(max_length=200)
+#   instagram = models.CharField(max_length=2000)
+#   snapchat = models.CharField(max_length=2000)
+#   spotify = models.CharField(max_length=2000)
+#   current_school_status = models.CharField(max_length=1000)
+#   current_school_campus = models.CharField(max_length=1000)
+#   current_school_year = models.IntegerField()
+#   current_college = models.CharField(max_length=1000)
+#   living_on_res = models.BooleanField(default=False)
+#   timestamp_profile_created
 
 
 # TODO: 

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+{% csrf_token %}
+
+  <div class="ui grid" style="padding-left: 8.5em; margin-top: 1.5em;">
+
+    <form class="ui form" method="POST" enctype="multipart/form-data">
+
+      <div class="four wide column" style="margin-top: 1em;">
+      
+        <div class="container">
+
+          <input id="profile_image_upload" type="file" name="profile_image" accept="image/*" multiple />
+          <br/><br/>
+          <input type="text" id="instagram_id" name="instagram-id" placeholder="for the follower count" >
+
+        </div>
+      
+      </div>
+
+      <br/><br/>
+      <button class="ui button" type="submit">Submit</button>
+
+    </form>
+
+
+
+  
+  </div>
+
+
+
+{% endblock %}
+
+

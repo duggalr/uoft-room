@@ -4,11 +4,12 @@
 
 {% block content %}
 
+{% csrf_token %}
+
   <div class="ui grid" style="padding-left: 8.5em; margin-top: 1.5em;">
 
     <div class="four wide column" style="margin-top: 1em;">
       
-
       <div class="container">
 
         <!-- <div class="mySlides">
@@ -16,15 +17,16 @@
           <a href="http://127.0.0.1:9000/static/sample_images/image_3.jpeg" target="_blank">
             <img src="{% static 'sample_images/image_3.jpeg' %}" width="100%" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
           </a>
-        </div> -->
-        
+        </div>
+         -->
+         
         <a class="prev" onclick="plusSlides(-1)">❮</a>
         <a class="next" onclick="plusSlides(1)">❯</a>
 
       </div>
           
 
-      <input id="profile_image_upload" type="file" id="file" name="file" accept="image/*" style="display:none" multiple />
+      <input id="profile_image_upload" type="file" name="profile_image" accept="image/*" style="display:none" multiple />
       <label for='profile_image_upload' id="main_profile_image_upload">
         <img id="profile_image_placeholder" src="{% static 'sample_images/image_placeholder_three.png' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
         <!-- <img id="profile_image_placeholder" src="//joeschmoe.io/api/v1/male/random" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"> -->
@@ -175,7 +177,7 @@
           <!-- <div class="ui teal horizontal label">Current Student</div>           -->
         </h2>
 
-        <div class="ui inverted blue vertical animated button" tabindex="0" style="float: right;">
+        <div id="save_button" class="ui inverted blue vertical animated button" tabindex="0" style="float: right;">
           <div class="hidden content"><i class="hand point right outline icon"></i></div>
           <div class="visible content">
             Save Changes
@@ -189,15 +191,15 @@
 
             <div class="field">
               <label style="font-size: 14.5px;">Gender:</label>
-              <div class="ui selection dropdown" >
-                  <input type="hidden" name="gender">
+              <div class="ui selection dropdown">
+                  <input type="hidden" name="gender" id="gender_input">
                   <i class="dropdown icon"></i>
                   <div class="default text"></div>
                   <div class="menu">
-                      <div class="item" data-value="undergrad_student">Male</div>
-                      <div class="item" data-value="grad_student">Female</div>
-                      <div class="item" data-value="grad_student">Prefer Not to Say</div>
-                      <div class="item" data-value="alumni">Other</div>
+                      <div class="item" data-value="male">Male</div>
+                      <div class="item" data-value="female">Female</div>
+                      <div class="item" data-value="prefer_not_to_say">Prefer Not to Say</div>
+                      <div class="item" data-value="other">Other</div>
                   </div>
               </div>
             </div>
@@ -217,7 +219,7 @@
           <div class="inline fields">
             <div class="eight wide field" >
               <i class="instagram icon" style="font-size: 16px;"></i>
-              <input type="text" name="instagram-id" placeholder="for the follower count" >
+              <input type="text" id="instagram_id" name="instagram-id" placeholder="for the follower count" >
               <!-- <input type="text" name="instagram-id" placeholder="to showcase the life you don't live" style="width: 20em;"> -->
             </div>
             <!-- <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible to everyone)</span> -->
@@ -226,7 +228,7 @@
           <div class="inline fields">
             <div class="eight wide field" >
               <i class="snapchat ghost icon" style="font-size: 16px;"></i>
-              <input type="text" name="snapchat-id" placeholder="shh...">
+              <input type="text" id="snapchat_id" name="snapchat-id" placeholder="shh...">
             </div>
             <!-- <i class="eye slash icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible only upon your approval)</span> -->
           </div>
@@ -234,7 +236,7 @@
           <div class="inline fields">
             <div class="eight wide field" >
               <i class="spotify icon" style="font-size: 16px;"></i>
-              <input type="text" name="snapchat-id" placeholder="it's 'lit' ">
+              <input type="text" id="spotify_id" name="spotify-id" placeholder="it's 'lit' ">
             </div>
             <!-- <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible to everyone)</span> -->
           </div>
@@ -261,17 +263,6 @@
 
       </div>
 
-      <!-- <div>
-        <span style="font-size: 14.5px;">
-          <i class="instagram icon" style="font-size: 16px;"></i>
-          <a href="">kduport24</a>
-        </span>
-
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span style="font-size: 14.5px;">
-          <i class="snapchat ghost icon" style="font-size: 16px;"></i>kduport24
-        </span>
-      </div> -->
 
       <div class="ui horizontal divider" >
         <i class="user icon"></i> Info
@@ -288,7 +279,7 @@
                 <label style="font-size: 14.5px;">Current Status:</label>
 
                 <div class="ui selection dropdown" style="width: 16em;">
-                    <input type="hidden" name="current_status">
+                    <input type="hidden" name="current_status" id="current_school_status">
                     <i class="dropdown icon"></i>
                     <div class="default text">no, not relationship status...</div>
                     <div class="menu">
@@ -309,14 +300,14 @@
                 <label style="font-size: 14.5px;">Campus:</label>
 
                 <div class="ui selection dropdown" style="width: 18em;">
-                    <input type="hidden" name="current_status">
+                    <input type="hidden" name="campus" id="user_campus">
                     <i class="dropdown icon"></i>
                     <div class="default text">can't go wrong with either, right?</div>
                     <div class="menu">
-                      <div class="item" data-value="grad_student">St. George</div>
-                      <div class="item" data-value="alumni">Mississauga</div>
-                      <div class="item" data-value="undergrad_student">Scarborough</div>
-                      <div class="disabled item" data-value="gap_year">Waterloo? (lol)</div>
+                      <div class="item" data-value="utsg">St. George</div>
+                      <div class="item" data-value="utm">Mississauga</div>
+                      <div class="item" data-value="utsc">Scarborough</div>
+                      <div class="disabled item" data-value="jk">Waterloo? (lol)</div>
                     </div>
                 </div>
               </div>
@@ -330,15 +321,15 @@
               <div class="field">
                 <label style="font-size: 14.5px;">Year:</label>
                 <div class="ui selection dropdown" style="width: 16em;">
-                    <input type="hidden" name="gender">
+                    <input type="hidden" name="user_year" id="user_year">
                     <i class="dropdown icon"></i>
                     <div class="default text">they go by fast</div>
                     <div class="menu">
-                        <div class="item" data-value="undergrad_student">1</div>
-                        <div class="item" data-value="grad_student">2</div>
-                        <div class="item" data-value="alumni">3</div>
-                        <div class="item" data-value="alumni">4</div>
-                        <div class="item" data-value="alumni">5+</div>
+                        <div class="item" data-value="1">1</div>
+                        <div class="item" data-value="2">2</div>
+                        <div class="item" data-value="3">3</div>
+                        <div class="item" data-value="4">4</div>
+                        <div class="item" data-value="5">5+</div>
                     </div>
                 </div>
               </div>
@@ -350,40 +341,38 @@
 
               <label style="font-size: 14.5px;">College:</label>
               <div class="ui selection dropdown" style="width: 20em;">
-                <input type="hidden" name="country">                
+                <input type="hidden" name="user_college" id="user_college">                
                 <i class="dropdown icon"></i>
                 <div class="default text">get ready for the trinity elitists</div>
                 <div class="menu">
-                  <div class="item" data-value="af">
-                    <!-- <i class="af flag"></i> -->
+                  <div class="item" data-value="innis">
                     <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A7987.jpg" />
                     Innis College
                   </div>
-                  <div class="item" data-value="ax">
+                  <div class="item" data-value="new_college">
                     <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8008.jpg" />
                     New College
                   </div>
-                  <div class="item" data-value="al">
+                  <div class="item" data-value="st_michael_college">
                     <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8103.jpg" />
                     St. Michael's College
                   </div>
-                  <div class="item" data-value="dz">
+                  <div class="item" data-value="university_college">
                     <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8027.jpg" />
                     University College
                   </div>
-                  <div class="item" data-value="ax">
+                  <div class="item" data-value="victoria_college">
                     <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8069.jpg" />
                     Victoria College
                   </div>
-                  <div class="item" data-value="al">
+                  <div class="item" data-value="woodsworth_college">
                     <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A7967.jpg" />
                     Woodsworth College
                   </div>
-                  <div class="item" data-value="af">
+                  <div class="item" data-value="trinity_college">
                     <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8064.jpg" />
                     Trinity College
                   </div>
-
                 </div>
               </div>
 
@@ -397,12 +386,12 @@
               <div class="field">
                 <label style="font-size: 14.5px;">Living on Res?</label>
                 <div class="ui selection dropdown" style="width: 16em;">
-                    <input type="hidden" name="gender">
+                    <input type="hidden" name="living_on_res" id="living_on_res">
                     <i class="dropdown icon"></i>
                     <div class="default text">?</div>
                     <div class="menu">
-                        <div class="item" data-value="undergrad_student">yes</div>
-                        <div class="item" data-value="grad_student">no</div>
+                        <div class="item" data-value="yes">yes</div>
+                        <div class="item" data-value="no">no</div>
                     </div>
                 </div>
               </div>
@@ -417,7 +406,7 @@
                 <strong>Studying:</strong>
               </label>
               <div class="ui fluid multiple search selection dropdown" style="width: 30em;">
-                <input type="hidden" name="country">                
+                <input type="hidden" name="user_major" id="user_major">                
                 <i class="dropdown icon"></i>
                 <div class="default text">select major(s)</div>
                 <div class="menu">
@@ -439,7 +428,7 @@
               </label>
               
               <div class="eight wide field" >
-                <input type="text" name="courses" placeholder="example: csc207, mat157, mat240">
+                <input type="text" name="courses" id="user_courses" placeholder="example: csc207, mat157, mat240">
               </div>              
               &nbsp;
               <!-- <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; ">(visible to everyone)</span> -->
@@ -456,7 +445,7 @@
               </label>
               
               <div class="eight wide field" >
-                <input type="text" name="courses" placeholder="example: intern at NASA">
+                <input type="text" name="user_job" id="user_job" placeholder="example: intern at NASA">
               </div>              
               &nbsp;
               <!-- <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; ">(visible to everyone)</span> -->
@@ -485,7 +474,7 @@
           </label>
           
           <div class="eight wide field" >
-            <input type="text" name="courses" placeholder="dallas? hong kong? philippines?">
+            <input type="text" name="user_location" placeholder="dallas? hong kong? philippines?">
           </div>              
 
         </div>
@@ -497,23 +486,23 @@
             <label style="font-size: 14.5px;">Single ready to mingle?:</label>
 
             <div class="ui selection dropdown" style="width: 20em;">
-                <input type="hidden" name="current_status">
+                <input type="hidden" name="current_relationship_status" id="current_relationship_status">
                 <i class="dropdown icon"></i>
                 <div class="default text">oh la la...</div>
                 <div class="menu">
-                    <div class="item" data-value="undergrad_student">whatever happens, happens</div>
-                    <div class="item" data-value="grad_student">hell yeah</div>
-                    <div class="item" data-value="grad_student">hell nah</div>
-                    <div class="item" data-value="grad_student">yeah, something like that...</div>
-                    <div class="item" data-value="grad_student">oh god</div>
-                    <div class="item" data-value="grad_student">sure</div>
-                    <div class="item" data-value="grad_student">no.</div>
-                    <div class="item" data-value="grad_student">single but I don't mingle</div>
-                    <div class="item" data-value="grad_student">it's complicated</div>
-                    <div class="item" data-value="grad_student">going with the flow</div>
-                    <div class="item" data-value="grad_student">already with the love of my life</div>
-                    <div class="item" data-value="grad_student">i'm a child of god</div>
-                    <div class="item" data-value="grad_student">prefer not to say</div>
+                    <div class="item" data-value="whatever">whatever happens, happens</div>
+                    <div class="item" data-value="hell_yeah">hell yeah</div>
+                    <div class="item" data-value="hell_nah">hell nah</div>
+                    <div class="item" data-value="yeah_something_like_that">yeah, something like that...</div>
+                    <div class="item" data-value="oh_god">oh god</div>
+                    <div class="item" data-value="sure">sure</div>
+                    <div class="item" data-value="no">no.</div>
+                    <div class="item" data-value="single_no_mingle">single but I don't mingle</div>
+                    <div class="item" data-value="complicated">it's complicated</div>
+                    <div class="item" data-value="going_with_flow">going with the flow</div>
+                    <div class="item" data-value="love_of_my_life">already with the love of my life</div>
+                    <div class="item" data-value="child_of_god">i'm a child of god</div>
+                    <div class="item" data-value="prefer_not_to_say">prefer not to say</div>
                 </div>
             </div>
           </div>
@@ -530,19 +519,19 @@
           </label>
           
           <div class="eight wide field" >
-            <input type="text" name="courses" placeholder="because everyone must know this">
+            <input type="text" name="pizza_topping" placeholder="because everyone must know this">
           </div>              
 
         </div>
 
         <div class="field">
           <label style="font-size: 14.5px;">Description:</label>
-          <textarea rows="2" placeholder="something you want other students to know about you?"></textarea>
+          <textarea id="user_description" rows="2" placeholder="something you want other students to know about you?"></textarea>
         </div>
 
         <div class="field">
           <label style="font-size: 14.5px;">Interests:</label>
-          <textarea rows="2" placeholder="UFOlogy, conspiracies, unexplained phenomena, quidditch, photography, okay I'll stop "></textarea>
+          <textarea id="user_interest" rows="2" placeholder="UFOlogy, conspiracies, unexplained phenomena, quidditch, photography, okay I'll stop "></textarea>
         </div>
 
         <!-- <div class="field">
@@ -785,6 +774,133 @@
 
 
     }
+
+
+    function getFileData(f){
+
+      return new Promise(function(resolve, reject){
+        var image_files = f
+        var data = new FormData()
+        for (i=0; i<=image_files.length-1; i++){
+          data.append('file', image_files[i])
+          console.log(data)
+        }
+        resolve(data)
+        // var data = new FormData(image_files)
+        // console.log('data:', data)
+
+      })
+
+    }
+
+
+    $('#save_button').click(function(){
+
+      var gender = $('#gender_input').val()
+      var instagram_id = $('#instagram_id').val()
+      var snapchat_id = $('#snapchat_id').val()
+      var spotify_url = $('#spotify_id').val()
+      var current_school_status = $('#current_school_status').val()
+      var user_campus = $('#user_campus').val()
+      var user_year = $('#user_year').val()
+      var user_college = $('#user_college').val()
+      var living_on_res = $('#living_on_res').val()
+      var user_major = $('#user_major').val()
+      var user_courses = $('#user_courses').val()
+      var user_job = $('#user_job').val()
+      var user_location = $('#user_location').val()
+      var current_relationship_status = $('#current_relationship_status').val()
+      var pizza_topping = $('#pizza_topping').val()
+      var user_description = $('#user_description').val()
+      var user_interest = $('#user_interest').val()
+
+
+
+      $('#save_button').click(function(event){
+        event.preventDefault();
+        var image_files = $('#profile_image_upload').prop('files')
+        var form_data = new FormData()
+        for (i=0; i<=image_files.length-1; i++){
+          form_data.append('file', image_files[i])
+        }
+
+        // data: {
+        //     csrfmiddlewaretoken: csrf_tok, 
+        //     profileImages: form_data
+        //   },
+
+        $.ajaxSetup({
+          headers: { "X-CSRFToken": '{{csrf_token}}' }
+        });
+
+        $.ajax({
+          type: "POST",  
+          url: "{% url 'edit_profile' %}",
+          contentType: 'application/json',
+          data: {
+            profileImages: form_data
+          },
+          async: false,
+          cache: false,
+          // contentType: false,
+          enctype: 'multipart/form-data',
+          processData: false,
+          success: function() {}
+        });
+          
+          
+
+
+        // getFileData(image_files).then(function(data){
+        //   console.log('data:', data)
+        // })
+
+        // console.log('image-files:', image_files)
+        
+        // console.log('image-files:', $('#profile_image_upload').prop('files'))
+
+        // $.ajax({
+        //     type: "POST",
+        //     url: "{% url 'edit_profile' %}",
+        //     // data: {
+        //     //   'images': $('#test').val() // from form
+        //     // },
+        //     // Form data
+        //     data: new FormData($('form')[0]),
+        //     // Tell jQuery not to process data or worry about content-type
+        //     // You *must* include these options!
+        //     cache: false,
+        //     contentType: false,
+        //     processData: false,
+
+        //     success: function () {
+        //       console.log('form-success')
+        //       // $('#message').html("<h2>Contact Form Submitted!</h2>")
+        //     }
+        //   });
+        //   return false; //<---- move it here
+        // });
+
+
+        // $.post(event.target.action, $( "#photoUpload" ).serialize(), function(data) {
+        //       $("#myModalContent").html(data);
+        //   })
+
+      })
+
+
+      $( "#photoUpload" ).submit(function( event ) {
+          event.preventDefault();
+          $("#myModalContent").html('Loading...');
+          // console.log(event);
+          $.post(event.target.action, $( "#photoUpload" ).serialize(), function(data) {
+              $("#myModalContent").html(data);
+          })
+      });
+
+      
+      
+    })
 
 
   </script>
