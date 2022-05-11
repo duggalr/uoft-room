@@ -45,12 +45,12 @@
     
     <h3>Join the Room</h3>
 
-    <form class="ui form" method="post">
+    <form class="ui form" method="post">{% csrf_token %}
 
       <div class="field" style="width: 20em;">
         <label>email:</label>
         <input id="school_email" type="text" name="school_email" placeholder="school email">
-        <span id="school_email_error" style="color: red; display: none;">is that really your uoft email?</span>
+        <!-- <span id="school_email_error" style="color: red; display: none;">is that really your uoft email?</span> -->
       </div>
 
       <div class="field" style="width: 20em;">
@@ -71,15 +71,34 @@
       
       <button style="background-color: #002a5c; color: white;" class="ui button" type="submit">submit</button>
 
+      {% if form_error %}
+        <span id="form_error_message" style="color: red;">{{ error_message }}</span> 
+      
+      {% endif %}
+
     </form>
 
 
   </div>
 
+  {{ form_data |json_script:'form_data' }}
 
 
 
   <script>
+
+    // var formData = "{{ form_data }}"
+    // console.log('formdata:', formData)
+    var formData = JSON.parse(document.getElementById('form_data').textContent)
+    if (typeof formData != 'undefined'){
+
+      $("#school_email").val(formData['email'])
+      $("#first_name").val(formData['first_name'])
+      $("#last_name").val(formData['last_name'])
+
+    }
+
+
 
     $("#first_name").focus(function() {
 
