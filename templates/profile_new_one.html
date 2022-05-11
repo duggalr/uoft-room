@@ -68,8 +68,9 @@
         <!-- <div style="float: right; margin-top: 10px;"> -->
         <div style="display: flex; justify-content: space-between; float: right; margin-top: 10px;">
 
-          <span style="padding-right: 2px; padding-bottom: 10px;">
-            <i id="eye_question_icon" class="question icon" style="font-size: 14.5px;" onclick="showModal()"></i>  
+          <span style="padding-right: 5px; padding-bottom: 10px;">
+            <!-- <i id="eye_question_icon" class="question icon" style="font-size: 14.5px;" onclick="showModal()"></i>   -->
+            <a id="eye_question_icon" onclick="showModal()">what's the eye for?</a>
           </span>
           
           <span id="eye_emoji" style="font-size: 25px; padding-right: 20px;" >
@@ -246,12 +247,12 @@
             basketball, gym, making things, science/technology/progress/change...you get it, aren't I interesting?
         </p>
 
-        <p>
+        <!-- <p>
           <strong style="font-size: 14.5px;">
             Quotes:
           </strong>
           "buy the ticket, take the ride", "it's all a circus, but not everyone's the clown..."
-        </p>
+        </p> -->
         
         <!-- <p>
           <strong style="font-size: 14.5px;">
@@ -291,9 +292,15 @@
 
   <script>
 
-    function showModal(){
+    // function showModal(event){
+    //   event.preventDefault();
+    //   $('.mini.modal').modal('show');
+    // }
+
+    $('#eye_question_icon').click(function(event){
+      event.preventDefault();
       $('.mini.modal').modal('show');
-    }
+    })
     
 
     $('#eye_emoji').click(function(){
