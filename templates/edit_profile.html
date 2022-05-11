@@ -23,6 +23,7 @@
 
       </div>
           
+
       <input id="profile_image_upload" type="file" id="file" name="file" accept="image/*" style="display:none" multiple />
       <label for='profile_image_upload' id="main_profile_image_upload">
         <img id="profile_image_placeholder" src="{% static 'sample_images/image_placeholder_three.png' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
@@ -98,11 +99,11 @@
       </div> -->
 
 
-      <div class="ui horizontal divider">
+      <!-- <div class="ui horizontal divider">
         <i class="pencil alternate icon"></i> School
-      </div>
+      </div> -->
 
-      <div class="ui form">
+      <!-- <div class="ui form">
         
         <label style="font-size: 14.5px;">
           <strong>Studying:</strong>
@@ -137,8 +138,7 @@
         <div class="ui fluid multiple search selection dropdown" style="width: 20em;">
           <input type="hidden" name="country">                
           <i class="dropdown icon"></i>
-          <div class="default text">so you can find some study buddies</div>
-          <!-- <div class="default text">so you can find some <s>cute g</s> study buddies... </div> -->
+          <div class="default text">so you can find other people to cry too...</div>
           <div class="menu">
             <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
             <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
@@ -157,7 +157,7 @@
         &nbsp;
         <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; ">(visible to everyone)</span>
 
-      </div>
+      </div> -->
 
     </div>
 
@@ -215,7 +215,7 @@
               <input type="text" name="instagram-id" placeholder="for the follower count" >
               <!-- <input type="text" name="instagram-id" placeholder="to showcase the life you don't live" style="width: 20em;"> -->
             </div>
-            <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible to everyone)</span>
+            <!-- <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible to everyone)</span> -->
           </div>
   
           <div class="inline fields">
@@ -231,7 +231,7 @@
               <i class="spotify icon" style="font-size: 16px;"></i>
               <input type="text" name="snapchat-id" placeholder="it's 'lit' ">
             </div>
-            <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible to everyone)</span>
+            <!-- <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible to everyone)</span> -->
           </div>
 
           <!-- <div class="inline fields">
@@ -399,25 +399,91 @@
                     </div>
                 </div>
               </div>
-              <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible to everyone)</span>
-              
+              <i class="eye slash icon" style="font-size: 14px;"></i> <span style="font-size: 13px; padding-top: 3px;">(visible only upon your approval)</span>
+
             </div>
 
 
+            <div class="inline fields">
+
+              <label style="font-size: 14.5px;">
+                <strong>Studying:</strong>
+              </label>
+              <div class="ui fluid multiple search selection dropdown" style="width: 20em;">
+                <input type="hidden" name="country">                
+                <i class="dropdown icon"></i>
+                <div class="default text">select major(s)</div>
+                <div class="menu">
+                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
+                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
+                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
+                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
+                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
+                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
+                </div>
+              </div>
+
+            </div>
+            
+            
+            <div class="inline fields">
+
+              <label style="font-size: 14.5px;">
+                <strong>
+                  Add your courses:
+                </strong>
+              </label>
+              
+              <div class="eight wide field" >
+                <!-- <input type="text" name="courses" placeholder="so you can find other people to cry too..."> -->
+                <input type="text" name="courses" placeholder="example: csc207, mat157, mat240">
+              </div>              
+              
+              <!-- <div class="ui fluid multiple search selection dropdown" style="width: 25em;">
+                <input type="hidden" name="country">                
+                <i class="dropdown icon"></i>
+                <div class="default text">so you can find other people to cry too...</div>
+                <div class="menu">
+                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
+                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
+                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
+                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
+                  <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+                  <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
+                  <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+                  <div class="item" data-value="dz"><i class="dz flag"></i>Algeria</div>
+                </div>
+              </div> -->
+              &nbsp;
+              <i class="eye icon" style="font-size: 14px;"></i> <span style="font-size: 13px; ">(visible to everyone)</span>
+
+            </div>
+            <!-- <span>example: csc207, mat157, mat240</span> -->
+            
+
+            
+
             <div class="field">
-              <label>Interests:</label>
+              <label style="font-size: 14.5px;">Interests:</label>
               <textarea rows="2" placeholder="UFOlogy, conspiracies, unexplained phenomena, quidditch, okay I'll stop "></textarea>
             </div>
     
 
-            <div class="inline fields">
-
-              <div class="field">
-                <label style="font-size: 14.5px;">Description:</label>
-                <textarea style="width: 35em;" rows="2" placeholder="something you want other students to know about you?"></textarea>
-              </div>
-  
+            <div class="field">
+              <label style="font-size: 14.5px;">Description:</label>
+              <textarea rows="2" placeholder="something you want other students to know about you?"></textarea>
             </div>
+  
 
 
         </div>

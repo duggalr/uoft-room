@@ -1,3 +1,5 @@
+from pyexpat import model
+from statistics import mode
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
@@ -46,9 +48,22 @@ class User(AbstractUser):
 
 
 
-# class UserProfile(models.Model):
-#   gender = models.CharField(max_length=200)
-#   instagram_url = models.URLField()  
+class UserProfile(models.Model):
+  gender = models.CharField(max_length=200)
+  instagram = models.CharField(max_length=2000)
+  snapchat = models.CharField(max_length=2000)
+  spotify = models.CharField(max_length=2000)
+  current_school_status = models.CharField(max_length=1000)
+  current_school_campus = models.CharField(max_length=1000)
+  current_school_year = models.IntegerField()
+  current_college = models.CharField(max_length=1000)
+  living_on_res = models.BooleanField(default=False)
+
+
+
+# TODO: 
+  # start by adding the list of majors and form submission/saving (**images)
+    # need to add 'visibility/privacy' for select-fields
 
 
 

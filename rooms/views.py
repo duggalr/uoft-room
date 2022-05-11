@@ -46,8 +46,14 @@ def user_auth(request):
 def profile(request):
   if request.user.is_authenticated and request.user.is_active:  # TODO: is_active is crucial; ensure it is adjusted appror. above
     print('user:', request.user)
-    
-
+    user_first_name = request.user.first_name
+    user_last_name = request.user.last_name
+    user_info = {
+      'first_name': user_first_name, 
+      'last_name': user_last_name
+    }
+    # TODO: need profile data
+    return render(request, 'profile_new_one.html', {'user_info': user_info})
 
   else:
     print(request)
