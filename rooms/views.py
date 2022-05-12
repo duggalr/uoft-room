@@ -1,10 +1,11 @@
+from cgitb import reset
 from distutils.command.upload import upload
 import re
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 
-from .models import User, TestingImage
-from .forms import ImageForm
+from .models import User, UserProfileImage
+# from .forms import ImageForm
 from . import utils
 
 
@@ -65,19 +66,53 @@ def profile(request):
 
 
 
-# from django.views.decorators.csrf import csrf_exempt
-# @csrf_exempt
 def edit_profile(request):
+  # TODO: check if user authenticatd/active and pass the name of user from initial signup to edit-profile
+
   uoft_programs_fp = '/Users/rahul/Documents/main/projects/personal_learning_projects/uoftroom/final_programs_list.txt'
   f = open(uoft_programs_fp, 'r')
-  lines = f.readlines()
-  lines = [line.replace('\n', '').strip() for line in lines]
-  form = ImageForm()
+  uoft_programs = f.readlines()
+  uoft_programs = [line.replace('\n', '').strip() for line in uoft_programs]
+
+  uoft_courses_fp = '/Users/rahul/Documents/main/projects/personal_learning_projects/uoftroom/uoft_all_courses.txt'
+  f = open(uoft_courses_fp, 'r')
+  uoft_courses = f.readlines()
+  uoft_courses = [line.replace('\n', '').strip() for line in uoft_courses]
+
 
   if request.method == 'POST':
-    print(request.POST)
     print(request.FILES)
-    files_list = request.FILES.getlist('profile_image')
+    profile_images = request.FILES.getlist('profile_image')
+    
+    # for fn in profile_images:
+    #   b = UserProfileImage(profile_image=fn)
+    #   b.save()
+
+    # TODO: UI of form, save form, redirect, edit-form, and go from there
+
+
+
+    # print(request.POST)
+    # user_majors = request.POST.getlist('user_major')
+    # user_courses = request.POST.getlist('user_courses')
+
+    # files_list = request.FILES.getlist('profile_image')
+    # gender = request.POST['gender']
+    # instagram_id = request.POST['instagram-id']
+    # snapchat_id = request.POST['snapchat-id']
+    # spotify_id = request.POST['spotify-id']
+    # current_school_status = request.POST['current_status']
+    # user_campus = request.POST['campus']
+    # user_year = request.POST['user_year']
+    # user_college = request.POST['user_college']
+    # living_on_res = request.POST['living_on_res']
+    # user_major = request.POST.getlist('user_major')
+    # user_courses = request.POST.getlist('courses')
+    # user_jobs = request.POST.getlist('user_job')
+    # user_location = request.POST['user_location']
+    # current_relationship_status = request.POST['current_relationship_status']
+    # pizza_topping = request.POST['pizza_topping']
+
 
     # for fn in files_list:
     #   b = TestingImage(image_file=request.FILES['files'], person_name=request.POST['person_name'])
@@ -105,7 +140,7 @@ def edit_profile(request):
     # file_url = fss.url(file)
 
   # return render(request, 'edit_profile.html', {'programs': lines})
-  return render(request, 'edit_profile_one.html', {'form': form})
+  return render(request, 'edit_profile_one.html', {'programs': uoft_programs, 'courses': uoft_courses})
 
 
 def main(request):

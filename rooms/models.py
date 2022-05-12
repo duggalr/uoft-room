@@ -1,3 +1,4 @@
+from operator import mod
 from pyexpat import model
 from statistics import mode
 from django.db import models
@@ -52,22 +53,47 @@ class TestingImage(models.Model):
   image_file = models.ImageField(upload_to='images/')  # TODO: give custom name to the image-uploaded as can have duplicates
   person_name = models.CharField(max_length=1000)
 
-# class UserProfile(models.Model):
-#   gender = models.CharField(max_length=200)
-#   instagram = models.CharField(max_length=2000)
-#   snapchat = models.CharField(max_length=2000)
-#   spotify = models.CharField(max_length=2000)
-#   current_school_status = models.CharField(max_length=1000)
-#   current_school_campus = models.CharField(max_length=1000)
-#   current_school_year = models.IntegerField()
-#   current_college = models.CharField(max_length=1000)
-#   living_on_res = models.BooleanField(default=False)
-#   timestamp_profile_created
+class UserProfile(models.Model):
+  user_obj = models.ForeignKey(User, on_delete=models.CASCADE)
+  
+   # both important for activity feed and display on user-profile for everyone
+  timestamp_profile_created = models.DateTimeField(auto_now_add=True)
+  timestamp_profile_updated = models.DateTimeField(auto_now=True) 
+
+  instagram_id = models.CharField(max_length=2000)
+  snapchat_id = models.CharField(max_length=2000)
+  spotify_url = models.CharField(max_length=2000)
+
+  gender = models.CharField(max_length=200)
+  current_school_status = models.CharField(max_length=1000)
+  current_school_campus = models.CharField(max_length=1000)
+  current_school_year = models.IntegerField()
+  current_college = models.CharField(max_length=2000)
+  living_on_res = models.BooleanField(default=False)
+  user_location = models.CharField(max_length=2000)
+  user_relationship_status = models.CharField(max_length=2000)
+  user_pizza_topping = models.CharField(max_length=2000)
+
+  job_companies = models.TextField()
+  user_description = models.TextField()
+  user_interests = models.TextField()
 
 
-# TODO: 
-  # start by adding the list of majors and form submission/saving (**images)
-    # need to add 'visibility/privacy' for select-fields
+class UserProfileImage(models.Model):
+  # user_profile_obj = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+  profile_image = models.ImageField(upload_to='profile_images/', verbose_name='Image')
+
+
+class UserMajors(models.Model):
+  user_profile_obj = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+  major = models.CharField(max_length=2000)
+
+
+class UserCourses(models.Model):
+  user_profile_obj = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+  course = models.CharField(max_length=2000)
+
+
 
 
 

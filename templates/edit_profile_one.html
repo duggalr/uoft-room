@@ -7,9 +7,9 @@
 {% csrf_token %}
 
   <!-- <div class="ui grid" style="padding-left: 8.5em; margin-top: 1.5em;"> -->
-  <form method="post" enctype="multipart/form-data">{% csrf_token %}
+  <form id="profile_form" method="post" enctype="multipart/form-data">{% csrf_token %}
 
-    <div class="ui grid">
+    <div class="ui grid" style="padding-left: 7.5em; margin-top: 1.5em;">
 
       <div class="four wide column" style="margin-top: 1em;">
       
@@ -37,8 +37,8 @@
       </div>
 
 
-      <!-- <div class="ten wide column" style="padding-left: 3em;"> -->
-      <div class="ten wide column" >
+      <div class="ten wide column" style="padding-left: 3em;">
+      <!-- <div class="ten wide column" > -->
 
         <div>
 
@@ -262,7 +262,7 @@
                 
               </div>
   
-              <div class="inline fields">
+              <div class="inline fields" id="user_course_field">
   
                 <label style="font-size: 14.5px;">
                   <strong>
@@ -270,11 +270,17 @@
                   </strong>
                 </label>
                 
-                <div class="eight wide field" >
-                  <input type="text" name="courses" id="user_courses" placeholder="example: csc207, mat157, mat240">
-                </div>              
-                &nbsp;
-  
+                <div class="ui fluid multiple search selection dropdown" style="width: 30em;">
+                  <input type="hidden" name="user_courses" id="user_courses">                
+                  <i class="dropdown icon"></i>
+                  <div class="default text">select course(s).. (undergrad only atm)</div>
+                  <div class="menu">
+                    {% for l in courses %}
+                      <div class="item" data-value="{{ l }}">{{ l }}</div>
+                    {% endfor %}
+                  </div>
+                </div>
+
               </div>
   
   
@@ -290,6 +296,9 @@
                   <input type="text" name="user_job" id="user_job" placeholder="example: intern at NASA">
                 </div>              
                 &nbsp;
+
+
+                
   
               </div>
   
@@ -304,23 +313,8 @@
         </div>
   
         <div class="ui form">
-  
-  
-          <div class="inline fields">
-  
-            <label style="font-size: 14.5px;">
-              <strong>
-                Where I'm from:
-              </strong>
-            </label>
-            
-            <div class="eight wide field" >
-              <input type="text" name="user_location" placeholder="dallas? hong kong? philippines?">
-            </div>              
-  
-          </div>
-  
-  
+
+
           <div class="inline fields">
   
             <div class="field">
@@ -355,6 +349,22 @@
   
             <label style="font-size: 14.5px;">
               <strong>
+                Where I'm from:
+              </strong>
+            </label>
+            
+            <div class="eight wide field" >
+              <input type="text" name="user_location" placeholder="dallas? hong kong? philippines?">
+            </div>              
+  
+          </div>
+  
+
+  
+          <!-- <div class="inline fields">
+  
+            <label style="font-size: 14.5px;">
+              <strong>
                 Favorite pizza topping:
               </strong>
             </label>
@@ -363,26 +373,23 @@
               <input type="text" name="pizza_topping" placeholder="because everyone must know this">
             </div>              
   
-          </div>
+          </div> -->
+
   
           <div class="field">
             <label style="font-size: 14.5px;">Description:</label>
-            <textarea id="user_description" rows="2" placeholder="something you want other students to know about you?"></textarea>
+            <textarea name="user_description" form="profile_form" id="user_description" rows="2" placeholder="something you want other students to know about you?"></textarea>
           </div>
   
           <div class="field">
             <label style="font-size: 14.5px;">Interests:</label>
-            <textarea id="user_interest" rows="2" placeholder="UFOlogy, conspiracies, unexplained phenomena, quidditch, photography, okay I'll stop "></textarea>
+            <textarea name="user_interest" form="profile_form" id="user_interest" rows="2" placeholder="UFOlogy, conspiracies, unexplained phenomena, quidditch, photography, okay I'll stop "></textarea>
           </div>
         
         </div>
 
 
-
-
-
       </div>
-
 
 
     </div>
@@ -390,6 +397,7 @@
   </form>
 
 
+  <br/><br/><br/>
 
 
 
@@ -450,7 +458,6 @@
         var main_div = document.getElementsByClassName('container')[0]
         $('.mySlides').remove()
    
-
         for (i=0; i <= valid_image_list.length-1; i++) {
 
           var parent_div = document.createElement('div')
@@ -460,9 +467,7 @@
           child_div.innerHTML = (i+1) + ' / ' + valid_image_list.length
           
           var image_elem = document.createElement('img')
-          // image_elem.onload = () => {
-          //   URL.revokeObjectURL(image_elem.src);  // no longer needed, free memory
-          // }
+
           image_elem.src = URL.createObjectURL(valid_image_list[i]); // set src to blob url
           image_elem.style = 'border-radius: 5%; box-shadow: 5px 5px #F5F5F5; width: 100%'
           parent_div.appendChild(child_div)
@@ -477,9 +482,11 @@
         showSlides(slideIndex)
 
       } else {
-        // TODO: show the error-message that input was invalid
-        // console.log('image')
+        $("#profile_image_upload").val(null);
         document.getElementById('proifle_image_error_message').style.display = ''
+        document.getElementById('main_profile_image_upload').style.display = ''
+        document.getElementById('profile_image_upload').style.display = 'none'
+        $('.mySlides').remove()
 
       }
 
@@ -514,17 +521,31 @@
 
 
     $('#current_school_status').change(function(){
-      // console.log()
+
+      $('#user_year_field').removeClass('disabled')
+      $('#user_living_on_res').removeClass('disabled')
+      $('#user_course_field').removeClass('disabled')
+
       var current_status_val = this.value
       if (current_status_val == 'alumni'){
         $('#user_year_field').addClass('disabled')
         $('#user_living_on_res').addClass('disabled')
-        
+        $('#user_course_field').addClass('disabled')
       }
+      else if (current_status_val == 'grad_student'){
+        $('#user_course_field').addClass('disabled')
+        // $('#user_year_field').addClass('disabled')
+        // $('#user_living_on_res').addClass('disabled')
+      }
+      else if (current_status_val == 'gap_year'){
+        $('#user_course_field').addClass('disabled')
+      }
+      
+
       // var current_school_val = this.value;
       // var firstDropVal = $('#pick').val();
     })
-    
+
 
 
 
