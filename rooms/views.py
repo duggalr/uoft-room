@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 
 from .models import User, TestingImage
+from .forms import ImageForm
 from . import utils
 
 
@@ -64,21 +65,28 @@ def profile(request):
 
 
 
-from django.views.decorators.csrf import csrf_exempt
-
-@csrf_exempt
+# from django.views.decorators.csrf import csrf_exempt
+# @csrf_exempt
 def edit_profile(request):
   uoft_programs_fp = '/Users/rahul/Documents/main/projects/personal_learning_projects/uoftroom/final_programs_list.txt'
   f = open(uoft_programs_fp, 'r')
   lines = f.readlines()
   lines = [line.replace('\n', '').strip() for line in lines]
+  form = ImageForm()
 
   if request.method == 'POST':
     print(request.POST)
     print(request.FILES)
-    image_file = request.FILES.popitem()[0]
-    b = TestingImage(image_file=image_file)
-    b.save()
+    files_list = request.FILES.getlist('profile_image')
+
+    # for fn in files_list:
+    #   b = TestingImage(image_file=request.FILES['files'], person_name=request.POST['person_name'])
+    #   b.save()
+
+    
+  #   image_file = request.FILES.popitem()[0]
+  #   b = TestingImage(image_file=image_file)
+  #   b.save()
 
 # _, file = request.FILES.popitem()  # get first element of the uploaded files
 
@@ -86,7 +94,6 @@ def edit_profile(request):
 
 #         file_model.file = file
 #         file_model.save()
-
 
     # print(request.body)
     # print(request.POST)
@@ -98,7 +105,7 @@ def edit_profile(request):
     # file_url = fss.url(file)
 
   # return render(request, 'edit_profile.html', {'programs': lines})
-  return render(request, 'edit_profile_one.html')
+  return render(request, 'edit_profile_one.html', {'form': form})
 
 
 def main(request):

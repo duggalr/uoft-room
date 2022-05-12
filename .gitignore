@@ -5,3 +5,4 @@ uoftroom/__pycache__
 rooms/migrations
 rooms/__pycache__
 static
+media/

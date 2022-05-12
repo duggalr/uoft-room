@@ -50,6 +50,7 @@ class User(AbstractUser):
 
 class TestingImage(models.Model):
   image_file = models.ImageField(upload_to='images/')  # TODO: give custom name to the image-uploaded as can have duplicates
+  person_name = models.CharField(max_length=1000)
 
 # class UserProfile(models.Model):
 #   gender = models.CharField(max_length=200)
