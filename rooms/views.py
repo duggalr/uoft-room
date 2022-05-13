@@ -4,7 +4,7 @@ import re
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 
-from .models import User, UserProfileImage
+from .models import User, UserProfile, UserProfileImage, UserMajors, UserCourses
 # from .forms import ImageForm
 from . import utils
 
@@ -79,65 +79,81 @@ def edit_profile(request):
   uoft_courses = f.readlines()
   uoft_courses = [line.replace('\n', '').strip() for line in uoft_courses]
 
-
+# 'gender': [''], 
+# 'instagram-id': [''], 
+# 'snapchat-id': [''], 
+# 'spotify-id': [''], 
+# 'current_status': [''], 
+# 'campus': [''], 
+# 'user_year': [''], 
+# 'user_college': [''], 
+# 'living_on_res': [''], 
+# 'user_major': [''], 
+# 'user_courses': [''], 
+# 'user_job': [''], 
+# 'current_relationship_status': [''], 
+# 'user_location': [''], 
+# 'user_description': [''], 
+# 'user_interest': ['']}>
   if request.method == 'POST':
-    print(request.FILES)
-    profile_images = request.FILES.getlist('profile_image')
-    
-    # for fn in profile_images:
-    #   b = UserProfileImage(profile_image=fn)
-    #   b.save()
-
-    # TODO: UI of form, save form, redirect, edit-form, and go from there
-
-
-
-    # print(request.POST)
-    # user_majors = request.POST.getlist('user_major')
-    # user_courses = request.POST.getlist('user_courses')
-
-    # files_list = request.FILES.getlist('profile_image')
-    # gender = request.POST['gender']
-    # instagram_id = request.POST['instagram-id']
-    # snapchat_id = request.POST['snapchat-id']
-    # spotify_id = request.POST['spotify-id']
-    # current_school_status = request.POST['current_status']
-    # user_campus = request.POST['campus']
-    # user_year = request.POST['user_year']
-    # user_college = request.POST['user_college']
-    # living_on_res = request.POST['living_on_res']
-    # user_major = request.POST.getlist('user_major')
-    # user_courses = request.POST.getlist('courses')
+    gender = request.POST['gender']
+    instagram_id = request.POST['instagram-id']
+    snapchat_id = request.POST['snapchat-id']
+    spotify_id = request.POST['spotify-id']
+    current_school_status = request.POST['current_status']
+    user_campus = request.POST['campus']
+    user_year = request.POST['user_year']
+    user_college = request.POST['user_college']
+    living_on_res = request.POST['living_on_res']    
+    user_job = request.POST['user_job']
     # user_jobs = request.POST.getlist('user_job')
-    # user_location = request.POST['user_location']
-    # current_relationship_status = request.POST['current_relationship_status']
-    # pizza_topping = request.POST['pizza_topping']
+    user_location = request.POST['user_location']
+    current_relationship_status = request.POST['current_relationship_status']
+    user_description = request.POST['user_description']
+    user_interests = request.POST['user_interest']
 
+    user_major_list = request.POST.getlist('user_major')
+    user_course_list = request.POST.getlist('courses')
 
-    # for fn in files_list:
-    #   b = TestingImage(image_file=request.FILES['files'], person_name=request.POST['person_name'])
-    #   b.save()
+    up = UserProfile.objects.create(
+      instagram_id=instagram_id, 
+      snapchat_id=snapchat_id,
+      spotify_url=spotify_id,
+      gender=gender, 
+      current_school_status=current_school_status,
+      current_school_campus=user_campus,
+      current_school_year=user_year,
+      current_college=user_college,
+      living_on_res=living_on_res,
+      user_location=user_location,
+      user_relationship_status=current_relationship_status,
+      job_companies=user_job,
+      user_description=user_description,
+      user_interests=user_interests
+    )
+    up.save()
 
+    for user_major in user_major_list:
+      um = UserMajors.objects.create(
+        user_profile_obj = up,
+        major = user_major
+      )
+      um.save()
     
-  #   image_file = request.FILES.popitem()[0]
-  #   b = TestingImage(image_file=image_file)
-  #   b.save()
+    for user_course in user_course_list:
+      uc = UserCourses.objects.create(
+        user_profile_obj = up,
+        course = user_course
+      )
+      uc.save()
 
-# _, file = request.FILES.popitem()  # get first element of the uploaded files
-
-#         file = file[0]  # get the file from MultiValueDict
-
-#         file_model.file = file
-#         file_model.save()
-
-    # print(request.body)
-    # print(request.POST)
-    # print(request.FILES)
-    # uploaded_images = request.FILES['profile_image']
-    # print(uploaded_images)
-      # fss = FileSystemStorage()
-    # file = fss.save(upload.name, upload)
-    # file_url = fss.url(file)
+    profile_images = request.FILES.getlist('profile_image')
+    for fn in profile_images:
+      upi = UserProfileImage(
+        user_profile_obj = up,
+        profile_image=fn
+      )
+      upi.save()
 
   # return render(request, 'edit_profile.html', {'programs': lines})
   return render(request, 'edit_profile_one.html', {'programs': uoft_programs, 'courses': uoft_courses})

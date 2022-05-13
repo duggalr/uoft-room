@@ -80,7 +80,7 @@ class UserProfile(models.Model):
 
 
 class UserProfileImage(models.Model):
-  # user_profile_obj = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+  user_profile_obj = models.ForeignKey(UserProfile, on_delete=models.CASCADE, blank=True, null=True)
   profile_image = models.ImageField(upload_to='profile_images/', verbose_name='Image')
 
 
