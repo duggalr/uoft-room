@@ -11,12 +11,6 @@
       <!-- <img id="profile_image_placeholder" src="//joeschmoe.io/api/v1/male/random" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"> -->
       <img id="profile_image_placeholder" src="{% static 'sample_images/image_three.jpeg' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"> 
 
-      <!-- <br/><br/>
-      <span id="eye_emoji" style="float: left; font-size: 30px;">
-        &#128064;
-      </span> -->
-
-
       <div class="ui horizontal divider">
         <i class="edit icon"></i> Personal Settings
       </div>            
@@ -60,7 +54,8 @@
       <div>
 
         <h2 class="ui header" style="display: inline-block; font-size: 27px;">
-          Kevin Duport 
+          <!-- Kevin Duport  -->
+          {{ user_info.first_name }} {{ user_info.last_name }}
           <div class="ui teal horizontal label">Current Student</div>          
         </h2>
 
@@ -68,7 +63,7 @@
         <!-- <div style="float: right; margin-top: 10px;"> -->
         <div style="display: flex; justify-content: space-between; float: right; margin-top: 10px;">
 
-          <span style="padding-right: 5px; padding-bottom: 10px;">
+          <span style="padding-right: 8px; padding-bottom: 10px;">
             <!-- <i id="eye_question_icon" class="question icon" style="font-size: 14.5px;" onclick="showModal()"></i>   -->
             <a id="eye_question_icon" onclick="showModal()">what's the eye for?</a>
           </span>

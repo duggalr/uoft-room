@@ -74,12 +74,11 @@ def profile(request):
       'last_name': user_last_name
     }
     # TODO: need profile data
-    return render(request, 'profile_new_one.html', {'user_info': user_info})
+    return render(request, 'profile_new_two.html', {'user_info': user_info})
 
   else:  # TODO: redirect to landing
     print(request)
-
-  return render(request, 'profile_new_one.html')
+    return redirect('landing')
 
 
 
