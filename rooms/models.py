@@ -49,7 +49,7 @@ class User(AbstractUser):
 
 
 
-class TestingImage(models.Model):
+class TestingImage(models.Model): # TODO: delete this...
   image_file = models.ImageField(upload_to='images/')  # TODO: give custom name to the image-uploaded as can have duplicates
   person_name = models.CharField(max_length=1000)
 
@@ -58,25 +58,25 @@ class UserProfile(models.Model):
   
    # both important for activity feed and display on user-profile for everyone
   timestamp_profile_created = models.DateTimeField(auto_now_add=True)
-  timestamp_profile_updated = models.DateTimeField(auto_now=True) 
+  timestamp_profile_updated = models.DateTimeField(auto_now=True)
 
-  instagram_id = models.CharField(max_length=2000)
-  snapchat_id = models.CharField(max_length=2000)
-  spotify_url = models.CharField(max_length=2000)
+  instagram_id = models.CharField(max_length=2000, blank=True, null=True)
+  snapchat_id = models.CharField(max_length=2000, blank=True, null=True)
+  spotify_url = models.CharField(max_length=2000, blank=True, null=True)
 
-  gender = models.CharField(max_length=200)
-  current_school_status = models.CharField(max_length=1000)
-  current_school_campus = models.CharField(max_length=1000)
-  current_school_year = models.IntegerField()
-  current_college = models.CharField(max_length=2000)
-  living_on_res = models.BooleanField(default=False)
-  user_location = models.CharField(max_length=2000)
-  user_relationship_status = models.CharField(max_length=2000)
-  user_pizza_topping = models.CharField(max_length=2000)
+  gender = models.CharField(max_length=200, blank=True, null=True)
+  current_school_status = models.CharField(max_length=1000, blank=True, null=True)
+  current_school_campus = models.CharField(max_length=1000, blank=True, null=True)
+  current_school_year = models.IntegerField(blank=True, null=True)
+  current_college = models.CharField(max_length=2000, blank=True, null=True)
+  living_on_res = models.BooleanField(default=False, blank=True, null=True)
+  user_location = models.CharField(max_length=2000, blank=True, null=True)
+  user_relationship_status = models.CharField(max_length=2000, blank=True, null=True)
+  # user_pizza_topping = models.CharField(max_length=2000, blank=True, null=True)
 
-  job_companies = models.TextField()
-  user_description = models.TextField()
-  user_interests = models.TextField()
+  job_companies = models.TextField(blank=True, null=True)
+  user_description = models.TextField(blank=True, null=True)
+  user_interests = models.TextField(blank=True, null=True)
 
 
 class UserProfileImage(models.Model):

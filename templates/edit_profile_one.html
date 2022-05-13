@@ -43,7 +43,7 @@
         <div>
 
           <h2 class="ui header" style="display: inline-block; font-size: 27px;">
-            Kevin Duport 
+            {{ user_info.first_name }} {{ user_info.last_name }}
           </h2>
   
           <button id="save_button" class="ui inverted blue vertical animated button" tabindex="0" style="float: right;" type="submit">
@@ -61,14 +61,33 @@
             <div class="field">
               <label style="font-size: 14.5px;">Gender:</label>
               <div class="ui selection dropdown">
-                  <input type="hidden" name="gender" id="gender_input">
+                  {% if user_info.up_obj.gender == 'male' %}
+                  <input type="hidden" name="gender" id="gender_input" value="male">
+                  {% elif user_info.up_obj.gender == 'female' %}
+                  <input type="hidden" name="gender" id="gender_input" value="female">
+                  {% elif user_info.up_obj.gender == 'prefer_not_to_say' %}
+                    <div class="item active selected" data-value="prefer_not_to_say">Prefer Not to Say</div>
+                  {% elif user_info.up_obj.gender == 'prefer_not_to_say' %}
+                    <div class="item active selected" data-value="other">Other</div>
+                  {% endif %}
+
                   <i class="dropdown icon"></i>
                   <div class="default text"></div>
                   <div class="menu">
-                      <div class="item" data-value="male">Male</div>
-                      <div class="item" data-value="female">Female</div>
-                      <div class="item" data-value="prefer_not_to_say">Prefer Not to Say</div>
-                      <div class="item" data-value="other">Other</div>
+                    <div class="item" data-value="male">Male</div>
+                    <div class="item" data-value="female">Female</div>
+                    <div class="item" data-value="prefer_not_to_say">Prefer Not to Say</div>
+                    <div class="item" data-value="other">Other</div>
+                      <!-- {% if user_info.up_obj.gender == 'male' %}
+                        <div class="item active selected" data-value="male">Male</div>
+                      {% elif user_info.up_obj.gender == 'female' %}
+                        <div class="item active selected" data-value="female">Female</div>
+                      {% elif user_info.up_obj.gender == 'prefer_not_to_say' %}
+                        <div class="item active selected" data-value="prefer_not_to_say">Prefer Not to Say</div>
+                      {% elif user_info.up_obj.gender == 'prefer_not_to_say' %}
+                        <div class="item active selected" data-value="other">Other</div>
+                      {% endif %} -->
+
                   </div>
               </div>
             </div>
@@ -87,7 +106,7 @@
             <div class="inline fields">
               <div class="eight wide field" >
                 <i class="instagram icon" style="font-size: 16px;"></i>
-                <input type="text" id="instagram_id" name="instagram-id" placeholder="for the follower count" >
+                <input type="text" id="instagram_id" name="instagram-id" placeholder="for the follower count" value="{{  user_info.up_obj.instagram_id }}">
                 <!-- <input type="text" name="instagram-id" placeholder="to showcase the life you don't live" style="width: 20em;"> -->
               </div>
             </div>
@@ -95,14 +114,14 @@
             <div class="inline fields">
               <div class="eight wide field" >
                 <i class="snapchat ghost icon" style="font-size: 16px;"></i>
-                <input type="text" id="snapchat_id" name="snapchat-id" placeholder="shh...">
+                <input type="text" id="snapchat_id" name="snapchat-id" placeholder="shh..." value="{{  user_info.up_obj.instagram_id }}">
               </div>
             </div>
   
             <div class="inline fields">
               <div class="eight wide field" >
                 <i class="spotify icon" style="font-size: 16px;"></i>
-                <input type="text" id="spotify_id" name="spotify-id" placeholder="it's 'lit' ">
+                <input type="text" id="spotify_id" name="spotify-id" placeholder="it's 'lit' " value="{{  user_info.up_obj.instagram_id }}">
               </div>
             </div>
             
@@ -126,14 +145,24 @@
                   <label style="font-size: 14.5px;">Current Status:</label>
   
                   <div class="ui selection dropdown" style="width: 16em;">
-                      <input type="hidden" name="current_status" id="current_school_status">
+                      <!-- <input type="hidden" name="current_status" id="current_school_status"> -->
+                      {% if user_info.up_obj.current_school_status == 'undergrad_student' %}
+                        <input type="hidden" name="current_status" id="current_school_status" value="undergrad_student">
+                      {% elif user_info.up_obj.current_school_status == 'grad_student' %}
+                        <input type="hidden" name="current_status" id="current_school_status" value="grad_student">
+                      {% elif user_info.up_obj.current_school_status == 'alumni' %}
+                        <input type="hidden" name="current_status" id="current_school_status" value="alumni">
+                      {% elif user_info.up_obj.current_school_status == 'gap_year' %}
+                        <input type="hidden" name="current_status" id="current_school_status" value="gap_year">
+                      {% endif %}
+
                       <i class="dropdown icon"></i>
                       <div class="default text">no, not relationship status...</div>
                       <div class="menu">
-                          <div class="item" data-value="undergrad_student">Undergrad Student (full/part-time)</div>
-                          <div class="item" data-value="grad_student">Grad Student (full/part-time)</div>
-                          <div class="item" data-value="alumni">Alumni</div>
-                          <div class="item" data-value="gap_year">Gap Year (ie. co-op)</div>
+                          <div class="item" name="current_status" data-value="undergrad_student">Undergrad Student (full/part-time)</div>
+                          <div class="item" name="current_status" data-value="grad_student">Grad Student (full/part-time)</div>
+                          <div class="item" name="current_status" data-value="alumni">Alumni</div>
+                          <div class="item" name="current_status" data-value="gap_year">Gap Year (ie. co-op)</div>
                       </div>
                   </div>
                 </div>
@@ -147,7 +176,15 @@
                   <label style="font-size: 14.5px;">Campus:</label>
   
                   <div class="ui selection dropdown" style="width: 18em;">
-                      <input type="hidden" name="campus" id="user_campus">
+                      <!-- <input type="hidden" name="campus" id="user_campus"> -->
+                      {% if user_info.up_obj.current_school_campus == 'utsg' %}
+                        <input type="hidden" name="campus" id="user_campus" value="utsg">
+                      {% elif user_info.up_obj.current_school_campus == 'utm' %}
+                        <input type="hidden" name="campus" id="user_campus" value="utm">
+                      {% elif user_info.up_obj.current_school_campus == 'utsc' %}
+                        <input type="hidden" name="campus" id="user_campus" value="utsc">
+                      {% endif %}
+
                       <i class="dropdown icon"></i>
                       <div class="default text">can't go wrong with either, right?</div>
                       <div class="menu">
@@ -156,6 +193,7 @@
                         <div class="item" data-value="utsc">Scarborough</div>
                         <div class="disabled item" data-value="jk">Waterloo? (lol)</div>
                       </div>
+
                   </div>
                 </div>
   
@@ -167,7 +205,19 @@
                 <div class="field" id="user_year_field">
                   <label style="font-size: 14.5px;">Year:</label>
                   <div class="ui selection dropdown" style="width: 16em;">
-                      <input type="hidden" name="user_year" id="user_year">
+                      <!-- <input type="hidden" name="user_year" id="user_year"> -->
+                      {% if user_info.up_obj.current_school_year == '1' %}
+                        <input type="hidden" name="user_year" id="user_year" value="1">
+                      {% elif user_info.up_obj.current_school_year == '2' %}
+                        <input type="hidden" name="user_year" id="user_year" value="2">
+                      {% elif user_info.up_obj.current_school_year == '3' %}
+                        <input type="hidden" name="user_year" id="user_year" value="3">
+                      {% elif user_info.up_obj.current_school_year == '4' %}
+                        <input type="hidden" name="user_year" id="user_year" value="4">
+                      {% elif user_info.up_obj.current_school_year == '5' %}
+                        <input type="hidden" name="user_year" id="user_year" value="5">
+                      {% endif %}
+
                       <i class="dropdown icon"></i>
                       <div class="default text">they go by fast</div>
                       <div class="menu">
@@ -187,7 +237,23 @@
   
                 <label style="font-size: 14.5px;">College:</label>
                 <div class="ui selection dropdown" style="width: 20em;">
-                  <input type="hidden" name="user_college" id="user_college">                
+                  <!-- <input type="hidden" name="user_college" id="user_college"> -->
+                  {% if user_info.up_obj.current_college == 'innis' %}
+                    <input type="hidden" name="user_college" id="user_college" value="innis">
+                  {% elif user_info.up_obj.current_college == 'new_college' %}
+                    <input type="hidden" name="user_college" id="user_college" value="new_college">
+                  {% elif user_info.up_obj.current_college == 'st_michael_college' %}
+                    <input type="hidden" name="user_college" id="user_college" value="st_michael_college">
+                  {% elif user_info.up_obj.current_college == 'university_college' %}
+                    <input type="hidden" name="user_college" id="user_college" value="university_college">
+                  {% elif user_info.up_obj.current_college == 'victoria_college' %}
+                    <input type="hidden" name="user_college" id="user_college" value="victoria_college">
+                  {% elif user_info.up_obj.current_college == 'woodsworth_college' %}
+                    <input type="hidden" name="user_college" id="user_college" value="woodsworth_college">
+                  {% elif user_info.up_obj.current_college == 'trinity_college' %}
+                    <input type="hidden" name="user_college" id="user_college" value="trinity_college">
+                  {% endif %}
+
                   <i class="dropdown icon"></i>
                   <div class="default text">get ready for the trinity elitists</div>
                   <div class="menu">
@@ -230,7 +296,13 @@
                 <div class="field" id="user_living_on_res">
                   <label style="font-size: 14.5px;">Living on Res?</label>
                   <div class="ui selection dropdown" style="width: 16em;">
-                      <input type="hidden" name="living_on_res" id="living_on_res">
+                      <!-- <input type="hidden" name="living_on_res" id="living_on_res"> -->
+                      {% if user_info.up_obj.living_on_res == 'yes' %}
+                        <input type="hidden" name="living_on_res" id="living_on_res" value="yes">
+                      {% elif user_info.up_obj.living_on_res == 'no' %}
+                        <input type="hidden" name="living_on_res" id="living_on_res" value="no">
+                      {% endif %}
+
                       <i class="dropdown icon"></i>
                       <div class="default text">?</div>
                       <div class="menu">
@@ -249,7 +321,7 @@
                   <strong>Major(s):</strong>
                 </label>
                 <div class="ui fluid multiple search selection dropdown" style="width: 30em;">
-                  <input type="hidden" name="user_major" id="user_major">                
+                  <input type="hidden" name="user_major" id="user_major" value="{{ user_major_str }}">
                   <i class="dropdown icon"></i>
                   <div class="default text">select major(s)</div>
                   <div class="menu">
@@ -271,7 +343,7 @@
                 </label>
                 
                 <div class="ui fluid multiple search selection dropdown" style="width: 30em;">
-                  <input type="hidden" name="user_courses" id="user_courses">                
+                  <input type="hidden" name="user_courses" id="user_courses" value="{{ user_course_str }}">                
                   <i class="dropdown icon"></i>
                   <div class="default text">select course(s).. (undergrad only atm)</div>
                   <div class="menu">
@@ -293,7 +365,7 @@
                 </label>
                 
                 <div class="eight wide field" >
-                  <input type="text" name="user_job" id="user_job" placeholder="example: intern at NASA">
+                  <input type="text" name="user_job" id="user_job" placeholder="example: intern at NASA" value="{{ up_obj.job_companies }}">
                 </div>              
                 &nbsp;
   
@@ -318,7 +390,7 @@
               <label style="font-size: 14.5px;">Single ready to mingle?:</label>
   
               <div class="ui selection dropdown" style="width: 20em;">
-                  <input type="hidden" name="current_relationship_status" id="current_relationship_status">
+                  <input type="hidden" name="current_relationship_status" id="current_relationship_status" value="{{ up_obj.user_relationship_status }}">
                   <i class="dropdown icon"></i>
                   <div class="default text">oh la la...</div>
                   <div class="menu">
@@ -351,7 +423,7 @@
             </label>
             
             <div class="eight wide field" >
-              <input type="text" name="user_location" placeholder="dallas? hong kong? philippines?">
+              <input type="text" name="user_location" placeholder="dallas? hong kong? philippines?" value="{{ up_obj.user_location }}">
             </div>              
   
           </div>
@@ -374,12 +446,16 @@
   
           <div class="field">
             <label style="font-size: 14.5px;">Description:</label>
-            <textarea name="user_description" form="profile_form" id="user_description" rows="2" placeholder="something you want other students to know about you?"></textarea>
+            <textarea name="user_description" form="profile_form" id="user_description" rows="2" placeholder="something you want other students to know about you?">
+              {{ up_obj.user_description }}
+            </textarea>
           </div>
   
           <div class="field">
             <label style="font-size: 14.5px;">Interests:</label>
-            <textarea name="user_interest" form="profile_form" id="user_interest" rows="2" placeholder="UFOlogy, conspiracies, unexplained phenomena, quidditch, photography, okay I'll stop "></textarea>
+            <textarea name="user_interest" form="profile_form" id="user_interest" rows="2" placeholder="UFOlogy, conspiracies, unexplained phenomena, quidditch, photography, okay I'll stop ">
+              {{ up_obj.user_interests }}
+            </textarea>
           </div>
         
         </div>
