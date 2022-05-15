@@ -592,31 +592,45 @@
     }
 
 
-    $('#current_school_status').change(function(){
+    // $('#current_school_status').change(function(){
 
-      $('#user_year_field').removeClass('disabled')
-      $('#user_living_on_res').removeClass('disabled')
-      $('#user_course_field').removeClass('disabled')
+    //   console.log('change...')
+    //   // console.log('current-val:', this.value)
 
-      var current_status_val = this.value
-      if (current_status_val == 'alumni'){
-        $('#user_year_field').addClass('disabled')
-        $('#user_living_on_res').addClass('disabled')
-        $('#user_course_field').addClass('disabled')
-      }
-      else if (current_status_val == 'grad_student'){
-        $('#user_course_field').addClass('disabled')
-        // $('#user_year_field').addClass('disabled')
-        // $('#user_living_on_res').addClass('disabled')
-      }
-      else if (current_status_val == 'gap_year'){
-        $('#user_course_field').addClass('disabled')
-      }
+    //   $('#user_year_field').removeClass('disabled')
+    //   $('#user_living_on_res').removeClass('disabled')
+    //   $('#user_course_field').removeClass('disabled')
+
+    //   var current_status_val = this.value
+    //   if (current_status_val == 'alumni'){
+    //     $('#user_year_field').addClass('disabled')
+    //     $('#user_living_on_res').addClass('disabled')
+    //     $('#user_course_field').addClass('disabled')
+    //   }
+    //   else if (current_status_val == 'grad_student'){
+    //     $('#user_course_field').addClass('disabled')
+    //     // $('#user_year_field').addClass('disabled')
+    //     // $('#user_living_on_res').addClass('disabled')
+    //   }
+    //   else if (current_status_val == 'gap_year'){
+    //     $('#user_course_field').addClass('disabled')
+    //   }
       
 
-      // var current_school_val = this.value;
-      // var firstDropVal = $('#pick').val();
-    })
+    //   // var current_school_val = this.value;
+    //   // var firstDropVal = $('#pick').val();
+    // })
+
+
+    $(document).on('change','#current_school_status',function(){
+        alert('Change Happened');
+      // TODO: fix this and go from there
+
+
+    });
+
+    
+
 
 
 
@@ -626,5 +640,12 @@
 
 
 {% endblock %}
+
+
+ 
+
+
+
+
 
 
