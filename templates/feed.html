@@ -6,30 +6,34 @@
 
 
 
-<div class="ui centered grid" >
+<div class="ui grid" >
       
 
 
-  <div class="three wide column" style="padding: 2em;">
+  <div class="three wide column" style="padding: 3em;">
     
-    <!-- <h3>Filter:</h3> -->
     <h3>Tags:</h3>
 
     <ul>
 
       <li>
         <a href="">
-          r/uoft (14)
+          question (14)
         </a>
       </li>
       <li>
         <a href="">
-          courses
+          advice (4)
         </a>
       </li>
       <li>
         <a href="">
-          Uoft News (14)
+          meme (8)
+        </a>
+      </li>
+      <li>
+        <a href="">
+          random (7)
         </a>
       </li>
       
@@ -38,9 +42,10 @@
   </div>
 
 
-  <div class="eight wide column" style="padding-top: 1em;">
+  <div class="nine wide column">
 
-    <div class="ui text menu" style="width:100%; display: flex; justify-content: left; padding-left: 10px;">
+    <br/>
+    <!-- <div class="ui text menu" style="width:100%; display: flex; justify-content: left; padding-left: 10px;">
 
       <a class="active item" >
         All
@@ -48,14 +53,14 @@
       <a class="item">
         Only Room Posts
       </a>
-      <!-- <a class="item">
+      <a class="item">
         Uoft Subreddit Posts 
       </a>
       <a class="item">
         Recent News
-      </a> -->
+      </a>
 
-    </div>
+    </div> -->
 
 
     <!-- <div class="ui raised link card" style="width: 40em; display: flex; justify-content: center;"> -->
@@ -63,12 +68,12 @@
 
     <!-- <a class="ui raised card" href="{% url 'post_feed' %}" style="width: 42em;"> -->
 
-      <div class="ui raised link card" style="width: 42em;" onclick="showModal()">
+      <div class="ui raised link card" style="width: 100%;" onclick="showModal()">
 
         <div class="content" >
           <div class="ui form">
             <div class="field disabled">
-              <input style="height: 3em" type="text" name="first-name" placeholder="share a new study spot, ask a question, make us laugh, or cry, be boundless...  #cringe">
+              <input style="height: 3em" type="text" name="first-name" placeholder="share a new study spot, ask a question, make us laugh, or cry, be boundless...">
             </div>
           </div>
         </div>
@@ -143,7 +148,7 @@
     </div>
 
 
-    <div class="ui form" style="width: 94%; display: flex; justify-content: right;">
+    <div class="ui form" style="width: 100%; display: flex; justify-content: right;">
     <!-- <div class="ui form"> -->
 
       <div class="field">
@@ -159,11 +164,12 @@
 
     </div>
 
-    <div class="ui link card" style="width: 42em;">
+
+    <!-- <div class="ui link card" style="width: 45em;">
 
       <div class="content">
-        <!-- <i class="right floated like icon"></i>
-        <i class="right floated star icon"></i> -->
+        <i class="right floated like icon"></i>
+        <i class="right floated star icon"></i>
         <div class="header">Welcome to the Uoft Room</div>
         <div class="description">
           <p>
@@ -178,25 +184,26 @@
             if people would join the party... who knows, I could be completely wrong and this is the most useless piece-of-shit 
             website you have ever seen and you absolutely never want to meet me (given the campus size and current state of the web (ahem), 
             that's very likely anyways) but hey, I'm willing to roll the dice. 
-
           </p>
         </div>
+
       </div>
+
       <div class="extra content">
-        <!-- <span class="left floated like">
+        <span class="left floated like">
           <i class="like icon"></i>
           Like
-        </span> -->
+        </span>
         <span class="right floated star">
           <i class="comment outline icon"></i>
           3 Comments
         </span>
       </div>
 
-    </div>
+    </div> -->
 
-
-    <div class="ui link card" style="width: 42em;">
+    <!-- width: 42em; -->
+    <div class="ui link card" style="width: 100%;">
 
       <div class="content">
         <!-- <i class="right floated like icon"></i>
@@ -221,7 +228,8 @@
 
     </div>
 
-    <div class="ui link card" style="width: 42em;">
+    <!-- <div class="ui link card" style="width: 42em;"> -->
+    <div class="ui link card" style="width: 100%;">
 
       <div class="content">
         <!-- <i class="right floated like icon"></i>
@@ -282,9 +290,49 @@
 
 
 
-  <div class="four wide column">
+  <div class="four wide column" style="padding-top: 3em; padding-left: 3em;">
 
-    <div class="ui card">
+
+    <div class="ui small feed">
+      <!-- <h4 class="ui header">Network Activity:</h4> -->
+      <h3>Network Activity:</h3>
+      <div class="event">
+        <div class="content">
+          <div class="summary" style="font-size: 13.5px;">
+            <i class="right triangle icon"></i>
+            <a>Elliot Fu</a> joined the room.
+          </div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="content">
+          <div class="summary" style="font-size: 13.5px;">
+            <i class="right triangle icon"></i>
+            <a href="{% url 'profile' %}">Stevie Feliciano</a> shared a post.
+          </div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="content">
+          <div class="summary" style="font-size: 13.5px;">
+            <i class="right triangle icon"></i>
+            <a>Helen Troy</a> updated her profile.
+          </div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="content">
+          <div class="summary" style="font-size: 13.5px;">
+            <i class="right triangle icon"></i>
+            <a>Christian Rocha</a> joined the room.
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- <div class="ui card">
+
       <div class="content">
         <div class="header">Network Activity</div>
         <div class="meta">Changed: Just Now</div>
@@ -325,7 +373,7 @@
 
     </div>
 
-  </div>
+  </div> -->
 
 
 </div>

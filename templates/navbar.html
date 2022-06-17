@@ -1,79 +1,93 @@
 {% load static %}
 
 
-<!-- <div class="ui secondary pointing menu" id="main_menu">
 
-  <a id="primary_logo" class="item" style="font-family: 'Indie Flower', cursive; font-size: 26px; padding:0;" href="{% url 'main' %}">
-  &nbsp;Uoft's Room
-  </a>
+{% if request.user %}
 
-  <div class="right menu">
+  <div class="ui secondary pointing menu" id="main_menu">
 
-    <a class="active item" href="{% url 'main' %}">
-      activity feed
+    <a id="primary_logo" class="item" style="font-family: 'Indie Flower', cursive; font-size: 26px; padding:0;" href="{% url 'main' %}">
+    &nbsp;Uoft's Room
     </a>
-    <a class="disabled item">
-      groups (soon)
-    </a>
-    <a class="item" href="{% url 'browse' %}">
-      browse
-    </a>
-    <a class="item" href="{% url 'profile' %}">
-      random profile
-    </a>
-    <a class="item" href="{% url 'profile' %}">
-      my profile
-    </a>
-    <a class="item">
-      messages
-    </a>
-    <a class="item" href="{% url 'faq' %}">
-      faq
-    </a>
-    <a class="item">
-      logout
-    </a>
+
+    <div class="right menu">
+
+      <a class="active item" href="{% url 'feed' %}">
+        feed
+      </a>
+      <!-- <a class="disabled item">
+        groups (soon)
+      </a> -->
+      <a class="item" href="{% url 'browse' %}">
+        browse
+      </a>
+      <a class="item" href="{% url 'profile' %}">
+        random profile
+      </a>
+      <a class="item" href="{% url 'profile' %}">
+        my profile
+      </a>
+      <!-- <a class="item">
+        messages
+      </a> -->
+      <a class="item" href="{% url 'faq' %}">
+        faq
+      </a>
+      <a class="item">
+        logout
+      </a>
+      
+    </div>
     
-  </div>
-  
-  <div class="right menu">
+    <div class="right menu">
 
-    <div class="item">
-      <a href="" >Send an invite to your friend(s)</a>
+      <div class="item">
+        <a href="" >Send an invite to your friend(s)</a>
+      </div>
+
     </div>
 
   </div>
 
-</div> -->
+{% else %}
 
+  <div class="ui secondary pointing menu" id="main_menu">
 
-
-<div class="ui secondary pointing menu" id="main_menu">
-
-  <a id="primary_logo" class="item" style="font-family: 'Indie Flower', cursive; font-size: 26px; padding:0; padding-left: 1em;" href="{% url 'landing' %}">
-  &nbsp;Uoft's Room
-  </a>
-
-  <div class="right menu">
-
-    <a class="item" href="{% url 'faq' %}">
-      about
+    <a id="primary_logo" class="item" style="font-family: 'Indie Flower', cursive; font-size: 26px; padding:0; padding-left: 1em;" href="{% url 'landing' %}">
+    &nbsp;Uoft's Room
     </a>
-    <a class="item" href="{% url 'user_auth' %}">
-      signup or login
-    </a>
-        
-  </div>
-  
-  <div class="right menu">
 
-    <div class="item">
-      <a href="" >Send an invite to your friend(s)</a>
+    <div class="right menu">
+
+      <a class="item" href="{% url 'faq' %}">
+        about
+      </a>
+      <a class="item" href="{% url 'user_auth' %}">
+        signup or login
+      </a>
+          
+    </div>
+    
+    <div class="right menu">
+
+      <div class="item">
+        <a href="" >Send an invite to your friend(s)</a>
+      </div>
+
     </div>
 
   </div>
 
-</div>
+
+{% endif %}
+
+
+
+<!-- 
+  TODO: 
+  - add the active menu switching and go from there...
+ -->
+
 
 
 

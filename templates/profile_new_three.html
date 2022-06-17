@@ -1,0 +1,477 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="ui grid" style="padding-left: 8.5em; margin-top: 1.5em;">
+
+  <div class="four wide column" style="margin-top: 1em;">
+    <!-- <img src="{% static 'sample_images/image_three.jpeg' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"> -->
+    <img id="profile_image_placeholder" src="//joeschmoe.io/api/v1/male/{{ user_info.first_name }}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+    <!-- <img id="profile_image_placeholder" src="{% static 'sample_images/image_three.jpeg' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">  -->
+
+    <span style="font-weight: bold">
+      To update the gender of the avatar-image, update your gender on the profile page
+    </span>
+
+    <div class="ui horizontal divider">
+      <i class="edit icon"></i> Personal Settings
+    </div>            
+    <div>
+        <ul>
+          <li>
+            <strong>
+              Total Profile Views: 54
+            </strong>
+          </li>
+          <li>
+            <a href="">People who 'eyed' you</a>
+          </li>
+          <li>
+            <a href="{% url 'edit_profile' %}">Edit Profile</a>
+          </li>
+
+        </ul>
+    </div>
+ 
+
+    <div class="ui horizontal divider">
+      <i class="pencil alternate icon"></i> Courses This Year
+    </div>
+    <div>
+      <!-- TODO: add courses here... -->
+    </div>
+
+  </div>
+
+
+
+  <div class="ten wide column" style="padding-left: 3em;">
+      
+    <div>
+
+      <h2 class="ui header" style="display: inline-block; font-size: 27px;">
+        {{ user_info.first_name }} {{ user_info.last_name }}
+        <!-- <div class="ui teal horizontal label">Current Student</div>           -->
+      </h2>
+
+      <div style="display: flex; justify-content: space-between; float: right; margin-top: 10px;">
+
+        {% if request.user.first_name != user_info.first_name %}
+          
+          <span style="padding-right: 8px; padding-bottom: 10px;">
+            <!-- <i id="eye_question_icon" class="question icon" style="font-size: 14.5px;" onclick="showModal()"></i>   -->
+            <a id="eye_question_icon" onclick="showModal()">what's the eye for?</a>
+          </span>
+          
+          <span id="eye_emoji" style="font-size: 25px; padding-right: 20px;" >
+            &#128064;
+          </span>
+
+          <div class="ui blue vertical animated button" tabindex="0" style="margin-top: -10px;">
+            <div class="hidden content">slide?</div>
+            <div class="visible content">
+              <i class="paper plane icon"></i>
+            </div>
+          </div>
+        
+        {% else %}
+          
+          <button onclick="location.href='{% url "edit_profile" %}'" id="edit_profile_button" class="ui inverted blue vertical button" tabindex="0" style="margin-top: -10px;">
+            edit profile
+          </button>
+
+          <div id="msg_myself" class="ui blue vertical animated disabled button" tabindex="0" style="margin-top: -10px;">
+            <div class="hidden content">lonely?</div>
+            <div class="visible content">
+              <!-- <i class="paper plane icon"></i> -->
+              send msg to me
+            </div>
+          </div>
+
+        {% endif %}
+        
+      </div>
+
+      <div class="ui mini modal">
+        <div class="header">
+          what's this eye for?
+          <strong>
+            <s>
+            use at your own risk  
+            </s>
+          </strong>
+        </div>
+        <div class="content">
+          <p style="font-size: 14.5px">
+            all I know for now is when clicked, this will notify the person that you &#128064; them...             
+            <span style="font-size: 20px">&#129335;</span>
+            <!-- <br/><br/> -->
+          </p>
+        </div>
+        <!-- <div class="actions">
+          <div class="ui approve button">Approve</div>
+          <div class="ui button">Neutral</div>
+          <div class="ui cancel button">Cancel</div>
+        </div> -->
+
+      </div>
+
+
+      <div>
+        <span style="font-size: 14.5px;">
+          <i class="instagram icon" style="font-size: 16px;">&nbsp;:</i>
+             
+        </span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style="font-size: 14.5px;">
+          <!-- <i class="snapchat ghost icon" style="font-size: 16px;"></i>kduport24 -->
+          <!-- TODO: onclick of private, tell user to 'eye' the user and if they accept, user get's access -->
+          <i class="snapchat ghost icon" style="font-size: 16px;">&nbsp;:</i>
+          <!-- <i class="question icon" style="font-size: 16px;"></i> -->
+        </span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <!-- <span style="font-size: 14.5px;">
+          <i class="spotify icon" style="font-size: 16px;">&nbsp;:</i>
+          <a href="https://open.spotify.com/user/2uwyubwsy18et495hxmvherd2">Spotify</a>
+        </span> -->
+
+      </div>
+
+
+      <!-- <div class="ui secondary pointing menu">
+
+        <a class="item active">
+          Posts
+        </a>
+        <a class="item">
+          Profile
+        </a>
+  
+      </div> -->
+
+      <div class="ui tabular menu">
+        <a class="item active" id="posts_tab">
+          Posts
+        </a>
+        <a class="item" id="profile_tab">
+          Profile
+        </a>
+
+      </div>
+
+
+      <div id="tab_post_information">
+
+        <div class="ui link card" style="width: 100%;">
+
+          <div class="content">
+            <!-- <i class="right floated like icon"></i>
+            <i class="right floated star icon"></i> -->
+            <div class="header">Acorn Status Update?</div>
+            <div class="description">
+              <p>
+                Hi everyone, Is anyone still waiting for their grades to be released acorn?
+              </p>
+            </div>
+          </div>
+          <div class="extra content">
+            <!-- <span class="left floated like">
+              <i class="like icon"></i>
+              Like
+            </span> -->
+            <span class="right floated star">
+              <i class="comment outline icon"></i>
+              3 Comments
+            </span>
+          </div>
+    
+        </div>
+
+
+        <div class="ui link card" style="width: 100%;">
+
+          <div class="content">
+            <!-- <i class="right floated like icon"></i>
+            <i class="right floated star icon"></i> -->
+            <div class="header">Acorn Status Update?</div>
+            <div class="description">
+              <p>
+                Hi everyone, Is anyone still waiting for their grades to be released acorn?
+              </p>
+            </div>
+          </div>
+          <div class="extra content">
+            <!-- <span class="left floated like">
+              <i class="like icon"></i>
+              Like
+            </span> -->
+            <span class="right floated star">
+              <i class="comment outline icon"></i>
+              3 Comments
+            </span>
+          </div>
+    
+        </div>
+
+
+        <div class="ui link card" style="width: 100%;">
+
+          <div class="content">
+            <!-- <i class="right floated like icon"></i>
+            <i class="right floated star icon"></i> -->
+            <div class="header">Acorn Status Update?</div>
+            <div class="description">
+              <p>
+                Hi everyone, Is anyone still waiting for their grades to be released acorn?
+              </p>
+            </div>
+          </div>
+          <div class="extra content">
+            <!-- <span class="left floated like">
+              <i class="like icon"></i>
+              Like
+            </span> -->
+            <span class="right floated star">
+              <i class="comment outline icon"></i>
+              3 Comments
+            </span>
+          </div>
+    
+        </div>
+
+      </div>
+
+
+      <div id="tab_profile_information" style="display: none;">
+
+          <!-- <div class="ui horizontal divider" >
+            <i class="user icon"></i> Info
+          </div> -->
+
+          <div style="padding-top: 4px;">
+
+            <p>
+              <strong style="font-size: 14.5px;">
+                Email:
+              </strong>
+            </p>
+
+
+            <p>
+              <strong style="font-size: 14.5px;">
+                Gender:
+              </strong>
+            </p>
+            
+            <p>
+              <strong style="font-size: 14.5px;">
+                Year:
+              </strong>
+            </p>
+            <p>
+              <strong style="font-size: 14.5px;">
+                Studying:
+              </strong>
+            </p>
+
+            <p>
+              <strong style="font-size: 14.5px;">
+                Single looking to mingle?
+              </strong>
+            </p>
+
+            <p>
+              <strong style="font-size: 14.5px;">
+                Campus:
+              </strong> 
+            </p>  
+
+            <p>
+              <strong style="font-size: 14.5px;">
+                College:
+              </strong> 
+            </p>  
+
+            <p>
+              <strong style="font-size: 14.5px;">
+                Living on Res:
+              </strong> 
+            </p>  
+
+            <p>
+              <strong style="font-size: 14.5px;">
+                Where I'm from:
+              </strong> 
+            </p>
+            
+            <p>
+              <strong style="font-size: 14.5px;">
+                Description:
+              </strong> 
+            </p>
+
+          </div>
+
+
+          <div class="ui horizontal divider">
+            <i class="user icon"></i> More
+          </div>
+
+          <div>
+
+            <p>
+              <strong style="font-size: 14.5px;">
+                Jobs & Companies worked at: 
+              </strong>
+            </p>
+
+            <p>
+              <strong style="font-size: 14.5px;">
+                Interests:
+              </strong>
+            </p>
+          
+          </div>
+      
+
+      </div>
+
+
+
+      <!-- <div class="ui horizontal divider" >
+        <i class="user icon"></i> Info
+      </div>
+
+      <div style="padding-top: 0px;">
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Gender:
+          </strong>
+        </p>
+        
+        <p>
+          <strong style="font-size: 14.5px;">
+            Year:
+          </strong>
+        </p>
+        <p>
+          <strong style="font-size: 14.5px;">
+            Studying:
+          </strong>
+        </p>
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Single looking to mingle?
+          </strong>
+        </p>
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Campus:
+          </strong> 
+        </p>  
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            College:
+          </strong> 
+        </p>  
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Living on Res:
+          </strong> 
+        </p>  
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Where I'm from:
+          </strong> 
+        </p>
+        
+        <p>
+          <strong style="font-size: 14.5px;">
+            Description:
+          </strong> 
+        </p>
+
+      </div>
+
+
+      <div class="ui horizontal divider">
+        <i class="user icon"></i> More
+      </div>
+
+      <div>
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Jobs & Companies worked at: 
+          </strong>
+        </p>
+
+        <p>
+          <strong style="font-size: 14.5px;">
+            Interests:
+          </strong>
+        </p>
+      
+      </div>
+       -->
+
+    </div>
+
+
+  </div>
+
+  
+
+</div>
+
+
+
+
+
+
+  <script>
+
+    $('#eye_question_icon').click(function(event){
+      event.preventDefault();
+      $('.mini.modal').modal('show');
+    })
+    
+
+    // TODO: eye functionality and the profile-viewing functionality 
+    $('#eye_emoji').click(function(){
+      // document.getElementById('eye_emoji_text').style.display = ''
+
+    })
+
+
+    
+    $('#posts_tab').click(function(){
+      $('#tab_post_information').show()
+      $('#tab_profile_information').hide()
+      $('#posts_tab').addClass('active')
+      $('#profile_tab').removeClass('active')
+
+    })
+
+    $('#profile_tab').click(function(){
+      $('#tab_post_information').hide()
+      $('#tab_profile_information').show()
+      $('#posts_tab').removeClass('active')
+      $('#profile_tab').addClass('active')
+    })
+
+
+
+  </script>
+
+  {% endblock %}
+
+
