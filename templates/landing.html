@@ -20,6 +20,28 @@
   <div class="nine wide column" style="margin-left: 5em; padding-top: 2em;">
     
     <p style="width: 63ch; line-height: 1.5em; font-size: 14.5px;">
+
+      The UofT Room is an online network for current UofT students and alumni. You can create your 
+      online profile, add your courses, link your social media accounts, find 
+      other students on campus, and share information with others.
+      <b>
+        The website is only available to those who have a valid uoft email address.
+      </b>
+
+      <br/><br/>
+      <strong style="font-size: 14.5px">It can be used to: </strong>
+      <ul id="use_case_list" class="ui list" >
+        <li>Find people who are taking the same classes as you this coming semester</li>        
+        <li>Connect with a grad student who's in a program you want to be in</li>
+        <li>Ask questions, share some news, post something funny for others to see</li>
+        <li> <span style="font-size: 16px;">&#128064;</span> <i>(you'll get it if you join...)</i></li>
+      </ul>
+
+      <a href="{% url 'faq' %}" style="font-size: 14.5px;">Learn more about it here</a>
+
+    </p>
+
+    <!-- <p style="width: 63ch; line-height: 1.5em; font-size: 14.5px;">
       The UofT Room is an online directory for current UofT students and alumni. You can create your 
       online profile, add your courses, share your interests, link your social media accounts, and 
       find/connect with other students on campus. 
@@ -36,7 +58,7 @@
 
       <a href="{% url 'faq' %}" style="font-size: 14.5px;">Learn more about it here</a>
 
-    </p>
+    </p> -->
 
   </div>
 
@@ -98,7 +120,7 @@
 
         <div class="field" style="width: 20em;">
           <label>password:</label>
-          <input type="password" id="login_password" name="password" placeholder="reminder: stupid passwords do exist...">
+          <input type="password" id="login_password" name="password" placeholder="how can you forget it?">
           <!-- there is such thing as a stupid password -->
         </div>
         
@@ -157,7 +179,7 @@
 
         <div class="field" style="width: 20em;">
           <label>password:</label>
-          <input type="password" name="password" placeholder="reminder: stupid passwords do exist...">
+          <input type="password" name="password" placeholder="how can you forget it?">
           <!-- there is such thing as a stupid password -->
         </div>
         
@@ -173,20 +195,17 @@
     {% endif %}
 
 
-
   </div>
 
   {{ form_data |json_script:'form_data' }}
 
 
-  <script>
 
+  <script>
 
 
     // document.getElementById('signup_form').style.display = 'none'
     // document.getElementById('login_form').style.display = ''
-
-
 
     // var formData = "{{ form_data }}"
     // console.log('formdata:', formData)
@@ -207,7 +226,6 @@
 
       
     }
-
 
 
     $("#first_name").focus(function() {
@@ -252,8 +270,6 @@
       document.getElementById('login_form').style.display = ''
 
     })
-
-
     
 
   </script>

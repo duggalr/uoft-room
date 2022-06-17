@@ -6,3 +6,4 @@ rooms/migrations
 rooms/__pycache__
 static
 media/
+todo.txt
