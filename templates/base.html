@@ -35,6 +35,37 @@
     {% block content %}
     {% endblock %}
 
+
+    <script>
+
+      var current_url = '{{ request.path }}'
+
+      if ( (current_url).includes("feed") ){
+
+        $('#feed_item').addClass('active')
+        $('#feed_item').siblings().removeClass('active');
+
+      } else if ( (current_url).includes("browse") ){
+        
+        $('#browse_item').addClass('active')
+        $('#browse_item').siblings().removeClass('active');
+
+      } else if ( (current_url).includes("profile") ){
+        
+        $('#my_profile_item').addClass('active')
+        $('#my_profile_item').siblings().removeClass('active');
+
+      } else if ( (current_url).includes("faq") ){
+        
+        $('#faq_item').addClass('active')
+        $('#faq_item').siblings().removeClass('active');
+
+      }
+
+
+
+    </script>
+
   </body>
 
 

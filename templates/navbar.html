@@ -11,32 +11,32 @@
     </a>
 
     <div class="right menu">
-
-      <a class="active item" href="{% url 'feed' %}">
+      
+      <a id="feed_item" class="active item" href="{% url 'feed' %}">
         feed
       </a>
       <!-- <a class="disabled item">
         groups (soon)
-      </a> -->
-      <a class="item" href="{% url 'browse' %}">
+      </a> -->    
+      <a id="browse_item"  class="item" href="{% url 'browse' %}">
         browse
       </a>
-      <a class="item" href="{% url 'profile' %}">
-        random profile
+      <a id="random_profile_item" class="disabled item" href="{% url 'profile' %}">
+        random profile (TODO)
       </a>
-      <a class="item" href="{% url 'profile' %}">
+      <a id="my_profile_item" class="item" href="{% url 'profile' %}">
         my profile
       </a>
       <!-- <a class="item">
         messages
       </a> -->
-      <a class="item" href="{% url 'faq' %}">
+      <a id="faq_item" class="item" href="{% url 'faq' %}">
         faq
       </a>
       <a class="item">
         logout
       </a>
-      
+
     </div>
     
     <div class="right menu">
@@ -82,11 +82,43 @@
 {% endif %}
 
 
+<script>
+  
 
-<!-- 
-  TODO: 
-  - add the active menu switching and go from there...
- -->
+  // $('#main_menu').on('click', '.item', function(e) {
+  //   e.preventDefault();
+
+  //   $(this)
+  //     .addClass('active')
+  //     .siblings('.item')
+  //       .removeClass('active');
+        
+  //     // window.load($(this).attr("href"));
+  //     window.location.href = $(this).attr("href");
+        
+  // });
+
+
+  // $('.item').click(function(e){
+  //   console.log('clicked menu')
+
+  //   var parent_elem = $(this).parent()
+  //   console.log('children:', parent_elem.children('.item'))
+  //   var child_elements = parent_elem.children('.item')
+
+  //   for (i=0; i <= child_elements.length-1; i++){
+  //     var ce = child_elements[i]
+  //     $(ce).removeClass('active')
+      
+  //   }
+
+  //   $(this).addClass('active')
+
+
+  // })
+
+</script>
+
 
 
 
