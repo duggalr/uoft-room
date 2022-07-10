@@ -145,8 +145,9 @@
                   <label style="font-size: 14.5px;">Current Status:</label>
   
                   <div class="ui selection dropdown" style="width: 16em;">
+
                       <!-- <input type="hidden" name="current_status" id="current_school_status"> -->
-                      {% if user_info.up_obj.current_school_status == 'undergrad_student' %}
+                      <!-- {% if user_info.up_obj.current_school_status == 'undergrad_student' %}
                         <input type="hidden" name="current_status" id="current_school_status" value="undergrad_student">
                       {% elif user_info.up_obj.current_school_status == 'grad_student' %}
                         <input type="hidden" name="current_status" id="current_school_status" value="grad_student">
@@ -154,16 +155,21 @@
                         <input type="hidden" name="current_status" id="current_school_status" value="alumni">
                       {% elif user_info.up_obj.current_school_status == 'gap_year' %}
                         <input type="hidden" name="current_status" id="current_school_status" value="gap_year">
-                      {% endif %}
+                      {% else %}
+                        <input type="hidden" name="current_status" id="current_school_status">
+                      {% endif %} -->
+
+                      <input type="hidden" name="current_status" id="current_school_status" value="{{ user_info.up_obj.current_school_status }}">
 
                       <i class="dropdown icon"></i>
-                      <div class="default text">no, not relationship status...</div>
+                      <div class="default text">no, not relationship status...</div>                      
                       <div class="menu">
                           <div class="item" name="current_status" data-value="undergrad_student">Undergrad Student (full/part-time)</div>
                           <div class="item" name="current_status" data-value="grad_student">Grad Student (full/part-time)</div>
                           <div class="item" name="current_status" data-value="alumni">Alumni</div>
                           <div class="item" name="current_status" data-value="gap_year">Gap Year (ie. co-op)</div>
                       </div>
+
                   </div>
                 </div>
   
@@ -176,14 +182,18 @@
                   <label style="font-size: 14.5px;">Campus:</label>
   
                   <div class="ui selection dropdown" style="width: 18em;">
-                      <!-- <input type="hidden" name="campus" id="user_campus"> -->
-                      {% if user_info.up_obj.current_school_campus == 'utsg' %}
+                      
+                      <!-- {% if user_info.up_obj.current_school_campus == 'utsg' %}
                         <input type="hidden" name="campus" id="user_campus" value="utsg">
                       {% elif user_info.up_obj.current_school_campus == 'utm' %}
                         <input type="hidden" name="campus" id="user_campus" value="utm">
                       {% elif user_info.up_obj.current_school_campus == 'utsc' %}
                         <input type="hidden" name="campus" id="user_campus" value="utsc">
-                      {% endif %}
+                      {% else %}
+                        <input type="hidden" name="campus" id="user_campus">
+                      {% endif %} -->
+
+                      <input type="hidden" name="campus" id="user_campus" value="{{ user_info.up_obj.current_school_campus }}">
 
                       <i class="dropdown icon"></i>
                       <div class="default text">can't go wrong with either, right?</div>
@@ -205,8 +215,9 @@
                 <div class="field" id="user_year_field">
                   <label style="font-size: 14.5px;">Year:</label>
                   <div class="ui selection dropdown" style="width: 16em;">
+
                       <!-- <input type="hidden" name="user_year" id="user_year"> -->
-                      {% if user_info.up_obj.current_school_year == '1' %}
+                      <!-- {% if user_info.up_obj.current_school_year == '1' %}
                         <input type="hidden" name="user_year" id="user_year" value="1">
                       {% elif user_info.up_obj.current_school_year == '2' %}
                         <input type="hidden" name="user_year" id="user_year" value="2">
@@ -216,7 +227,11 @@
                         <input type="hidden" name="user_year" id="user_year" value="4">
                       {% elif user_info.up_obj.current_school_year == '5' %}
                         <input type="hidden" name="user_year" id="user_year" value="5">
-                      {% endif %}
+                      {% else %}
+                        <input type="hidden" name="user_year" id="user_year">
+                      {% endif %} -->
+
+                      <input type="hidden" name="user_year" id="user_year" value="{{ user_info.up_obj.current_school_year }}">
 
                       <i class="dropdown icon"></i>
                       <div class="default text">they go by fast</div>
@@ -235,57 +250,65 @@
   
               <div class="inline fields">
   
-                <label style="font-size: 14.5px;">College:</label>
-                <div class="ui selection dropdown" style="width: 20em;">
-                  <!-- <input type="hidden" name="user_college" id="user_college"> -->
-                  {% if user_info.up_obj.current_college == 'innis' %}
-                    <input type="hidden" name="user_college" id="user_college" value="innis">
-                  {% elif user_info.up_obj.current_college == 'new_college' %}
-                    <input type="hidden" name="user_college" id="user_college" value="new_college">
-                  {% elif user_info.up_obj.current_college == 'st_michael_college' %}
-                    <input type="hidden" name="user_college" id="user_college" value="st_michael_college">
-                  {% elif user_info.up_obj.current_college == 'university_college' %}
-                    <input type="hidden" name="user_college" id="user_college" value="university_college">
-                  {% elif user_info.up_obj.current_college == 'victoria_college' %}
-                    <input type="hidden" name="user_college" id="user_college" value="victoria_college">
-                  {% elif user_info.up_obj.current_college == 'woodsworth_college' %}
-                    <input type="hidden" name="user_college" id="user_college" value="woodsworth_college">
-                  {% elif user_info.up_obj.current_college == 'trinity_college' %}
-                    <input type="hidden" name="user_college" id="user_college" value="trinity_college">
-                  {% endif %}
+                <div class="field" id="user_college_field">
 
-                  <i class="dropdown icon"></i>
-                  <div class="default text">get ready for the trinity elitists</div>
-                  <div class="menu">
-                    <div class="item" data-value="innis">
-                      <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A7987.jpg" />
-                      Innis College
-                    </div>
-                    <div class="item" data-value="new_college">
-                      <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8008.jpg" />
-                      New College
-                    </div>
-                    <div class="item" data-value="st_michael_college">
-                      <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8103.jpg" />
-                      St. Michael's College
-                    </div>
-                    <div class="item" data-value="university_college">
-                      <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8027.jpg" />
-                      University College
-                    </div>
-                    <div class="item" data-value="victoria_college">
-                      <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8069.jpg" />
-                      Victoria College
-                    </div>
-                    <div class="item" data-value="woodsworth_college">
-                      <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A7967.jpg" />
-                      Woodsworth College
-                    </div>
-                    <div class="item" data-value="trinity_college">
-                      <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8064.jpg" />
-                      Trinity College
+                  <label style="font-size: 14.5px;">College:</label>
+                  <div class="ui selection dropdown" style="width: 20em;">
+                    <!-- <input type="hidden" name="user_college" id="user_college"> -->
+                    <!-- {% if user_info.up_obj.current_college == 'innis' %}
+                      <input type="hidden" name="user_college" id="user_college" value="innis">
+                    {% elif user_info.up_obj.current_college == 'new_college' %}
+                      <input type="hidden" name="user_college" id="user_college" value="new_college">
+                    {% elif user_info.up_obj.current_college == 'st_michael_college' %}
+                      <input type="hidden" name="user_college" id="user_college" value="st_michael_college">
+                    {% elif user_info.up_obj.current_college == 'university_college' %}
+                      <input type="hidden" name="user_college" id="user_college" value="university_college">
+                    {% elif user_info.up_obj.current_college == 'victoria_college' %}
+                      <input type="hidden" name="user_college" id="user_college" value="victoria_college">
+                    {% elif user_info.up_obj.current_college == 'woodsworth_college' %}
+                      <input type="hidden" name="user_college" id="user_college" value="woodsworth_college">
+                    {% elif user_info.up_obj.current_college == 'trinity_college' %}
+                      <input type="hidden" name="user_college" id="user_college" value="trinity_college">
+                    {% else %}
+                      <input type="hidden" name="user_college" id="user_college">
+                    {% endif %} -->
+  
+                    <input type="hidden" name="user_college" id="user_college" value="{{ user_info.up_obj.current_college }}">
+  
+                    <i class="dropdown icon"></i>
+                    <div class="default text">get ready for the trinity elitists</div>
+                    <div class="menu">
+                      <div class="item" data-value="innis">
+                        <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A7987.jpg" />
+                        Innis College
+                      </div>
+                      <div class="item" data-value="new_college">
+                        <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8008.jpg" />
+                        New College
+                      </div>
+                      <div class="item" data-value="st_michael_college">
+                        <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8103.jpg" />
+                        St. Michael's College
+                      </div>
+                      <div class="item" data-value="university_college">
+                        <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8027.jpg" />
+                        University College
+                      </div>
+                      <div class="item" data-value="victoria_college">
+                        <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8069.jpg" />
+                        Victoria College
+                      </div>
+                      <div class="item" data-value="woodsworth_college">
+                        <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A7967.jpg" />
+                        Woodsworth College
+                      </div>
+                      <div class="item" data-value="trinity_college">
+                        <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8064.jpg" />
+                        Trinity College
+                      </div>
                     </div>
                   </div>
+
                 </div>
   
               </div>
@@ -301,6 +324,8 @@
                         <input type="hidden" name="living_on_res" id="living_on_res" value="yes">
                       {% elif user_info.up_obj.living_on_res == 'no' %}
                         <input type="hidden" name="living_on_res" id="living_on_res" value="no">
+                      {% else %}
+                        <input type="hidden" name="living_on_res" id="living_on_res">
                       {% endif %}
 
                       <i class="dropdown icon"></i>
@@ -334,23 +359,27 @@
                 
               </div>
   
-              <div class="inline fields" id="user_course_field">
+              <div class="inline fields" >
   
-                <label style="font-size: 14.5px;">
-                  <strong>
-                    Add your courses:
-                  </strong>
-                </label>
-                
-                <div class="ui fluid multiple search selection dropdown" style="width: 30em;">
-                  <input type="hidden" name="user_courses" id="user_courses" value="{{ user_course_str }}">                
-                  <i class="dropdown icon"></i>
-                  <div class="default text">select course(s).. (undergrad only atm)</div>
-                  <div class="menu">
-                    {% for l in courses %}
-                      <div class="item" data-value="{{ l }}">{{ l }}</div>
-                    {% endfor %}
+                <div class="field" id="user_course_field">
+
+                  <label style="font-size: 14.5px;">
+                    <strong>
+                      Add your courses:
+                    </strong>
+                  </label>
+                  
+                  <div class="ui fluid multiple search selection dropdown" style="width: 30em;">
+                    <input type="hidden" name="user_courses" id="user_courses" value="{{ user_course_str }}">                
+                    <i class="dropdown icon"></i>
+                    <div class="default text">select course(s).. (undergrad only atm)</div>
+                    <div class="menu">
+                      {% for l in courses %}
+                        <div class="item" data-value="{{ l }}">{{ l }}</div>
+                      {% endfor %}
+                    </div>
                   </div>
+
                 </div>
 
               </div>
@@ -592,45 +621,59 @@
     }
 
 
-    // $('#current_school_status').change(function(){
+    $('#current_school_status').change(function(){
 
-    //   console.log('change...')
-    //   // console.log('current-val:', this.value)
+      console.log('change...')
+      // console.log('current-val:', this.value)
 
-    //   $('#user_year_field').removeClass('disabled')
-    //   $('#user_living_on_res').removeClass('disabled')
-    //   $('#user_course_field').removeClass('disabled')
+      $('#user_year_field').removeClass('disabled')
+      $('#user_living_on_res').removeClass('disabled')
+      $('#user_course_field').removeClass('disabled')
 
-    //   var current_status_val = this.value
-    //   if (current_status_val == 'alumni'){
-    //     $('#user_year_field').addClass('disabled')
-    //     $('#user_living_on_res').addClass('disabled')
-    //     $('#user_course_field').addClass('disabled')
-    //   }
-    //   else if (current_status_val == 'grad_student'){
-    //     $('#user_course_field').addClass('disabled')
-    //     // $('#user_year_field').addClass('disabled')
-    //     // $('#user_living_on_res').addClass('disabled')
-    //   }
-    //   else if (current_status_val == 'gap_year'){
-    //     $('#user_course_field').addClass('disabled')
-    //   }
+      var current_status_val = this.value
+      if (current_status_val == 'alumni'){
+        $('#user_year_field').addClass('disabled')
+        $('#user_living_on_res').addClass('disabled')
+        $('#user_course_field').addClass('disabled')
+      }
+      else if (current_status_val == 'grad_student'){
+        $('#user_course_field').addClass('disabled')
+        // $('#user_year_field').addClass('disabled')
+        // $('#user_living_on_res').addClass('disabled')
+      }
+      else if (current_status_val == 'gap_year'){
+        $('#user_course_field').addClass('disabled')
+      }
       
 
-    //   // var current_school_val = this.value;
-    //   // var firstDropVal = $('#pick').val();
-    // })
+      // var current_school_val = this.value;
+      // var firstDropVal = $('#pick').val();
+    })
+
+    $('#user_campus').change(function(){
+
+      var current_campus_val = this.value
+      console.log('campus-val:', current_campus_val)
+      if (current_campus_val == 'utm' || current_campus_val == 'utsc'){
+        $('#user_college_field').addClass('disabled')
+      } else if ( current_campus_val == 'utsg' ) {
+        $('#user_college_field').removeClass('disabled')
+      }
+
+    })
 
 
-    $(document).on('change','#current_school_status',function(){
-        alert('Change Happened');
-      // TODO: fix this and go from there
-
-
-    });
+    // $(document).on('change','#current_school_status',function(){
+    //     alert('Change Happened');
+    // });
 
     
-
+    // <div class="menu">
+    //                     <div class="item" data-value="utsg">St. George</div>
+    //                     <div class="item" data-value="utm">Mississauga</div>
+    //                     <div class="item" data-value="utsc">Scarborough</div>
+    //                     <div class="disabled item" data-value="jk">Waterloo? (lol)</div>
+    //                   </div>
 
 
 
@@ -641,6 +684,11 @@
 
 {% endblock %}
 
+
+<!-- 
+  TODO: 
+    save all the details from edit-profile to profile-page and go from there
+ -->
 
  
 

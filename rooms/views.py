@@ -97,6 +97,8 @@ def edit_profile(request):
     uoft_courses = [line.replace('\n', '').strip() for line in uoft_courses]
 
     if request.method == 'POST':
+      print('request-post:', request.POST)
+
       gender = request.POST['gender']
       instagram_id = request.POST['instagram-id']
       snapchat_id = request.POST['snapchat-id']
