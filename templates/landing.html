@@ -6,12 +6,20 @@
 
 
 
-<div class="ui  grid container" style="padding: 0em;">
+
+<!-- {% if signup_success %} -->
+
+  
+<!-- {% endif %} -->
+
+
+
+<div class="ui grid container" style="padding: 0em;">
 
   <div class="sixteen wide column" style="padding-top: 2em;">
     
     <h2 class="ui center aligned header" style="
-      padding-right: 1em; font-family: 'Indie Flower', cursive; font-size: 34px; color: #002a5c;">
+      padding-right: 1em; font-family: 'Indie Flower', cursive; font-size: 40px; color: #002a5c;">
       Welcome to <img src="{% static 'uoft_logo/uoft_logo.png' %}" style="width:8%;">'s Room!
     </h2>
 
@@ -19,27 +27,32 @@
 
   <div class="nine wide column" style="margin-left: 5em; padding-top: 2em;">
     
-    <p style="width: 63ch; line-height: 1.5em; font-size: 14.5px;">
+    <p style="width: 63ch; line-height: 1.5em; font-size: 14.5px; ">
 
-      The UofT Room is an online network for current UofT students and alumni. You can create your 
+      The UofT room is an online "room" for current UofT students and alumni. You can create your 
       online profile, add your courses, link your social media accounts, find 
       other students on campus, and share information with others.
       <b>
         The website is only available to those who have a valid uoft email address.
       </b>
+      There's currently 50 students in the room.
 
       <br/><br/>
       <strong style="font-size: 14.5px">It can be used to: </strong>
       <ul id="use_case_list" class="ui list" >
         <li>Find people who are taking the same classes as you this coming semester</li>        
         <li>Connect with a grad student who's in a program you want to be in</li>
-        <li>Ask questions, share some news, post something funny for others to see</li>
+        <li>Share and interact with other students</li>
         <li> <span style="font-size: 16px;">&#128064;</span> <i>(you'll get it if you join...)</i></li>
       </ul>
 
       <a href="{% url 'faq' %}" style="font-size: 14.5px;">Learn more about it here</a>
 
     </p>
+
+   
+
+    
 
     <!-- <p style="width: 63ch; line-height: 1.5em; font-size: 14.5px;">
       The UofT Room is an online directory for current UofT students and alumni. You can create your 
@@ -65,6 +78,14 @@
     
   <div class="four wide column" style="padding-top: 2em;">
     
+    <!-- <div class="ui success message" >
+      <i class="close icon"></i>
+      <div class="header">
+        Successful.
+      </div>
+      <p>Please check your email to confirm your registration!</p>
+    </div> -->
+
     <h3>
       <!-- <span id="signup_link">Join the Room</span> -->
       <a id="signup_link">Join the Room</a>
@@ -103,12 +124,18 @@
         <button style="background-color: #002a5c; color: white;" class="ui button" type="submit" name="signup_form">submit</button>
 
         {% if form_error %}
-          <span id="form_error_message" style="color: red;">{{ error_message }}</span> 
-        
+          <span id="form_error_message" style="color: red;">{{ error_message }}</span>         
+        {% endif %}
+
+        {% if signup_success %}
+          <br/>
+          <span id="form_error_message" style="color: green;">
+            Please check your email for the code!
+          </span>
         {% endif %}
 
       </form>
-
+      
 
       <form id="login_form" class="ui form" method="post" >{% csrf_token %}
 
@@ -157,13 +184,20 @@
           <label>password:</label>
           <input type="password" name="password" placeholder="reminder: stupid passwords do exist...">
           <!-- there is such thing as a stupid password -->
+          <small class="helper" style="color: grey; !important;">Must be >7 letters. At least 1 character and 1 number.</small>
         </div>
         
         <button style="background-color: #002a5c; color: white;" class="ui button" type="submit" name="signup_form">submit</button>
 
         {% if form_error %}
-          <span id="form_error_message" style="color: red;">{{ error_message }}</span> 
+          <span id="form_error_message" style="color: red;">{{ error_message }}</span>         
+        {% endif %}
         
+        {% if signup_success %}
+          <br/>
+          <span id="form_error_message" style="color: green;">
+            Please check your email for the code!
+          </span>
         {% endif %}
 
       </form>
@@ -174,13 +208,11 @@
         <div class="field" style="width: 20em;">
           <label>email:</label>
           <input id="school_email" type="text" name="school_email" placeholder="school email">
-          <!-- <span id="school_email_error" style="color: red; display: none;">is that really your uoft email?</span> -->
         </div>
 
         <div class="field" style="width: 20em;">
           <label>password:</label>
           <input type="password" name="password" placeholder="how can you forget it?">
-          <!-- there is such thing as a stupid password -->
         </div>
         
         <button style="background-color: #002a5c; color: white;" class="ui button" type="submit" name="login_form">submit</button>
@@ -193,11 +225,16 @@
 
 
     {% endif %}
+    
+    <!-- <div class="header" style="color: green">
+      Check your email to finish!
+    </div> -->
 
 
   </div>
 
   {{ form_data |json_script:'form_data' }}
+
 
 
 

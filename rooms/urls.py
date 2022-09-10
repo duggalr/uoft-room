@@ -5,7 +5,6 @@ from . import views
 
 urlpatterns = [
   path('', views.landing, name='landing'),
-  path('auth', views.user_auth, name='user_auth'),
   path('edit_profile', views.edit_profile, name='edit_profile'),
 
   path('main', views.main, name='main'),
@@ -15,7 +14,13 @@ urlpatterns = [
 
   path('feed', views.feed, name='feed'),
   path('post_feed', views.post_feed, name='post_feed'),
-  
+
+  path('user-verification/<uidb64>/<token>', views.activate, name='user_verification'),
+
+  # path('auth', views.user_auth, name='user_auth'),
+
+  path('validate_email', views.validate_email, name='validate_email'),
+
 ]
 
 

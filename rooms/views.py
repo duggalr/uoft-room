@@ -1,8 +1,13 @@
-from cgitb import reset
-from distutils.command.upload import upload
-import re
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+from django.contrib.auth import get_user_model
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.template.loader import render_to_string
+from django.utils.encoding import force_str, force_bytes
+from django.contrib.sites.shortcuts import get_current_site
+from django.conf import settings
+
 
 from .models import User, UserProfile, UserProfileImage, UserMajors, UserCourses
 # from .forms import ImageForm
@@ -10,10 +15,35 @@ from . import utils
 
 
 
+
+
+
+def activate(request, uidb64, token):
+  User = get_user_model()
+  try:
+    uid = force_str(urlsafe_base64_decode(uidb64))
+    user = User.objects.get(pk=uid)
+  except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+    user = None
+
+  if user is not None and utils.TokenGenerator().check_token(user, token):
+    user.is_active = True
+    user.save()
+    return redirect('email_validation_success.html')
+  else:
+    # return HttpResponse('Activation link is invalid!')
+    return render(request, 'email_validation_error.html')
+
+
+
+def validate_email(request):
+  return render(request, 'email_validation_success.html')  
+
+
+
 # TODO: only available if user is not authenticated; else, send to our 'default-page' (main-page?)
 def landing(request):
   if request.method == 'POST':
-    print(request.POST)
 
     if 'login_form' in request.POST:
       user_email = request.POST['school_email']
@@ -36,32 +66,92 @@ def landing(request):
 
       # TODO: need to send verification email (set is_active=False; once verified, set is_active=True; <-- critical check)
       valid_email = utils.verify_school_email(user_email)
-      if valid_email:
+      valid_password, password_msg = utils.validate_password(user_password)
+
+      if valid_email and valid_password:
         user_objects = User.objects.filter(email=user_email)
+        # if len(user_objects) == 0:
         if len(user_objects) == 0:
-          new_user_obj = User.objects.create_user(user_email, user_password)
+          # TODO: set new user as in-active; email must be verified before access given 
+          new_user_obj = User.objects.create_user(
+            email=user_email, 
+            password=user_password,
+            is_active=False
+          )
           new_user_obj.first_name = user_first_name
           new_user_obj.last_name = user_last_name
           new_user_obj.save()
 
-          user_authenticated = authenticate(username=user_email, password=user_password)
-          login(request, user_authenticated)
-          return redirect('profile')
+          current_site = get_current_site(request)
+
+          message = render_to_string('email_template.html', {
+            'user': new_user_obj,
+            'domain': current_site.domain,
+            'uid': urlsafe_base64_encode(force_bytes(new_user_obj.pk)),
+            'token': utils.TokenGenerator().make_token(new_user_obj),
+          })
+        
+          send_mail(
+            subject='UofT Room Verification Email',
+            message=message,
+            from_email=settings.EMAIL_HOST_USER,
+            recipient_list=['duggalr42@gmail.com']
+          )
+
+          # user_authenticated = authenticate(username=user_email, password=user_password)
+          # login(request, user_authenticated)
+          # return redirect('landing')
+          return render(request, 'landing.html', {'form_error': False, 'signup_success': True})
+
         else:
-          # TODO: confirm the user's email is verified; if so, login the user; else, pass error with existing user & wrong password          
-          form_data = {'email': user_email, 'first_name': user_first_name, 'last_name': user_last_name}
-          return render(request, 'landing.html', {'form_data': form_data, 'error_message': 'user already exists...', 'form_error': True})
+          existing_user_obj = user_objects[0]
+          if existing_user_obj.is_active:
+            form_data = {'email': user_email, 'first_name': user_first_name, 'last_name': user_last_name}
+            return render(request, 'landing.html', {'form_data': form_data, 'error_message': 'user already exists...', 'form_error': True})
+          else:
+            current_site = get_current_site(request)
+
+            message = render_to_string('email_template.html', {
+              'user': existing_user_obj,
+              'domain': current_site.domain,
+              'uid': urlsafe_base64_encode(force_bytes(existing_user_obj.pk)),
+              'token': utils.TokenGenerator().make_token(existing_user_obj),
+            })
+
+            send_mail(
+              subject='UofT Room Verification Email',
+              message=message,
+              from_email=settings.EMAIL_HOST_USER,
+              recipient_list=['duggalr42@gmail.com']
+            )
+            
+            return render(request, 'landing.html', {'form_error': False, 'signup_success': True})
+            
+          # # TODO: confirm the user's email is verified; if so, login the user; else, pass error with existing user & wrong password          
+          # form_data = {'email': user_email, 'first_name': user_first_name, 'last_name': user_last_name}
+          # return render(request, 'landing.html', {'form_data': form_data, 'error_message': 'user already exists...', 'form_error': True})
+
       else:
-        form_data = {'email': user_email, 'first_name': user_first_name, 'last_name': user_last_name}
-        return render(request, 'landing.html', {
-          'form_data': form_data, 'error_message': 'not a valid uoft email...', 'form_error': True})
+
+        if not valid_email:
+          form_data = {'email': user_email, 'first_name': user_first_name, 'last_name': user_last_name}
+          return render(request, 'landing.html', {
+            'form_data': form_data, 'error_message': 'not a valid uoft email...', 'form_error': True})
+
+        elif not valid_password:
+          form_data = {'email': user_email, 'first_name': user_first_name, 'last_name': user_last_name}
+          return render(request, 'landing.html', {
+            'form_data': form_data, 'error_message': 'password must be >7 letters and have at least 1 character and 1 number.', 'form_error': True})
+
 
   return render(request, 'landing.html', {'view_login_form': False})
 
 
-# TODO: implement exact same as above on this page...
-def user_auth(request):
-  return render(request, 'user_auth.html')
+
+
+# # TODO: implement exact same as above on this page...
+# def user_auth(request):
+#   return render(request, 'user_auth.html')
 
 
 def profile(request):
