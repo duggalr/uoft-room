@@ -302,17 +302,16 @@ def profile(request):
 
 
 
+# TODO: 
+  # add login-required here and ensure user is active (valid email address)
 def edit_profile(request):
-  # TODO: check if user authenticatd/active and pass the name of user from initial signup to edit-profile
-  if request.user.is_authenticated and request.user.is_active:  # TODO: is_active is crucial; ensure it is adjusted appror. above
+  if request.user.is_authenticated and request.user.is_active:
 
-    # uoft_programs_fp = '/Users/rahul/Documents/main/projects/personal_learning_projects/uoftroom/final_programs_list.txt'
     uoft_programs_fp = 'final_programs_list.txt'
     f = open(uoft_programs_fp, 'r')
     uoft_programs = f.readlines()
     uoft_programs = [line.replace('\n', '').strip() for line in uoft_programs]
 
-    # uoft_courses_fp = '/Users/rahul/Documents/main/projects/personal_learning_projects/uoftroom/uoft_all_courses.txt'
     uoft_courses_fp = 'uoft_all_courses.txt'
     f = open(uoft_courses_fp, 'r')
     uoft_courses = f.readlines()
@@ -333,15 +332,13 @@ def edit_profile(request):
       user_college = request.POST['user_college']
       user_year = request.POST['user_year']
       
-      print('ue:', user_year)
-      if user_year == 'None':
-        print('ue-two:', user_year)
-        user_year = None
+      # print('ue:', user_year)
+      # if user_year == 'None':
+      #   print('ue-two:', user_year)
+      #   user_year = None
 
       living_on_res = request.POST['living_on_res']
-      # if living_on_res is None:
-      #   living_on_res = ''
-
+ 
       user_job = request.POST['user_job']
       # user_jobs = request.POST.getlist('user_job')
 
@@ -352,28 +349,64 @@ def edit_profile(request):
 
       user_major_list = request.POST.getlist('user_major')
       user_course_list = request.POST.getlist('courses')
+      profile_images = request.FILES.getlist('profile_image')
       
       up_objects = UserProfile.objects.filter(user_obj=request.user)
       if len(up_objects) > 0:
         up_obj = up_objects[0]
-        up_obj.first_name = first_name
-        up_obj.last_name = last_name
-        up_obj.instagram_id = instagram_id
-        up_obj.snapchat_id = snapchat_id
-        up_obj.spotify_url = spotify_id
-        up_obj.gender = gender
-        up_obj.current_school_status = current_school_status
-        up_obj.current_school_campus = user_campus
+        
+        if request.POST['first-name'] is not None:
+          up_obj.first_name = request.POST['first-name']
+        
+        if request.POST['last-name'] is not None:
+          up_obj.last_name = request.POST['last-name']
 
-        up_obj.current_school_year = user_year
-        up_obj.living_on_res = living_on_res
+        if request.POST['gender'] is not None:
+          up_obj.gender = request.POST['gender']
 
-        up_obj.current_college = user_college
-        up_obj.user_location = user_location
-        up_obj.user_relationship_status = current_relationship_status
-        up_obj.job_companies = user_job
-        up_obj.user_description = user_description
-        up_obj.user_interests = user_interests
+        if request.POST['instagram-id'] is not None:
+          up_obj.instagram_id = request.POST['instagram-id']
+        
+        if request.POST['snapchat-id'] is not None:
+          up_obj.snapchat_id = request.POST['snapchat-id']
+
+        if request.POST['spotify-id'] is not None:
+          up_obj.spotify_url = request.POST['spotify-id']
+
+        if request.POST['current_status'] is not None:
+          up_obj.current_school_status = request.POST['current_status']
+
+        if request.POST['campus'] is not None:
+          up_obj.current_school_campus = request.POST['campus']
+
+        if request.POST['user_college'] is not None:
+          up_obj.current_college = request.POST['user_college']
+
+        if request.POST['user_year'] is not None:
+          up_obj.current_school_year = request.POST['user_year']
+
+        if request.POST['living_on_res'] is not None:
+          up_obj.living_on_res = request.POST['living_on_res']
+
+        if request.POST['user_job'] is not None:
+          up_obj.user_job = request.POST['user_job']
+
+        if request.POST['user_location'] is not None:
+          up_obj.user_location = request.POST['user_location']
+
+        if request.POST['current_relationship_status'] is not None:
+          up_obj.user_relationship_status = request.POST['current_relationship_status']
+
+        if request.POST['user_description'] is not None:
+          up_obj.user_description = request.POST['user_description']
+        
+        if request.POST['user_interest'] is not None:
+          up_obj.user_interests = request.POST['user_interest']     
+
+        # up_obj.user_relationship_status = current_relationship_status
+        # up_obj.job_companies = user_job
+        # up_obj.user_description = user_description
+        # up_obj.user_interests = user_interests
         up_obj.save()
 
       else: 
@@ -398,36 +431,39 @@ def edit_profile(request):
         )
         up_obj.save()
 
-      um_objects = UserMajors.objects.filter(user_profile_obj = up_obj)
-      # if len(um_objects) > 0:
-      UserMajors.objects.filter(user_profile_obj = up_obj).delete()  # recreate it
 
-      for user_major in user_major_list:
-        um = UserMajors.objects.create(
-          user_profile_obj = up_obj,
-          major = user_major
-        )
-        um.save()
+      print('um-list:', user_major_list, len(user_major_list) )
+      print('profile-img-list:', user_course_list, profile_images, len(profile_images) )
+      if len(user_major_list) > 0:
+        um_objects = UserMajors.objects.filter(user_profile_obj = up_obj)
+        UserMajors.objects.filter(user_profile_obj = up_obj).delete()  # recreate it
+
+        for user_major in user_major_list:
+          um = UserMajors.objects.create(
+            user_profile_obj = up_obj,
+            major = user_major
+          )
+          um.save()
       
-      uc_objects = UserCourses.objects.filter(user_profile_obj = up_obj)
-      # if len(uc_objects) > 0:
-      UserCourses.objects.filter(user_profile_obj = up_obj).delete() 
+      if len(user_course_list) > 0:
+        uc_objects = UserCourses.objects.filter(user_profile_obj = up_obj)
+        UserCourses.objects.filter(user_profile_obj = up_obj).delete() 
+        for user_course in user_course_list:
+          uc = UserCourses.objects.create(
+            user_profile_obj = up_obj,
+            course = user_course
+          )
+          uc.save()
 
-      for user_course in user_course_list:
-        uc = UserCourses.objects.create(
-          user_profile_obj = up_obj,
-          course = user_course
-        )
-        uc.save()
-
-      profile_images = request.FILES.getlist('profile_image')
-      UserProfileImage.objects.filter(user_profile_obj = up_obj).delete()
-      for fn in profile_images:
-        upi = UserProfileImage(
-          user_profile_obj = up_obj,
-          profile_image=fn
-        )
-        upi.save()
+      if len(profile_images) > 0:
+        
+        UserProfileImage.objects.filter(user_profile_obj = up_obj).delete()
+        for fn in profile_images:
+          upi = UserProfileImage(
+            user_profile_obj = up_obj,
+            profile_image=fn
+          )
+          upi.save()
 
       return redirect('profile')
 
@@ -456,7 +492,7 @@ def edit_profile(request):
       'user_course_str': course_str,
       'user_major_str': user_major_str
     }
-    return render(request, 'edit_profile_one.html', {
+    return render(request, 'edit_profile_two.html', {
       'user_info': user_info, 'programs': uoft_programs, 'courses': uoft_courses,
     })
 

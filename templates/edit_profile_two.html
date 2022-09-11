@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+{% csrf_token %}
+
+
+
+<div class="ui grid" style="padding-left: 8.5em; margin-top: 1.5em;">
+
+  <div class="four wide column" style="margin-top: 1em;">
+      
+    <div class="container">
+  
+      <a class="prev" onclick="plusSlides(-1)">❮</a>
+      <a class="next" onclick="plusSlides(1)">❯</a>
+
+      
+
+      <!-- {% for di in user_profile_images %}
+
+        <div class="mySlides">
+          <div class="numbertext">{{ di.idx }} / {{ user_profile_images|length }}</div>
+          <img src="{% static 'sample_images/image_three.jpeg' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
+        </div>
+
+      {% endfor %} -->
+
+    </div>
+
+    <!-- <img id="profile_image_placeholder" src="//joeschmoe.io/api/v1/male/{{ user_info.first_name }}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"> -->
+    <!-- <img id="profile_image_placeholder" src="{% static 'sample_images/image_three.jpeg' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">  -->
+
+    <!-- <span style="font-weight: bold">
+      To update the gender of the avatar-image, update your gender on the profile page
+    </span> -->
+
+    <div class="ui horizontal divider">
+      <i class="edit icon"></i> Personal Settings
+    </div>            
+    <div>
+        <ul>
+          <li>
+            <strong>
+              Total Profile Views: 54
+            </strong>
+          </li>
+          <li>
+            <a href="">People who 'eyed' you</a>
+          </li>
+          <li>
+            <a href="{% url 'edit_profile' %}">Edit Profile</a>
+          </li>
+
+        </ul>
+    </div>
+ 
+
+    <div class="ui horizontal divider">
+      <i class="pencil alternate icon"></i> Courses This Year
+    </div>
+    <div class="ui bulleted list">
+      <!-- TODO: add courses here... -->
+      <!-- {% for obj in user_courses %}
+
+      {% endfor %} -->
+      
+      <!-- TODO: make the course's clickable; will allow user to go to browse page and find other people taking this course -->
+      <div class="item">CSC108</div>
+      <div class="item">CSC148</div>
+      <div class="item">CSC236</div>
+
+    </div>
+
+  </div>
+
+
+
+</div>  
+
+
+
+
+{% endblock %}
+
+
+

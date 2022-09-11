@@ -256,33 +256,20 @@
                   <label style="font-size: 14.5px;">Year:</label>
                   <div class="ui selection dropdown" style="width: 16em;">
 
-                      <!-- <input type="hidden" name="user_year" id="user_year"> -->
-                      <!-- {% if user_info.up_obj.current_school_year == '1' %}
-                        <input type="hidden" name="user_year" id="user_year" value="1">
-                      {% elif user_info.up_obj.current_school_year == '2' %}
-                        <input type="hidden" name="user_year" id="user_year" value="2">
-                      {% elif user_info.up_obj.current_school_year == '3' %}
-                        <input type="hidden" name="user_year" id="user_year" value="3">
-                      {% elif user_info.up_obj.current_school_year == '4' %}
-                        <input type="hidden" name="user_year" id="user_year" value="4">
-                      {% elif user_info.up_obj.current_school_year == '5' %}
-                        <input type="hidden" name="user_year" id="user_year" value="5">
-                      {% else %}
-                        <input type="hidden" name="user_year" id="user_year">
-                      {% endif %} -->
+                    <input type="hidden" name="user_year" id="user_year" value="{{ user_info.up_obj.current_school_year }}">
 
-                      <input type="hidden" name="user_year" id="user_year" value="{{ user_info.up_obj.current_school_year }}">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">they go by fast</div>
+                    <div class="menu">
+                        <div class="item" data-value="1">1</div>
+                        <div class="item" data-value="2">2</div>
+                        <div class="item" data-value="3">3</div>
+                        <div class="item" data-value="4">4</div>
+                        <div class="item" data-value="5">5+</div>
+                    </div>
 
-                      <i class="dropdown icon"></i>
-                      <div class="default text">they go by fast</div>
-                      <div class="menu">
-                          <div class="item" data-value="1">1</div>
-                          <div class="item" data-value="2">2</div>
-                          <div class="item" data-value="3">3</div>
-                          <div class="item" data-value="4">4</div>
-                          <div class="item" data-value="5">5+</div>
-                      </div>
                   </div>
+
                 </div>
                 
               </div>
@@ -294,24 +281,6 @@
 
                   <label style="font-size: 14.5px;">College:</label>
                   <div class="ui selection dropdown" style="width: 20em;">
-                    <!-- <input type="hidden" name="user_college" id="user_college"> -->
-                    <!-- {% if user_info.up_obj.current_college == 'innis' %}
-                      <input type="hidden" name="user_college" id="user_college" value="innis">
-                    {% elif user_info.up_obj.current_college == 'new_college' %}
-                      <input type="hidden" name="user_college" id="user_college" value="new_college">
-                    {% elif user_info.up_obj.current_college == 'st_michael_college' %}
-                      <input type="hidden" name="user_college" id="user_college" value="st_michael_college">
-                    {% elif user_info.up_obj.current_college == 'university_college' %}
-                      <input type="hidden" name="user_college" id="user_college" value="university_college">
-                    {% elif user_info.up_obj.current_college == 'victoria_college' %}
-                      <input type="hidden" name="user_college" id="user_college" value="victoria_college">
-                    {% elif user_info.up_obj.current_college == 'woodsworth_college' %}
-                      <input type="hidden" name="user_college" id="user_college" value="woodsworth_college">
-                    {% elif user_info.up_obj.current_college == 'trinity_college' %}
-                      <input type="hidden" name="user_college" id="user_college" value="trinity_college">
-                    {% else %}
-                      <input type="hidden" name="user_college" id="user_college">
-                    {% endif %} -->
   
                     <input type="hidden" name="user_college" id="user_college" value="{{ user_info.up_obj.current_college }}">
   
@@ -347,6 +316,7 @@
                         Trinity College
                       </div>
                     </div>
+
                   </div>
 
                 </div>
