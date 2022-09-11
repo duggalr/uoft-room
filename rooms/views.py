@@ -265,12 +265,18 @@ def profile(request):
 
     user_profile_obj = UserProfile.objects.get(user_obj=request.user)
     user_courses = UserCourses.objects.filter(user_profile_obj=user_profile_obj)
+    user_majors = UserMajors.objects.get(user_profile_obj=user_profile_obj)  # should be string of all majors for user
+    user_majors_list = ', '.join([st for st in user_majors.major.split(',')])
+
     user_profile_images = UserProfileImage.objects.filter(user_profile_obj=user_profile_obj)
+
+    user_image_list = [{'idx': i+1, 'profile_image': user_profile_images[i]} for i in range(len(user_profile_images))]
     
     return render(request, 'profile_new_three.html', {
-      'user_profile_images': user_profile_images,
+      'user_profile_images': user_image_list,
       'user_profile_obj': user_profile_obj,
-      'user_courses': user_courses
+      'user_courses': user_courses,
+      'user_majors': user_majors_list
     })
 
     # user_first_name = request.user.first_name

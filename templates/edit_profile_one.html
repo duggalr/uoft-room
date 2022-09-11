@@ -456,7 +456,7 @@
           <div class="inline fields">
   
             <div class="field">
-              <label style="font-size: 14.5px;">Single ready to mingle?:</label>
+              <label style="font-size: 14.5px;">Looking to Mingle?:</label>
   
               <div class="ui selection dropdown" style="width: 20em;">
                   <input type="hidden" name="current_relationship_status" id="current_relationship_status" value="{{ up_obj.user_relationship_status }}">
@@ -575,7 +575,7 @@
       if (this.files && this.files.length <= 5 ){
         document.getElementById('proifle_image_error_message').style.display = 'none'
 
-        const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+        const validImageTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/webp'];
         
         var valid_image_list = []
         for (i=0; i<this.files.length; i++){

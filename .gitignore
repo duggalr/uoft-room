@@ -7,3 +7,6 @@ rooms/__pycache__
 static
 media/
 todo.txt
+testing_images/
+.DS_Store
+
