@@ -86,23 +86,55 @@
       <p>Please check your email to confirm your registration!</p>
     </div> -->
 
-    <h3>
-      <!-- <span id="signup_link">Join the Room</span> -->
+    <!-- <h3>
       <a id="signup_link">Join the Room</a>
       or 
       <a id="login_link">Login</a>
+    </h3> -->
 
+    <h3>
+      Join the Room or Login
     </h3>
 
+
+    <!-- TODO: combine the login/signup-form into one -->
   
-    {% if view_login_form %}
+    <form id="signup_form" class="ui form" method="post" >{% csrf_token %}
+
+      <div class="field" style="width: 20em;">
+        <label>email:</label>
+        <input id="school_email" type="text" name="school_email" placeholder="school email">
+      </div>
+
+      <div class="field" style="width: 20em;">
+        <label>password:</label>
+        <input type="password" name="password" placeholder="reminder: stupid passwords do exist...">
+        <small class="helper" style="color: grey; !important;">Must be >7 letters. At least 1 character and 1 number.</small>
+      </div>
+      
+      <button style="background-color: #002a5c; color: white;" class="ui button" type="submit" name="signup_form">submit</button>
+
+      {% if form_error %}
+        <span id="form_error_message" style="color: red;">{{ error_message }}</span>         
+      {% endif %}
+
+      {% if signup_success %}
+        <br/>
+        <span id="form_error_message" style="color: green;">
+          Please check your email for the code!
+        </span>
+      {% endif %}
+
+    </form>
+
+
+    <!-- {% if view_login_form %}
     
       <form id="signup_form" class="ui form" method="post" style="display: none;">{% csrf_token %}
 
         <div class="field" style="width: 20em;">
           <label>email:</label>
           <input id="school_email" type="text" name="school_email" placeholder="school email">
-          <!-- <span id="school_email_error" style="color: red; display: none;">is that really your uoft email?</span> -->
         </div>
 
         <div class="field" style="width: 20em;">
@@ -118,7 +150,6 @@
         <div class="field" style="width: 20em;">
           <label>password:</label>
           <input type="password" name="password" placeholder="reminder: stupid passwords do exist...">
-          <!-- there is such thing as a stupid password -->
         </div>
         
         <button style="background-color: #002a5c; color: white;" class="ui button" type="submit" name="signup_form">submit</button>
@@ -142,13 +173,11 @@
         <div class="field" style="width: 20em;">
           <label>email:</label>
           <input id="login_school_email" type="text" name="school_email" placeholder="school email">
-          <!-- <span id="school_email_error" style="color: red; display: none;">is that really your uoft email?</span> -->
         </div>
 
         <div class="field" style="width: 20em;">
           <label>password:</label>
           <input type="password" id="login_password" name="password" placeholder="how can you forget it?">
-          <!-- there is such thing as a stupid password -->
         </div>
         
         <button style="background-color: #002a5c; color: white;" class="ui button" type="submit" name="login_form">submit</button>
@@ -167,7 +196,6 @@
         <div class="field" style="width: 20em;">
           <label>email:</label>
           <input id="school_email" type="text" name="school_email" placeholder="school email">
-          <!-- <span id="school_email_error" style="color: red; display: none;">is that really your uoft email?</span> -->
         </div>
 
         <div class="field" style="width: 20em;">
@@ -183,7 +211,6 @@
         <div class="field" style="width: 20em;">
           <label>password:</label>
           <input type="password" name="password" placeholder="reminder: stupid passwords do exist...">
-          <!-- there is such thing as a stupid password -->
           <small class="helper" style="color: grey; !important;">Must be >7 letters. At least 1 character and 1 number.</small>
         </div>
         
@@ -224,7 +251,7 @@
       </form>
 
 
-    {% endif %}
+    {% endif %} -->
     
     <!-- <div class="header" style="color: green">
       Check your email to finish!
@@ -241,72 +268,71 @@
   <script>
 
 
-    // document.getElementById('signup_form').style.display = 'none'
-    // document.getElementById('login_form').style.display = ''
+    // // document.getElementById('signup_form').style.display = 'none'
+    // // document.getElementById('login_form').style.display = ''
 
-    // var formData = "{{ form_data }}"
-    // console.log('formdata:', formData)
-    var formData = JSON.parse(document.getElementById('form_data').textContent)
-    var viewLoginForm = "{{ view_login_form }}"
-    console.log('view-login:', viewLoginForm, viewLoginForm === true)
+    // // var formData = "{{ form_data }}"
+    // // console.log('formdata:', formData)
+    // var formData = JSON.parse(document.getElementById('form_data').textContent)
+    // var viewLoginForm = "{{ view_login_form }}"
+    // console.log('view-login:', viewLoginForm, viewLoginForm === true)
 
-    if (typeof formData != 'undefined'){
+    // if (typeof formData != 'undefined'){
 
-      if (viewLoginForm === 'True'){
-        $("#login_school_email").val(formData['email'])
-      } 
-      else{
-        $("#school_email").val(formData['email'])
-        $("#first_name").val(formData['first_name'])
-        $("#last_name").val(formData['last_name'])
-      }
+    //   if (viewLoginForm === 'True'){
+    //     $("#login_school_email").val(formData['email'])
+    //   } 
+    //   else{
+    //     $("#school_email").val(formData['email'])
+    //     $("#first_name").val(formData['first_name'])
+    //     $("#last_name").val(formData['last_name'])
+    //   }
 
       
-    }
+    // }
+
+    // $("#first_name").focus(function() {
+
+    //   var school_email = $('#school_email').val()
+
+    //   if($("#first_name").val() == "" && $("#last_name").val() == ""){
+
+    //     if (school_email.includes(".") && school_email.includes("mail.utoronto.ca")){
+    //       // console.log('email:', school_email.)
+    //       var li = school_email.split('@')[0].split('.')
+    //       var first_name = li[0][0].toUpperCase() + li[0].slice(1)
+    //       var last_name = li[1][0].toUpperCase() + li[1].slice(1)
+    //       $("#first_name").val(first_name)
+    //       $("#last_name").val(last_name)
+    //       // $('#school_email_error').css("display", "none")
+
+    //     }
+
+    //   }
+
+    //   // else if (school_email.includes("mail.utoronto.ca") === false) {
+    //   //   $('#school_email_error').css("display", "block")
+    //   // }
+
+    // });
 
 
-    $("#first_name").focus(function() {
+    // $("#signup_link").click(function(event){
 
-      var school_email = $('#school_email').val()
+    //   event.preventDefault();
+    //   document.getElementById('signup_form').style.display = ''
+    //   document.getElementById('login_form').style.display = 'none'
+    //   // $("#signup_form").css('display':)
 
-      if($("#first_name").val() == "" && $("#last_name").val() == ""){
+    // })
 
-        if (school_email.includes(".") && school_email.includes("mail.utoronto.ca")){
-          // console.log('email:', school_email.)
-          var li = school_email.split('@')[0].split('.')
-          var first_name = li[0][0].toUpperCase() + li[0].slice(1)
-          var last_name = li[1][0].toUpperCase() + li[1].slice(1)
-          $("#first_name").val(first_name)
-          $("#last_name").val(last_name)
-          // $('#school_email_error').css("display", "none")
+    // $("#login_link").click(function(event){
 
-        }
+    //   event.preventDefault();
+    //   document.getElementById('signup_form').style.display = 'none'
+    //   document.getElementById('login_form').style.display = ''
 
-      }
-
-      // else if (school_email.includes("mail.utoronto.ca") === false) {
-      //   $('#school_email_error').css("display", "block")
-      // }
-
-    });
-
-
-    $("#signup_link").click(function(event){
-
-      event.preventDefault();
-      document.getElementById('signup_form').style.display = ''
-      document.getElementById('login_form').style.display = 'none'
-      // $("#signup_form").css('display':)
-
-    })
-
-    $("#login_link").click(function(event){
-
-      event.preventDefault();
-      document.getElementById('signup_form').style.display = 'none'
-      document.getElementById('login_form').style.display = ''
-
-    })
+    // })
     
 
   </script>

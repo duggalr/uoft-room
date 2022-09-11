@@ -8,12 +8,12 @@
 
   <div class="four wide column" style="margin-top: 1em;">
     <!-- <img src="{% static 'sample_images/image_three.jpeg' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"> -->
-    <img id="profile_image_placeholder" src="//joeschmoe.io/api/v1/male/{{ user_info.first_name }}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
-    <!-- <img id="profile_image_placeholder" src="{% static 'sample_images/image_three.jpeg' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">  -->
+    <!-- <img id="profile_image_placeholder" src="//joeschmoe.io/api/v1/male/{{ user_info.first_name }}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"> -->
+    <img id="profile_image_placeholder" src="{% static 'sample_images/image_three.jpeg' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"> 
 
-    <span style="font-weight: bold">
+    <!-- <span style="font-weight: bold">
       To update the gender of the avatar-image, update your gender on the profile page
-    </span>
+    </span> -->
 
     <div class="ui horizontal divider">
       <i class="edit icon"></i> Personal Settings
@@ -50,11 +50,23 @@
   <div class="ten wide column" style="padding-left: 3em;">
       
     <div>
+      
+      {% if user_profile_obj.first_name is defined %}
 
-      <h2 class="ui header" style="display: inline-block; font-size: 27px;">
-        {{ user_info.first_name }} {{ user_info.last_name }}
-        <!-- <div class="ui teal horizontal label">Current Student</div>           -->
-      </h2>
+        <h2 class="ui header" style="display: inline-block; font-size: 27px;">
+          {{ user_profile_obj.first_name }} {{ user_profile_obj.last_name }}
+          <!-- <div class="ui teal horizontal label">Current Student</div>           -->
+        </h2>
+      
+      {% else %}
+
+        <h2 class="ui header" style="display: inline-block; font-size: 27px;">
+          No Name (mysterious?)
+          <!-- <div class="ui teal horizontal label">Current Student</div>           -->
+        </h2>
+      
+      {% endif %}
+
 
       <div style="display: flex; justify-content: space-between; float: right; margin-top: 10px;">
 
@@ -69,7 +81,7 @@
             &#128064;
           </span>
 
-          <div class="ui blue vertical animated button" tabindex="0" style="margin-top: -10px;">
+          <div class="ui blue vertical animated disabled button" tabindex="0" style="margin-top: -10px;">
             <div class="hidden content">slide?</div>
             <div class="visible content">
               <i class="paper plane icon"></i>
@@ -122,7 +134,6 @@
       <div>
         <span style="font-size: 14.5px;">
           <i class="instagram icon" style="font-size: 16px;">&nbsp;:</i>
-             
         </span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <span style="font-size: 14.5px;">
@@ -137,6 +148,7 @@
           <a href="https://open.spotify.com/user/2uwyubwsy18et495hxmvherd2">Spotify</a>
         </span> -->
 
+        
       </div>
 
 
@@ -259,7 +271,7 @@
             </p>
 
 
-            <p>
+            <!-- <p>
               <strong style="font-size: 14.5px;">
                 Gender:
               </strong>
@@ -270,11 +282,12 @@
                 Year:
               </strong>
             </p>
+
             <p>
               <strong style="font-size: 14.5px;">
                 Studying:
               </strong>
-            </p>
+            </p> -->
 
             <p>
               <strong style="font-size: 14.5px;">

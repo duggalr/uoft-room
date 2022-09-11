@@ -56,6 +56,9 @@ class User(AbstractUser):
 
 class UserProfile(models.Model):
   user_obj = models.ForeignKey(User, on_delete=models.CASCADE)
+
+  first_name = models.CharField(max_length=2000, blank=True, null=True)
+  last_name = models.CharField(max_length=2000, blank=True, null=True)
   
    # both important for activity feed and display on user-profile for everyone
   timestamp_profile_created = models.DateTimeField(auto_now_add=True)

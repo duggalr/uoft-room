@@ -40,12 +40,30 @@
       <div class="ten wide column" style="padding-left: 3em;">
       <!-- <div class="ten wide column" > -->
 
-        <div>
+        <div style="padding-top: 10px">
 
-          <h2 class="ui header" style="display: inline-block; font-size: 27px;">
+          <!-- <h2 class="ui header" style="display: inline-block; font-size: 27px;">
             {{ user_info.first_name }} {{ user_info.last_name }}
-          </h2>
-  
+          </h2> -->
+
+          <!-- <h2 class="ui header" style="display: inline-block; font-size: 25px;">
+            Your Name
+          </h2> -->
+
+          <!-- <div class="ui form">
+            <div class="inline fields">
+              <div class="eight wide field" >
+                <label style="font-size: 14.5px;">Name:</label>
+
+                <div class="eight wide field" >
+                  <input type="text" name="user_job" id="user_job" placeholder="example: intern at NASA" value="{{ up_obj.job_companies }}">
+                </div>
+
+              </div>
+            </div>
+          </div> -->
+
+
           <button id="save_button" class="ui inverted blue vertical animated button" tabindex="0" style="float: right;" type="submit">
             <div class="hidden content"><i class="hand point right outline icon"></i></div>
             <div class="visible content">
@@ -54,47 +72,69 @@
           </button>
    
           
-          <!-- <div class="ui form"> -->
+          <div class="ui form">
   
-          <div class="inline fields">
-
-            <div class="field">
-              <label style="font-size: 14.5px;">Gender:</label>
-              <div class="ui selection dropdown">
-                  {% if user_info.up_obj.gender == 'male' %}
-                  <input type="hidden" name="gender" id="gender_input" value="male">
-                  {% elif user_info.up_obj.gender == 'female' %}
-                  <input type="hidden" name="gender" id="gender_input" value="female">
-                  {% elif user_info.up_obj.gender == 'prefer_not_to_say' %}
-                    <div class="item active selected" data-value="prefer_not_to_say">Prefer Not to Say</div>
-                  {% elif user_info.up_obj.gender == 'prefer_not_to_say' %}
-                    <div class="item active selected" data-value="other">Other</div>
-                  {% endif %}
-
-                  <i class="dropdown icon"></i>
-                  <div class="default text"></div>
-                  <div class="menu">
-                    <div class="item" data-value="male">Male</div>
-                    <div class="item" data-value="female">Female</div>
-                    <div class="item" data-value="prefer_not_to_say">Prefer Not to Say</div>
-                    <div class="item" data-value="other">Other</div>
-                      <!-- {% if user_info.up_obj.gender == 'male' %}
-                        <div class="item active selected" data-value="male">Male</div>
-                      {% elif user_info.up_obj.gender == 'female' %}
-                        <div class="item active selected" data-value="female">Female</div>
-                      {% elif user_info.up_obj.gender == 'prefer_not_to_say' %}
-                        <div class="item active selected" data-value="prefer_not_to_say">Prefer Not to Say</div>
-                      {% elif user_info.up_obj.gender == 'prefer_not_to_say' %}
-                        <div class="item active selected" data-value="other">Other</div>
-                      {% endif %} -->
-
-                  </div>
+            <div class="inline fields">
+              
+              <div class="six wide field" >
+                <label style="font-size: 14.5px;">First:</label>
+                <input type="text" id="first_name" name="first-name" placeholder="first name..." value="{{  user_info.up_obj.first_name }}">
+                <!-- <input type="text" name="instagram-id" placeholder="to showcase the life you don't live" style="width: 20em;"> -->
               </div>
-            </div>
-  
-          </div>
 
-          <!-- </div> -->
+              <div class="six wide field" >
+                <label style="font-size: 14.5px;">Last:</label>
+                <input type="text" id="last_name" name="last-name" placeholder="last name..." value="{{  user_info.up_obj.first_name }}">
+              </div>
+
+            </div>
+    
+
+            <div class="inline fields">
+              
+              <div class="field">
+                <label style="font-size: 14.5px;">Gender:</label>
+                <div class="ui selection dropdown">
+                    <!-- {% if user_info.up_obj.gender == 'male' %}
+                    <input type="hidden" name="gender" id="gender_input" value="male">
+                    {% elif user_info.up_obj.gender == 'female' %}
+                    <input type="hidden" name="gender" id="gender_input" value="female">
+                    {% elif user_info.up_obj.gender == 'prefer_not_to_say' %}
+                    <input type="hidden" name="gender" id="gender_input" value="prefer_not_to_say">
+                      <div class="item active selected" data-value="prefer_not_to_say">Prefer Not to Say</div>
+                    {% elif user_info.up_obj.gender == 'prefer_not_to_say' %}
+                    <input type="hidden" name="gender" id="gender_input" value="other">
+                      <div class="item active selected" data-value="other">Other</div>
+                    {% endif %} -->
+
+                    <input type="hidden" name="gender" id="gender_input" value="{{ user_info.up_obj.gender }}">
+
+                    <i class="dropdown icon"></i>
+                    <div class="default text"></div>
+                    <div class="menu">
+                      <div class="item" data-value="male">Male</div>
+                      <div class="item" data-value="female">Female</div>
+                      <div class="item" data-value="prefer_not_to_say">Prefer Not to Say</div>
+                      <div class="item" data-value="other">Other</div>
+                        <!-- {% if user_info.up_obj.gender == 'male' %}
+                          <div class="item active selected" data-value="male">Male</div>
+                        {% elif user_info.up_obj.gender == 'female' %}
+                          <div class="item active selected" data-value="female">Female</div>
+                        {% elif user_info.up_obj.gender == 'prefer_not_to_say' %}
+                          <div class="item active selected" data-value="prefer_not_to_say">Prefer Not to Say</div>
+                        {% elif user_info.up_obj.gender == 'prefer_not_to_say' %}
+                          <div class="item active selected" data-value="other">Other</div>
+                        {% endif %} -->
+
+                    </div>
+
+                </div>
+
+              </div>
+    
+            </div>
+
+          </div>
   
   
           <div class="ui horizontal divider" >
@@ -395,7 +435,7 @@
                 
                 <div class="eight wide field" >
                   <input type="text" name="user_job" id="user_job" placeholder="example: intern at NASA" value="{{ up_obj.job_companies }}">
-                </div>              
+                </div>
                 &nbsp;
   
               </div>
@@ -475,16 +515,12 @@
   
           <div class="field">
             <label style="font-size: 14.5px;">Description:</label>
-            <textarea name="user_description" form="profile_form" id="user_description" rows="2" placeholder="something you want other students to know about you?">
-              {{ up_obj.user_description }}
-            </textarea>
+            <textarea name="user_description" form="profile_form" id="user_description" rows="2" placeholder="something you want other students to know about you?">{{ up_obj.user_description }}</textarea>
           </div>
   
           <div class="field">
             <label style="font-size: 14.5px;">Interests:</label>
-            <textarea name="user_interest" form="profile_form" id="user_interest" rows="2" placeholder="UFOlogy, conspiracies, unexplained phenomena, quidditch, photography, okay I'll stop ">
-              {{ up_obj.user_interests }}
-            </textarea>
+            <textarea name="user_interest" form="profile_form" id="user_interest" rows="2" placeholder="UFOlogy, conspiracies, unexplained phenomena, quidditch, photography, okay I'll stop ">{{ up_obj.user_interests }}</textarea>
           </div>
         
         </div>

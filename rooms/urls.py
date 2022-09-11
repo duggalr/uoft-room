@@ -21,6 +21,8 @@ urlpatterns = [
 
   path('validate_email', views.validate_email, name='validate_email'),
 
+  path('logout', views.logout_view, name='logout'),
+
 ]
 
 
