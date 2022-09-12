@@ -21,10 +21,10 @@
       <a id="browse_item"  class="item" href="{% url 'browse' %}">
         browse
       </a>
-      <a id="random_profile_item" class="disabled item" href="{% url 'profile' %}">
+      <a id="random_profile_item" class="disabled item" href="{% url 'profile' profile_id=1 %}">
         random profile (TODO)
       </a>
-      <a id="my_profile_item" class="item" href="{% url 'profile' %}">
+      <a id="my_profile_item" class="item" href="{% url 'profile' profile_id=1 %}">
         my profile
       </a>
       <!-- <a class="item">

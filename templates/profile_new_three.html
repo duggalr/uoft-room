@@ -9,25 +9,36 @@
   <div class="four wide column" style="margin-top: 1em;">
       
     <div class="container">
-  
-      <a class="prev" onclick="plusSlides(-1)">❮</a>
-      <a class="next" onclick="plusSlides(1)">❯</a>
+      
+      {% if user_profile_images|length > 0 %}
 
-      {% for di in user_profile_images %}
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
 
+        {% for di in user_profile_images %}
+
+          <div class="mySlides">
+            <div class="numbertext">{{ di.idx }} / {{ user_profile_images|length }}</div>
+            <!-- <img src="{% static 'sample_images/image_three.jpeg' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"> -->
+            <!-- <img src="media/{{ di.profile_image.profile_image }}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"> -->
+          </div>
+
+        {% endfor %}
+        
+
+      {% else %}
+          
         <div class="mySlides">
-          <div class="numbertext">{{ di.idx }} / {{ user_profile_images|length }}</div>
-          <img src="{% static 'sample_images/image_three.jpeg' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
-          <!-- <img src="media/{{ di.profile_image.profile_image }}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"> -->
-
+          <!-- <img src="{% static 'sample_images/image_placeholder_three.png' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"> -->
+          <img src="https://ui-avatars.com/api/?name=?" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">
         </div>
+        
+        
 
-      {% endfor %}
+      {% endif %}
 
     </div>
 
-    <!-- <img id="profile_image_placeholder" src="//joeschmoe.io/api/v1/male/{{ user_info.first_name }}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;"> -->
-    <!-- <img id="profile_image_placeholder" src="{% static 'sample_images/image_three.jpeg' %}" width="280px" style="border-radius: 5%; box-shadow: 5px 5px #F5F5F5;">  -->
 
     <!-- <span style="font-weight: bold">
       To update the gender of the avatar-image, update your gender on the profile page
@@ -57,18 +68,22 @@
     <div class="ui horizontal divider">
       <i class="pencil alternate icon"></i> Courses This Year
     </div>
-    <div class="ui bulleted list">
+    <p>
+      {{ user_course_str }}
+    </p>
+
+    <!-- <div class="ui bulleted list"> -->
       <!-- TODO: add courses here... -->
       <!-- {% for obj in user_courses %}
 
       {% endfor %} -->
       
       <!-- TODO: make the course's clickable; will allow user to go to browse page and find other people taking this course -->
-      <div class="item">CSC108</div>
+      <!-- <div class="item">CSC108</div>
       <div class="item">CSC148</div>
-      <div class="item">CSC236</div>
+      <div class="item">CSC236</div> -->
 
-    </div>
+    <!-- </div> -->
 
   </div>
 
@@ -78,18 +93,16 @@
       
     <div>
       
-      {% if user_profile_obj.first_name is defined %}
+      {% if user_profile_obj.first_name is not None %}
 
         <h2 class="ui header" style="display: inline-block; font-size: 27px;">
           {{ user_profile_obj.first_name }} {{ user_profile_obj.last_name }}
-          <!-- <div class="ui teal horizontal label">Current Student</div>           -->
         </h2>
       
       {% else %}
 
         <h2 class="ui header" style="display: inline-block; font-size: 27px;">
           No Name (mysterious?)
-          <!-- <div class="ui teal horizontal label">Current Student</div>           -->
         </h2>
       
       {% endif %}
@@ -97,7 +110,7 @@
 
       <div style="display: flex; justify-content: space-between; float: right; margin-top: 10px;">
 
-        {% if request.user.first_name != user_info.first_name %}
+        {% if same_user is False %}
           
           <span style="padding-right: 8px; padding-bottom: 10px;">
             <!-- <i id="eye_question_icon" class="question icon" style="font-size: 14.5px;" onclick="showModal()"></i>   -->
@@ -121,13 +134,12 @@
             edit profile
           </button>
 
-          <div id="msg_myself" class="ui blue vertical animated disabled button" tabindex="0" style="margin-top: -10px;">
+          <!-- <div id="msg_myself" class="ui blue vertical animated disabled button" tabindex="0" style="margin-top: -10px;">
             <div class="hidden content">lonely?</div>
             <div class="visible content" >
-              <!-- <i class="paper plane icon"></i> -->
               send msg to me
             </div>
-          </div>
+          </div> -->
 
         {% endif %}
         
@@ -158,44 +170,38 @@
       </div>
 
 
-      <!-- TODO: add form and go from there -->
-
-      <div class="ui mini form">
-        <div class="two fields">
-          <div class="field">
-            <label>First Name</label>
-            <input placeholder="First Name" type="text">
-          </div>
-          <div class="field">
-            <label>Last Name</label>
-            <input placeholder="Last Name" type="text">
-          </div>
-        </div>
-        <div class="ui submit button">Submit</div>
-      </div>
-
       <div>
         <span style="font-size: 14.5px;">
-          <i class="instagram icon" style="font-size: 16px;">&nbsp;:</i>
+          <i class="instagram icon" style="font-size: 16px;">:</i>
+          <!-- TODO: add link and format myself; like spotify (specify username in the field) -->
+          {% if user_profile_obj.instagram_id is not None %}
+            <a href="https://instagram.com/">
+              {{ user_profile_obj.instagram_id }}
+            </a>
+          {% endif %}
         </span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
         <span style="font-size: 14.5px;">
-          <!-- <i class="snapchat ghost icon" style="font-size: 16px;"></i>kduport24 -->
-          <!-- TODO: onclick of private, tell user to 'eye' the user and if they accept, user get's access -->
-          
-          <i class="snapchat ghost icon" style="font-size: 16px;">&nbsp;:</i>
-
-
+          <i class="snapchat ghost icon" style="font-size: 16px;">:</i>
           <!-- <i class="question icon" style="font-size: 16px;"></i> -->
+          {% if user_profile_obj.snapchat_id is not None %}
+            {{ user_profile_obj.snapchat_id }}
+          {% endif %}
         </span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <!-- <span style="font-size: 14.5px;">
-          <i class="spotify icon" style="font-size: 16px;">&nbsp;:</i>
-          <a href="https://open.spotify.com/user/2uwyubwsy18et495hxmvherd2">Spotify</a>
-        </span> -->
+        
+        <span style="font-size: 14.5px;">
+          <i class="spotify icon" style="font-size: 16px;">:</i>
+          {% if user_profile_obj.spotify_url is not None %}
+            <a href="https://open.spotify.com/user/2uwyubwsy18et495hxmvherd2">
+              {{ user_profile_obj.spotify_url }}
+            </a>
+          {% endif %}
+
+        </span>
       
       </div>
-
 
       <!-- <div class="ui secondary pointing menu">
 
@@ -287,7 +293,6 @@
     
         </div> -->
 
-
           
         <!-- <div class="ui form">
           
@@ -307,7 +312,6 @@
 
             {% if user_profile_obj.current_school_year is not none %}   
               {{ user_profile_obj.current_school_year }}
-            {% else %}              
             {% endif %}           
           </p>
 
@@ -316,15 +320,15 @@
               Studying:
             </strong>
             {{ user_majors }}
- 
           </p>
 
           <p>
             <strong style="font-size: 14.5px;">
               Looking to Mingle?
             </strong>
-            
-            {{ user_profile_obj.user_relationship_status }}
+            {% if user_profile_obj.user_relationship_status is not none %}   
+              {{ user_profile_obj.user_relationship_status }}
+            {% endif %}           
           </p>
 
 
@@ -332,15 +336,17 @@
             <strong style="font-size: 14.5px;">
               About Me:
             </strong>
-            
-            <!-- <br/> -->
+            {% if user_profile_obj.user_description is not none %}
+              {{ user_profile_obj.user_description }}
+            {% endif %}
 
-            It's hard to spend a fortune without noticing. 
+            <!-- It's hard to spend a fortune without noticing. 
             Someone with ordinary tastes would find it hard to blow through more than a few tens of thousands of dollars without thinking 
             "wow, I'm spending a lot of money." Whereas if you start trading derivatives, you can lose a million dollars 
-            (as much as you want, really) in the blink of an eye.
+            (as much as you want, really) in the blink of an eye. -->
 
           </p>
+
 
         </div>
 
@@ -453,10 +459,6 @@
 
         </div>
 
-
-
-
-
       </div>
 
   
@@ -472,14 +474,25 @@
               <strong style="font-size: 14.5px;">
                 Gender: 
               </strong>
-              {{ user_profile_obj.gender|title }}
+              {% if user_profile_obj.gender is not none %}
+                {{ user_profile_obj.gender|title }}
+              {% endif %}
             </p>
 
             <p>
               <strong style="font-size: 14.5px;">
                 Email:
               </strong>
-              {{ user_profile_obj.email }}
+              {{ request.user.email }}
+            </p>
+
+            <p>
+              <strong style="font-size: 14.5px;">
+                Where I'm from:
+              </strong>
+              {% if user_profile_obj.user_location is not none %}
+                {{ user_profile_obj.user_location }}
+              {% endif %}
             </p>
 
             <!-- <p>
@@ -508,25 +521,29 @@
               <strong style="font-size: 14.5px;">
                 Campus:
               </strong> 
+              {% if user_profile_obj.current_school_campus is not none %}
+                {{ user_profile_obj.current_school_campus }}
+              {% endif %}
             </p>  
 
             <p>
               <strong style="font-size: 14.5px;">
                 College:
               </strong> 
+              {% if user_profile_obj.current_college is not none %}
+                {{ user_profile_obj.current_college }}
+              {% endif %}
             </p>  
 
             <p>
               <strong style="font-size: 14.5px;">
                 Living on Res:
               </strong> 
+              {% if user_profile_obj.living_on_res is not none %}
+                {{ user_profile_obj.living_on_res }} 
+              {% endif %}
             </p>  
 
-            <p>
-              <strong style="font-size: 14.5px;">
-                Where I'm from:
-              </strong> 
-            </p>
             
             <!-- <p>
               <strong style="font-size: 14.5px;">
@@ -547,12 +564,18 @@
               <strong style="font-size: 14.5px;">
                 Jobs & Companies working/worked at: 
               </strong>
+              {% if user_profile_obj.job_companies is not none %}
+                {{ user_profile_obj.job_companies }}
+              {% endif %}
             </p>
 
             <p>
               <strong style="font-size: 14.5px;">
                 Interests:
               </strong>
+              {% if user_profile_obj.job_companies is not none %}
+                {{ user_profile_obj.user_interests }}
+              {% endif %}
             </p>
           
           </div>

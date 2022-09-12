@@ -55,7 +55,8 @@ class User(AbstractUser):
 
 
 class UserProfile(models.Model):
-  user_obj = models.ForeignKey(User, on_delete=models.CASCADE)
+  # user_obj = models.ForeignKey(User, unique=True, on_delete=models.CASCADE)
+  user_obj = models.OneToOneField(User, on_delete=models.CASCADE)
 
   first_name = models.CharField(max_length=2000, blank=True, null=True)
   last_name = models.CharField(max_length=2000, blank=True, null=True)
@@ -73,7 +74,7 @@ class UserProfile(models.Model):
   current_school_campus = models.CharField(max_length=1000, blank=True, null=True)
   current_school_year = models.IntegerField(blank=True, null=True)
   current_college = models.CharField(max_length=2000, blank=True, null=True)
-  living_on_res = models.BooleanField(default=False, blank=True, null=True)
+  living_on_res = models.BooleanField(blank=True, null=True)
   user_location = models.CharField(max_length=2000, blank=True, null=True)
   user_relationship_status = models.CharField(max_length=2000, blank=True, null=True)
   # user_pizza_topping = models.CharField(max_length=2000, blank=True, null=True)
