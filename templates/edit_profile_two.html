@@ -55,8 +55,8 @@
           
           <div class="six wide field" >
             <label style="font-size: 14.5px;">First:</label>
-            {% if user_profile_obj.first_name is not None %}
-              <input type="text" id="first_name" name="first-name" placeholder="first name..." value="{{ user_info.up_obj.first_name }}">
+            {% if user_info.up_obj.first_name is not None %}
+              <input type="text" id="first_name" name="first-name" value="{{ user_info.up_obj.first_name }}">
             {% else %}
               <input type="text" id="first_name" name="first-name" placeholder="first name...">
             {% endif %}
@@ -64,8 +64,8 @@
 
           <div class="six wide field" >
             <label style="font-size: 14.5px;">Last:</label>
-            {% if user_profile_obj.first_name is not None %}
-              <input type="text" id="last_name" name="last-name" placeholder="last name..." value="{{ user_info.up_obj.first_name }}">
+            {% if user_info.up_obj.last_name is not None %}
+              <input type="text" id="last_name" name="last-name" placeholder="last name..." value="{{ user_info.up_obj.last_name }}">
             {% else %}
               <input type="text" id="last_name" name="last-name" placeholder="last name...">
             {% endif %}
@@ -131,7 +131,7 @@
 
             <label style="font-size: 14.5px;">About:</label>
             <div class="twelve wide field">
-              <textarea name="user_description" form="profile_form" id="user_description" rows="3" placeholder="something you want other students to know about you?">{{ up_obj.user_description }}</textarea>
+              <textarea name="user_description" form="profile_form" id="user_description" rows="3" placeholder="something you want other students to know about you?">{{ user_info.up_obj.user_description }}</textarea>
             </div>
             
           </div>
@@ -141,17 +141,18 @@
             <div class="field">
               <label style="font-size: 14.5px;">Current Status:</label>
 
-              <div class="ui selection dropdown" style="width: 18em;">
+              <div class="ui selection dropdown" style="width: 20em;">
 
                 <input type="hidden" name="current_status" id="current_school_status" value="{{ user_info.up_obj.current_school_status }}">
 
                 <i class="dropdown icon"></i>
                 <div class="default text">no, not relationship status...</div>                      
                 <div class="menu">
-                    <div class="item" name="current_status" data-value="undergrad_student">Undergrad Student (full/part-time)</div>
-                    <div class="item" name="current_status" data-value="grad_student">Grad Student (full/part-time)</div>
+                    <div class="item" name="current_status" data-value="undergrad">Undergrad Student (full/part-time)</div>
+                    <div class="item" name="current_status" data-value="grad">Grad Student (full/part-time)</div>
+                    <div class="item" name="current_status" data-value="phd">PHD Student (full/part-time)</div>
                     <div class="item" name="current_status" data-value="alumni">Alumni</div>
-                    <div class="item" name="current_status" data-value="gap_year">Gap Year (ie. co-op)</div>
+                    <div class="item" name="current_status" data-value="gap year">Gap Year (ie. co-op)</div>
                 </div>
 
               </div>
@@ -215,7 +216,7 @@
             </label>
 
             <div class="ui fluid multiple search selection dropdown" style="width: 20em;">
-              <input type="hidden" name="user_major" id="user_major" value="{{ user_major_str }}">
+              <input type="hidden" name="user_major" id="user_major" value="{{ user_info.user_major_str }}">
               <i class="dropdown icon"></i>
               <div class="default text">select major(s)</div>
               <div class="menu">
@@ -228,7 +229,22 @@
           </div>
 
 
-           
+          <!-- <div class="inline fields">
+  
+            <label style="font-size: 14.5px;">
+              <strong>Group(s):</strong>
+            </label>
+
+            
+          </div> -->
+
+          <select class="form-control" multiple="multiple">
+            <option selected="selected">orange</option>
+            <option>white</option>
+            <option selected="selected">purple</option>
+          </select>
+
+      
           <div class="inline fields" >
   
             <label style="font-size: 14.5px;">
@@ -241,7 +257,7 @@
             <div class="field" id="user_course_field">
   
               <div class="ui fluid multiple search selection dropdown" style="width: 30em;">
-                <input type="hidden" name="user_courses" id="user_courses" value="{{ user_course_str }}">                
+                <input type="hidden" name="user_courses" id="user_courses" value="{{ user_info.user_course_str }}">                
                 <i class="dropdown icon"></i>
                 <div class="default text">select course(s).. (undergrad only atm)</div>
                 <div class="menu">
@@ -301,19 +317,20 @@
                   <i class="dropdown icon"></i>
                   <div class="default text">oh la la...</div>
                   <div class="menu">
-                      <div class="item" data-value="whatever">whatever happens, happens</div>
-                      <div class="item" data-value="hell_yeah">hell yeah</div>
-                      <div class="item" data-value="hell_nah">hell nah</div>
-                      <div class="item" data-value="yeah_something_like_that">yeah, something like that...</div>
-                      <div class="item" data-value="single_no_mingle">I don't mingle</div>
-                      <div class="item" data-value="oh_god">oh god</div>
+                      <div class="item" data-value="whatever happens, happens">whatever happens, happens</div>
+                      <div class="item" data-value="hell yeah">hell yeah</div>
+                      <div class="item" data-value="hell nah">hell nah</div>                      
+                      <div class="item" data-value="yeah, something like that">yeah, something like that...</div>
+                      <div class="item" data-value="i don't mingle">I don't mingle</div>
+                      <div class="item" data-value="single">hell nah</div>
+                      <div class="item" data-value="oh god">oh god</div>
                       <div class="item" data-value="sure">sure</div>
                       <div class="item" data-value="no">no.</div>
                       <div class="item" data-value="complicated">it's complicated</div>
-                      <div class="item" data-value="going_with_flow">going with the flow</div>
-                      <div class="item" data-value="love_of_my_life">already with the love of my life</div>
-                      <div class="item" data-value="child_of_god">i'm a child of god</div>
-                      <div class="item" data-value="prefer_not_to_say">prefer not to say</div>
+                      <div class="item" data-value="going with the flow">going with the flow</div>
+                      <div class="item" data-value="already with the love of my life">already with the love of my life</div>
+                      <div class="item" data-value="i'm a child of god">i'm a child of god</div>
+                      <div class="item" data-value="prefer not to say">prefer not to say</div>
                   </div>
               </div>
             </div>
@@ -352,27 +369,27 @@
                     <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A7987.jpg" />
                     Innis College
                   </div>
-                  <div class="item" data-value="new_college">
+                  <div class="item" data-value="new college">
                     <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8008.jpg" />
                     New College
                   </div>
-                  <div class="item" data-value="st_michael_college">
+                  <div class="item" data-value="st michael college">
                     <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8103.jpg" />
                     St. Michael's College
                   </div>
-                  <div class="item" data-value="university_college">
+                  <div class="item" data-value="university college">
                     <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8027.jpg" />
                     University College
                   </div>
-                  <div class="item" data-value="victoria_college">
+                  <div class="item" data-value="victoria college">
                     <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8069.jpg" />
                     Victoria College
                   </div>
-                  <div class="item" data-value="woodsworth_college">
+                  <div class="item" data-value="woodsworth college">
                     <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A7967.jpg" />
                     Woodsworth College
                   </div>
-                  <div class="item" data-value="trinity_college">
+                  <div class="item" data-value="trinity college">
                     <img src="https://www.artsci.utoronto.ca/sites/artsci.utoronto.ca/files/023A8064.jpg" />
                     Trinity College
                   </div>
@@ -390,21 +407,23 @@
             <div class="field" id="user_living_on_res">
               <label style="font-size: 14.5px;">Living on Res?</label>
               <div class="ui selection dropdown" style="width: 16em;">
-                  <!-- <input type="hidden" name="living_on_res" id="living_on_res"> -->
-                  {% if user_info.up_obj.living_on_res == 'yes' %}
+                  
+                  <!-- {% if user_info.up_obj.living_on_res == 'yes' %}
                     <input type="hidden" name="living_on_res" id="living_on_res" value="yes">
                   {% elif user_info.up_obj.living_on_res == 'no' %}
                     <input type="hidden" name="living_on_res" id="living_on_res" value="no">
                   {% else %}
                     <input type="hidden" name="living_on_res" id="living_on_res">
-                  {% endif %}
+                  {% endif %} -->
 
+                  <input type="hidden" name="living_on_res" id="living_on_res" value="{{ user_info.up_obj.living_on_res }}">
                   <i class="dropdown icon"></i>
                   <div class="default text">?</div>
                   <div class="menu">
                       <div class="item" data-value="yes">yes</div>
                       <div class="item" data-value="no">no</div>
                   </div>
+
               </div>
             </div>
 
@@ -586,16 +605,25 @@
 
   var current_status_val = this.value
   if (current_status_val == 'alumni'){
+    $('#user_year_field').val("");
+    $('#user_living_on_res').val("");
+    $('#user_course_field').val("");
+
     $('#user_year_field').addClass('disabled')
     $('#user_living_on_res').addClass('disabled')
     $('#user_course_field').addClass('disabled')
   }
-  else if (current_status_val == 'grad_student'){
+  else if (current_status_val == 'grad'){
     $('#user_course_field').addClass('disabled')
     // $('#user_year_field').addClass('disabled')
     // $('#user_living_on_res').addClass('disabled')
   }
-  else if (current_status_val == 'gap_year'){
+  else if (current_status_val == 'phd'){
+    $('#user_course_field').addClass('disabled')
+    // $('#user_year_field').addClass('disabled')
+    // $('#user_living_on_res').addClass('disabled')
+  }
+  else if (current_status_val == 'gap year'){
     $('#user_course_field').addClass('disabled')
   }
 

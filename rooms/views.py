@@ -170,16 +170,23 @@ def profile(request, profile_id):
 
     # user_profile_obj = UserProfile.objects.get(user_obj=request.user)
     user_profile_obj = get_object_or_404(UserProfile, id=profile_id)
-    user_courses = UserCourses.objects.filter(user_profile_obj=user_profile_obj)
+
+    user_courses_list = UserCourses.objects.filter(user_profile_obj=user_profile_obj)
+    user_course_list = []
+    if len(user_courses_list) > 0:
+      user_course_obj = user_courses_list[0]
+      user_course_list = user_course_obj.course.split(',')
+      print('uc-list:', user_course_list)
+      # user_course_list = [obj.course for obj in user_courses_list]
+    # user_course_list = ','.join([obj.course for obj in user_courses])
+    # user_course_list = [obj.course for obj in user_courses]
 
     same_user = False
     if user_profile_obj.user_obj == request.user:
       same_user = True
     
-
-    # TODO: ensure user_majors is correct
-    # user_majors = UserMajors.objects.get(user_profile_obj=user_profile_obj)  # should be string of all majors for user
-    # user_majors_list = ', '.join([st for st in user_majors.major.split(',')])
+    user_majors = UserMajors.objects.get(user_profile_obj=user_profile_obj)  # should be string of all majors for user
+    user_majors_list = ', '.join([st for st in user_majors.major.split(',')])
 
     user_profile_images = UserProfileImage.objects.filter(user_profile_obj=user_profile_obj)
 
@@ -189,8 +196,8 @@ def profile(request, profile_id):
       'same_user': same_user,
       'user_profile_images': user_image_list,
       'user_profile_obj': user_profile_obj,
-      'user_courses': user_courses,
-      # 'user_majors': user_majors_list
+      'user_courses': user_course_list,
+      'user_majors': user_majors_list
     })
 
     # user_first_name = request.user.first_name
@@ -261,10 +268,10 @@ def edit_profile(request):
       user_interests = request.POST['user_interest']
 
       user_major_list = request.POST.getlist('user_major')
-      user_course_list = request.POST.getlist('courses')
+      user_course_list = request.POST.getlist('user_courses')
       profile_images = request.FILES.getlist('profile_image')
       
-      up_objects = UserProfile.objects.get(user_obj=request.user)
+      up_obj = UserProfile.objects.get(user_obj=request.user)
       # if len(up_objects) > 0:
         # up_obj = up_objects[0]
         
@@ -290,17 +297,26 @@ def edit_profile(request):
         up_obj.current_school_status = request.POST['current_status']
 
       if request.POST['campus'] is not None:
-        up_obj.current_school_campus = request.POST['campus']
+        if request.POST['campus'] == 'utsg':
+          up_obj.current_school_campus = "St. George"
+        elif request.POST['campus'] == 'utm':
+          up_obj.current_school_campus = "Mississauga"
+        elif request.POST['campus'] == 'utsc':
+          up_obj.current_school_campus = "Scarborough"
+        # up_obj.current_school_campus = request.POST['campus']
 
       if request.POST['user_college'] is not None:
         up_obj.current_college = request.POST['user_college']
 
-      if request.POST['user_year'] is not None:
+      if request.POST['user_year'] != 'None':
         up_obj.current_school_year = request.POST['user_year']
 
       if request.POST['living_on_res'] is not None:
-        up_obj.living_on_res = request.POST['living_on_res']
-
+        if request.POST['living_on_res'] is 'yes':
+          up_obj.living_on_res = True
+        else:
+          up_obj.living_on_res = False
+ 
       if request.POST['user_job'] is not None:
         up_obj.user_job = request.POST['user_job']
 
@@ -378,7 +394,7 @@ def edit_profile(request):
           )
           upi.save()
 
-      return redirect('profile')
+      return redirect('profile', profile_id=up_obj.id)
 
 
 
@@ -399,6 +415,9 @@ def edit_profile(request):
       'user_course_str': course_str,
       'user_major_str': user_major_str
     }
+
+    print(user_info)
+
     return render(request, 'edit_profile_two.html', {
       'user_info': user_info, 'programs': uoft_programs, 'courses': uoft_courses,
     })

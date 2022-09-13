@@ -60,6 +60,9 @@
           <li>
             <a href="{% url 'edit_profile' %}">Edit Profile</a>
           </li>
+          <li>
+            <a href="{% url 'edit_profile' %}">Change profile picture</a>
+          </li>
 
         </ul>
     </div>
@@ -68,22 +71,25 @@
     <div class="ui horizontal divider">
       <i class="pencil alternate icon"></i> Courses This Year
     </div>
-    <p>
-      {{ user_course_str }}
-    </p>
 
-    <!-- <div class="ui bulleted list"> -->
-      <!-- TODO: add courses here... -->
-      <!-- {% for obj in user_courses %}
+    {% if user_profile_obj.current_school_status != "alumni" and user_profile_obj.current_school_status != "gap year" %}
 
-      {% endfor %} -->
-      
-      <!-- TODO: make the course's clickable; will allow user to go to browse page and find other people taking this course -->
-      <!-- <div class="item">CSC108</div>
-      <div class="item">CSC148</div>
-      <div class="item">CSC236</div> -->
+      <div >
+        <ul>
+          {% for obj in user_courses %}
+            <!-- <div class="item">
+              {{ obj }}
+            </div> -->
+            <li>
+              {{ obj }}
+            </li>
+          {% endfor %}
+        </ul>
+        
+      </div>
 
-    <!-- </div> -->
+
+    {% endif %}
 
   </div>
 
@@ -131,7 +137,7 @@
         {% else %}
           
           <button onclick="location.href='{% url "edit_profile" %}'" id="edit_profile_button" class="ui inverted blue vertical button" tabindex="0" style="margin-top: -10px;">
-            edit profile
+            Edit
           </button>
 
           <!-- <div id="msg_myself" class="ui blue vertical animated disabled button" tabindex="0" style="margin-top: -10px;">
@@ -228,71 +234,6 @@
 
       <div id="tab_post_information">
 
-        <!-- <div class="ui link card" style="width: 100%;">
-
-          <div class="content">
-            <i class="right floated like icon"></i>
-            <i class="right floated star icon"></i>
-            <div class="header">Acorn Status Update?</div>
-            <div class="description">
-              <p>
-                Hi everyone, Is anyone still waiting for their grades to be released acorn?
-              </p>
-            </div>
-          </div>
-          <div class="extra content">
-            <span class="left floated like">
-              <i class="like icon"></i>
-              Like
-            </span>
-            <span class="right floated star">
-              <i class="comment outline icon"></i>
-              3 Comments
-            </span>
-          </div>
-    
-        </div>
-
-
-        <div class="ui link card" style="width: 100%;">
-
-          <div class="content">
-            <div class="header">Acorn Status Update?</div>
-            <div class="description">
-              <p>
-                Hi everyone, Is anyone still waiting for their grades to be released acorn?
-              </p>
-            </div>
-          </div>
-          <div class="extra content">
-            <span class="right floated star">
-              <i class="comment outline icon"></i>
-              3 Comments
-            </span>
-          </div>
-    
-        </div>
-
-
-        <div class="ui link card" style="width: 100%;">
-
-          <div class="content">
-            <div class="header">Acorn Status Update?</div>
-            <div class="description">
-              <p>
-                Hi everyone, Is anyone still waiting for their grades to be released acorn?
-              </p>
-            </div>
-          </div>
-          <div class="extra content">
-            <span class="right floated star">
-              <i class="comment outline icon"></i>
-              3 Comments
-            </span>
-          </div>
-    
-        </div> -->
-
           
         <!-- <div class="ui form">
           
@@ -307,45 +248,73 @@
 
           <p>
             <strong style="font-size: 14.5px;">
-              Year:
+              About Me:
             </strong>
-
-            {% if user_profile_obj.current_school_year is not none %}   
-              {{ user_profile_obj.current_school_year }}
-            {% endif %}           
+            <span id="profile_field_value">
+              {% if user_profile_obj.user_description is not none %}
+                {{ user_profile_obj.user_description }}
+              {% endif %}
+            </span>
+            
           </p>
 
           <p>
             <strong style="font-size: 14.5px;">
-              Studying:
+              School Status:
             </strong>
-            {{ user_majors }}
+            <span id="profile_field_value">
+              {% if user_profile_obj.current_school_status is not none %}
+                {{ user_profile_obj.current_school_status|title }}
+              {% endif %}
+            </span>
+          </p>
+
+          {% if user_profile_obj.current_school_status != "alumni" and user_profile_obj.current_school_status != "gap year" %}
+            <p>
+              <strong style="font-size: 14.5px;">
+                Year:
+              </strong>              
+              <span id="profile_field_value">
+                {% if user_profile_obj.current_school_year is not none %}   
+                  {{ user_profile_obj.current_school_year }}
+                {% endif %}
+              </span>
+              
+            </p>
+                      
+          {% endif %}
+
+          <p>
+            <strong style="font-size: 14.5px;">
+              Concentration:
+            </strong>
+            <span id="profile_field_value">
+              {{ user_majors }}
+            </span>
           </p>
 
           <p>
             <strong style="font-size: 14.5px;">
               Looking to Mingle?
             </strong>
-            {% if user_profile_obj.user_relationship_status is not none %}   
-              {{ user_profile_obj.user_relationship_status }}
-            {% endif %}           
+            <span id="profile_field_value">
+              {% if user_profile_obj.user_relationship_status is not none %}   
+                {{ user_profile_obj.user_relationship_status }}
+              {% endif %}
+            </span>
+            
           </p>
-
 
           <p>
             <strong style="font-size: 14.5px;">
-              About Me:
+              Groups:
             </strong>
-            {% if user_profile_obj.user_description is not none %}
-              {{ user_profile_obj.user_description }}
-            {% endif %}
-
-            <!-- It's hard to spend a fortune without noticing. 
-            Someone with ordinary tastes would find it hard to blow through more than a few tens of thousands of dollars without thinking 
-            "wow, I'm spending a lot of money." Whereas if you start trading derivatives, you can lose a million dollars 
-            (as much as you want, really) in the blink of an eye. -->
-
+            <span id="profile_field_value">
+              "bored, so created this", "uoftears", "basketball runs every friday at AC",
+              "goldring > AC",  "kobe > lebron"
+            </span>
           </p>
+
 
 
         </div>
@@ -372,7 +341,7 @@
             Comments:
           </h4>
           
-          <div class="comment">
+          <!-- <div class="comment">
             <a class="avatar">
               <img src="{% static 'sample_images/image_three.jpeg' %}">
             </a>
@@ -425,29 +394,12 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
           </div>
 
-          <!-- <div class="comment">
-            <a class="avatar">
-              <img src="{% static 'sample_images/image_three.jpeg' %}">
-            </a>
-            <div class="content">
-              <a class="author">Joe Henderson</a>
-              <div class="metadata">
-                <span class="date">5 days ago</span>
-              </div>
-              <div class="text">
-                Dude, this is awesome. Thanks so much
-              </div>
-              <div class="actions">
-                <a class="reply">Reply</a>
-              </div>
-            </div>
-          </div> -->
 
-          <form class="ui reply form">
+          <!-- <form class="ui reply form">
             <div class="field">
               <textarea style="width: 500px; height: 100px;"></textarea>
             </div>
@@ -455,8 +407,9 @@
               <i class="icon edit"></i> add a comment
             </div>
 
-          </form>
+          </form> -->
 
+          
         </div>
 
       </div>
@@ -474,25 +427,33 @@
               <strong style="font-size: 14.5px;">
                 Gender: 
               </strong>
-              {% if user_profile_obj.gender is not none %}
-                {{ user_profile_obj.gender|title }}
-              {% endif %}
+              <span id="profile_field_value">
+                {% if user_profile_obj.gender is not none %}
+                  {{ user_profile_obj.gender|title }}
+                {% endif %}
+              </span>
+              
             </p>
 
             <p>
               <strong style="font-size: 14.5px;">
                 Email:
               </strong>
-              {{ request.user.email }}
+              <span id="profile_field_value">
+                {{ request.user.email }}
+              </span>              
             </p>
 
             <p>
               <strong style="font-size: 14.5px;">
                 Where I'm from:
               </strong>
-              {% if user_profile_obj.user_location is not none %}
-                {{ user_profile_obj.user_location }}
-              {% endif %}
+              <span id="profile_field_value">
+                {% if user_profile_obj.user_location is not none %}
+                  {{ user_profile_obj.user_location }}
+                {% endif %}
+              </span>
+              
             </p>
 
             <!-- <p>
@@ -522,7 +483,7 @@
                 Campus:
               </strong> 
               {% if user_profile_obj.current_school_campus is not none %}
-                {{ user_profile_obj.current_school_campus }}
+                {{ user_profile_obj.current_school_campus|title }}
               {% endif %}
             </p>  
 
@@ -530,18 +491,28 @@
               <strong style="font-size: 14.5px;">
                 College:
               </strong> 
-              {% if user_profile_obj.current_college is not none %}
-                {{ user_profile_obj.current_college }}
-              {% endif %}
+              <span id="profile_field_value">
+                {% if user_profile_obj.current_college is not none %}
+                  {{ user_profile_obj.current_college|title }}
+                {% endif %}
+              </span>
+              
             </p>  
 
             <p>
               <strong style="font-size: 14.5px;">
                 Living on Res:
               </strong> 
-              {% if user_profile_obj.living_on_res is not none %}
-                {{ user_profile_obj.living_on_res }} 
-              {% endif %}
+              <span id="profile_field_value">
+                {% if user_profile_obj.living_on_res is not none %}
+                  {% if user_profile_obj.living_on_res is True %}
+                    Yes
+                  {% else %}
+                    No
+                  {% endif %}
+                {% endif %}
+              </span>
+              
             </p>  
 
             
@@ -564,18 +535,24 @@
               <strong style="font-size: 14.5px;">
                 Jobs & Companies working/worked at: 
               </strong>
-              {% if user_profile_obj.job_companies is not none %}
-                {{ user_profile_obj.job_companies }}
-              {% endif %}
+              <span id="profile_field_value">
+                {% if user_profile_obj.job_companies is not none %}
+                  {{ user_profile_obj.job_companies }}
+                {% endif %}
+              </span>
+              
             </p>
 
             <p>
               <strong style="font-size: 14.5px;">
                 Interests:
               </strong>
-              {% if user_profile_obj.job_companies is not none %}
-                {{ user_profile_obj.user_interests }}
-              {% endif %}
+              <span id="profile_field_value">
+                {% if user_profile_obj.job_companies is not none %}
+                  {{ user_profile_obj.user_interests }}
+                {% endif %}
+              </span>
+              
             </p>
           
           </div>
@@ -583,90 +560,6 @@
 
       </div>
 
-
-
-      <!-- <div class="ui horizontal divider" >
-        <i class="user icon"></i> Info
-      </div>
-
-      <div style="padding-top: 0px;">
-
-        <p>
-          <strong style="font-size: 14.5px;">
-            Gender:
-          </strong>
-        </p>
-        
-        <p>
-          <strong style="font-size: 14.5px;">
-            Year:
-          </strong>
-        </p>
-        <p>
-          <strong style="font-size: 14.5px;">
-            Studying:
-          </strong>
-        </p>
-
-        <p>
-          <strong style="font-size: 14.5px;">
-            Single looking to mingle?
-          </strong>
-        </p>
-
-        <p>
-          <strong style="font-size: 14.5px;">
-            Campus:
-          </strong> 
-        </p>  
-
-        <p>
-          <strong style="font-size: 14.5px;">
-            College:
-          </strong> 
-        </p>  
-
-        <p>
-          <strong style="font-size: 14.5px;">
-            Living on Res:
-          </strong> 
-        </p>  
-
-        <p>
-          <strong style="font-size: 14.5px;">
-            Where I'm from:
-          </strong> 
-        </p>
-        
-        <p>
-          <strong style="font-size: 14.5px;">
-            Description:
-          </strong> 
-        </p>
-
-      </div>
-
-
-      <div class="ui horizontal divider">
-        <i class="user icon"></i> More
-      </div>
-
-      <div>
-
-        <p>
-          <strong style="font-size: 14.5px;">
-            Jobs & Companies worked at: 
-          </strong>
-        </p>
-
-        <p>
-          <strong style="font-size: 14.5px;">
-            Interests:
-          </strong>
-        </p>
-      
-      </div>
-       -->
 
     </div>
 
@@ -756,4 +649,14 @@
 
   {% endblock %}
 
+
+
+<!-- 
+  TODO: 
+    - add group's in profile
+      - user can create his own or select from list <-- use select2
+      - **think of other fun stuff we can do as well... 
+    - test every field of profile (edit/remove/change) and ensure everything works well and correct profile-view is showing 
+    - go from there... 
+ -->
 
